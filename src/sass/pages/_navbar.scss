@@ -1,0 +1,29 @@
+.navbar__container{
+    // top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1111;
+    transition: all 1s;
+    & .navbar__logo img{
+        width: 16rem;
+        @include respond(tablet){
+            width: 14rem;
+        }
+        @include respond(phone){
+            width: 13rem;
+        }
+    }
+    & .navbar__collapse__button{
+        font-size: 1.50rem !important;
+    }
+    & .navbar__item__container{
+        display: flex;
+        align-items: center;
+            li a{
+                font-size: 1.5rem;
+                text-transform: capitalize;
+                color: $nav-item-color !important;
+            }
+    } 
+}

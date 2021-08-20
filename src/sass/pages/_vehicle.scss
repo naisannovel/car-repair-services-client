@@ -1,0 +1,17 @@
+.vehicle__container{
+    text-align: center;
+    margin-top: 6rem;
+    & h1{
+        font-size: 3.5rem;
+        font-weight: 600;
+    }
+    & p{
+        font-size: 1.6rem;
+    }
+    & .vehicle__icon__container{
+        transform: skew(-10deg);
+        & > * {
+          transform: skew(10deg);
+        }
+    }
+}

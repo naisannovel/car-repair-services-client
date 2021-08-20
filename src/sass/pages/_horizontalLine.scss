@@ -1,0 +1,19 @@
+.about__horizontal__line__container{
+    display: flex;
+    & .about__horizontal__line-1{
+        width: 4.5rem;
+        color: $primary-color;
+        opacity: 1;
+        height: .3rem;
+        margin: 0;
+    }
+    & .about__horizontal__line-2{
+        @extend .about__horizontal__line-1;
+        width: .4rem;
+        margin: 0 .2rem;
+    }
+    & .about__horizontal__line-3{
+        @extend .about__horizontal__line-1;
+        width: .4rem;
+    }
+}

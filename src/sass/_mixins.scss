@@ -1,0 +1,41 @@
+// CENTER
+@mixin center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// SLIDER SUB HEADER
+@mixin slider-sub-header{
+    color: white;
+    font-size: 3.5rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin: 0;
+}
+// SLIDER HEADER
+@mixin slider-header{
+    @include slider-sub-header;
+    font-size: 6.5rem;
+    color: $primary-color;
+    margin: .8rem 0;
+}
+// SLIDER DESCRIPTION
+@mixin slider-description{
+    @include slider-sub-header;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: lowercase;
+    line-height: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+// RESPONSIVE
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 600px) { @content };
+    }
+    @if $breakpoint == tablet {
+        @media (max-width: 992px) { @content };
+    }
+}

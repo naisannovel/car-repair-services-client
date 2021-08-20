@@ -1,0 +1,72 @@
+.hero__slider__container{
+    height: 90vh;
+    & .first__slide__container{
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.6) 100%), url('../../assets/slide1.jpg');
+        background-position: center;
+        background-size: cover;
+
+        & .first__slide__row__container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            & h4{
+                @include slider-sub-header;
+            }
+            & h1{
+                @include slider-header;
+            }
+            & h5{
+                @include slider-description;
+            }
+        }
+    }
+    & .second__slide__container{
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.6) 100%), url('../../assets/slide2.jpg');
+        background-position: bottom;
+        background-size: cover;
+
+        & .second__slide__row__container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            // text-align: center;
+
+            & h4{
+                @include slider-sub-header;
+            }
+            & h1{
+                @include slider-header;
+            }
+            & h5{
+                @include slider-description;
+            }
+        }
+    }
+
+    & .third__slide__container{
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.4) 100%), url('../../assets/slide3.jpg');
+        background-position: top;
+        background-size: cover;
+
+        & .third__slide__row__container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            // justify-content: flex-start;
+
+            & h4{
+                @include slider-sub-header;
+            }
+            & h1{
+                @include slider-header;
+            }
+            & h5{
+                @include slider-description;
+            }
+        }
+    }
+}

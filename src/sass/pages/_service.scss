@@ -1,0 +1,40 @@
+.service__container {
+  background-image: url("../../assets/service-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  padding-bottom: 4rem;
+  h1 {
+    font-size: $header-size;
+    font-weight: 600;
+    color: white;
+    padding-top: 7rem;
+  }
+  & .service__sub__title {
+    font-size: 1.6rem;
+    color: white;
+  }
+  & .swipper__container {
+      margin-top: 5rem;
+      padding-bottom: 6rem;
+    & .service__card__container {
+      background-color: white;
+      padding: 4rem;
+
+      & h4 {
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+      & h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+      }
+      & h6 {
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        margin: 2rem 0;
+      }
+    }
+  }
+}

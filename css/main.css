@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap");
+.text-center {
+  text-align: center;
+}
+
+.primary-btn {
+  border: 2px solid #FFC513;
+  color: #5F5F5F;
+  padding: .6rem 1.4rem;
+  font-size: 1.5rem;
+  border-radius: .6rem;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.primary-btn:hover {
+  background: #FFC513;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  html {
+    font-size: 56.3%;
+  }
+}
+
+body {
+  font-family: 'Merriweather', serif;
+  color: #3A3A3A;
+  font-weight: 400;
+}
+
+.navbar__container .navbar__logo img {
+  width: 16rem;
+}
+
+@media (max-width: 992px) {
+  .navbar__container .navbar__logo img {
+    width: 14rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar__container .navbar__logo img {
+    width: 13rem;
+  }
+}
+
+.navbar__container .navbar__collapse__button {
+  font-size: 1.50rem !important;
+}
+
+.navbar__container .navbar__item__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar__container .navbar__item__container li a {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  color: #5F5F5F;
+}

@@ -1,0 +1,74 @@
+.review__main__container {
+  background-image: url("../../assets/review-bg.jpg");
+  background-size: cover;
+  background-position: right;
+  background-attachment: fixed;
+  text-align: center;
+  margin-top: 8rem;
+  h1 {
+    font-size: $header-size;
+    font-weight: 600;
+    color: white;
+    padding-top: 5rem;
+  }
+  & .review__sub__title {
+    font-size: 1.6rem;
+    color: white;
+  }
+  & .swipper__container {
+    margin-top: 5rem;
+    padding-bottom: 6rem;
+    & .review__slide__container {
+      background-color: white;
+      position: relative;
+      padding: 0 !important;
+      display: flex;
+      justify-content: center;
+        & .review__img__container{
+          width: 50%;
+          clip-path: polygon(100% 0, 96% 50%, 92% 100%, 0% 100%, 0 51%, 0% 0%);
+          & img{
+            width: 100%;
+          }
+        }
+        & .review__content__container{
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          height: 100%;
+          padding: 3rem;
+          margin: auto 0;
+          position: relative;
+
+          & .review{
+            text-align: left;
+            font-size: 1.6rem;
+            line-height: 2.5rem;
+          }
+          & .review__author__info{
+            font-size: 1.9rem;
+            text-transform: capitalize;
+            color: $primary-color;
+            & span{
+              font-size: 1.4rem;
+              text-transform: capitalize;
+              color: black;
+            }
+          }
+        }
+        & .quote__container{
+          position: absolute;
+          background-color: $primary-color;
+          padding: 20px;
+          border-radius: 50%;
+          
+          & img{
+            width: 50px;
+            height: 50px;
+            filter: opacity(.7);
+          }
+        }
+      }
+  }
+}
