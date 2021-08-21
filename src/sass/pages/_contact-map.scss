@@ -1,0 +1,14 @@
+.contact__map__container{
+    position: relative;
+    & .contact__map__content{
+        padding: 5rem;
+        position: absolute;
+        height: 100%;
+        width: 30%;
+        top: 0;
+        background-color: #3b3b3b;
+        left: 6%;
+        filter: opacity(.85);
+        color: white;
+    }
+}

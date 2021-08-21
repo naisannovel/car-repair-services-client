@@ -1,0 +1,36 @@
+.footer__container{
+    background-color: #2d2d2d;
+    padding: 1.5rem 0;
+    & .footer__content__container{
+        @include center-flex;
+        justify-content: space-between !important;
+        & p{
+            margin-bottom: 0;
+            color: white;
+            font-size: 1.4rem;
+        }
+        & .footer__social__icon{
+            display: flex;
+            & :not(:first-child){
+                margin-left: 1rem;
+            }
+            & .social__icon__container{
+                background-color: #fff;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                @include center-flex;
+                &:hover{
+                    background-color: $primary-color;
+                    & svg{
+                        color: white;
+                    }
+                }
+                & svg{
+                    color:black;
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
+}

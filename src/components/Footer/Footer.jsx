@@ -1,16 +1,31 @@
-import React from 'react';
-import GoogleMap from '../utilities/GoogleMap';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF, faGooglePlusG, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
-    return (
-        <div style={{position:'relative'}}>
-            <GoogleMap/>
-            <div className="footer__content" style={{padding:'50px',position:'absolute',width:'400px',top:'0',backgroundColor:'#D3D3D3',height:'100%',left:'6%'}}>
-                <h4>Contact Info</h4>
-                Lorem, ipsum dolor sitd amet consectetur adipisicing elit. Facere, tenetur. Tempora dolorem nesciunt, impedit ipsum dicta quia sapiente numquam nulla saepe ratione eaque in? Nemo excepturi officiis quas temporibus atque.
-            </div>
+  return (
+    <div className="footer__container">
+      <div className="container footer__content__container">
+        <p>
+          © {new Date().getFullYear()} Car Repair Services, All Rights Reserved
+        </p>
+        <div class="footer__social__icon">
+          <a href="#" className='social__icon__container'>
+          <FontAwesomeIcon icon={faFacebookF} />
+          </a>
+          <a href="#" className='social__icon__container'>
+          <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a href="#" className='social__icon__container'>
+          <FontAwesomeIcon icon={faInstagram} />
+          </a>
+          <a href="#" className='social__icon__container'>
+          <FontAwesomeIcon icon={faGooglePlusG} />
+          </a>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Footer;
