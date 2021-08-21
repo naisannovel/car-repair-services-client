@@ -1,20 +1,44 @@
 import React from "react";
-import GoogleMap from '../../utilities/GoogleMap';
+import GoogleMap from "../../utilities/GoogleMap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faClock,
+  faEnvelope,
+  faMapMarkerAlt,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ContactMap = () => {
   return (
     <div>
-        <div class="contact__map__container">
-          <GoogleMap/>
-          <div className="contact__map__content">
-            <h4>Contact Info</h4>
-            Lorem, ipsum dolor sitdd amet consectetur adipisicing elit. Facere,
-            tenetur. Tempora dolorem nesciunt, impedit ipsum dicta quia sapiente
-            numquam nulla saepe ratione eaque in? Nemo excepturi officiis quas
-            temporibus atque.
-          </div>
+      <div className="contact__map__container">
+        <GoogleMap />
+        <div className="contact__map__content">
+          <h4>Contact Info</h4>
+          <p>
+            <FontAwesomeIcon icon={faMapMarkerAlt} />
+            2605 Caton Hill Road, Woodbridge, VA 22192
+          </p>
+          <p>
+            <FontAwesomeIcon icon={faPhone} />
+            1-800-1234567
+          </p>
+          <p>
+            <FontAwesomeIcon icon={faEnvelope} />
+            officeone@youremail.com
+          </p>
+          <h4 style={{marginTop:'50px'}}>Opening Hours</h4>
+          <p style={{display:'flex'}}>
+            <FontAwesomeIcon icon={faClock} />
+            <p>
+              <span style={{display:'block'}}>Mon-Fri: 7:00 AM - 6:00 PM</span>
+              <span style={{display:'block'}}>Saturday: 9:00 AM - 5:00 PM</span>
+              <span style={{display:'block'}}>Sunday: Closed</span>
+            </p>
+          </p>
         </div>
       </div>
+    </div>
   );
 };
 
