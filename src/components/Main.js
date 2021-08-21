@@ -1,4 +1,5 @@
 import React from 'react';
+import Login from './authentication/Login';
 import Body from './Body/Body';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
@@ -8,9 +9,10 @@ const Main = () => {
     return (
         <div>
             <NavBar/>
-            <Header/>
+            {/* <Header/>
             <Body/>
-            <Footer/>
+            <Footer/> */}
+            <Login/>
         </div>
     );
 };

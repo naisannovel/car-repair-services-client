@@ -1,7 +1,6 @@
 import React from "react";
 import About from "./about/About";
 import Contact from "./contact/Contact";
-import ContactMap from "./contact/ContactMap";
 import Works from "./how-works/Works";
 import Reviews from "./reviews/Reviews";
 import Services from "./Service/Services";
@@ -16,7 +15,6 @@ const Body = () => {
       <Vehicle/>
       <Reviews/>
       <Contact/>
-      <ContactMap/>
     </div>
   );
 };
