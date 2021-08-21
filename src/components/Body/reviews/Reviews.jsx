@@ -92,7 +92,7 @@ const Services = () => {
           clickable: true,
         }}
         // navigation={true}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 6000 }}
         className="swipper__container"
       >
         {serviceCard}

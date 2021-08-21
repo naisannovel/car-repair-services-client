@@ -59,7 +59,7 @@ const Services = () => {
   })
 
   return (
-    <div className="container-fluid service__container">
+    <div className="container-fluid service__container" id='service'>
       <h1>Our Services</h1>
       <p className="service__sub__title">Fixed price car servicing packages</p>
 

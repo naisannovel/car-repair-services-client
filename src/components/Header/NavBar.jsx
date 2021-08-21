@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, animateScroll } from "react-scroll";
 import {
   Collapse,
   Navbar,
@@ -38,7 +39,7 @@ const NavBar = (props) => {
       expand="md"
     >
       <div className="container">
-        <NavbarBrand className="navbar__logo" href="/">
+        <NavbarBrand className="navbar__logo" onClick={()=>animateScroll.scrollToTop()}>
           <img src="assets/images/logo.png" className="w-md-50" alt="Logo" />
         </NavbarBrand>
         <NavbarToggler className="navbar__collapse__button" onClick={toggle} />
@@ -50,27 +51,22 @@ const NavBar = (props) => {
           >
             <NavItem>
               <NavLink href="#">
-                home
+              <Link to='home' smooth={true} duration={500} exact='true' spy={true}>home</Link>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#">
-                service
+              <Link to='about' smooth={true} duration={500} exact='true' spy={true}>about</Link>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#">
-                dashboard
+              <Link to='service' smooth={true} duration={500} exact='true' spy={true}>service</Link>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#">
-                about
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">
-                contact
+                <Link to='contact' smooth={true} duration={500} exact='true' spy={true}>contact</Link>
               </NavLink>
             </NavItem>
             <NavItem>

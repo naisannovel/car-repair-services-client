@@ -7,6 +7,7 @@
     transition: all 1s;
     & .navbar__logo img{
         width: 16rem;
+        cursor: pointer;
         @include respond(tablet){
             width: 14rem;
         }
