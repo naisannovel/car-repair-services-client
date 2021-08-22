@@ -1,45 +1,51 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import HorizontalLine from "../utilities/HorizontalLine";
+import { Form, FormGroup, Input, Label } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Login = () => {
   return (
-    <div className="container row login__container border border-danger">
-      <div class="col-md-6 border border-danger">
-        <img src="assets/images/login.jpg" alt="login icon" />
-      </div>
-      <div class="col-md-6 border border-danger">
-        <div className="login__input__container">
-          <h1>Log In</h1>
-          <Form>
-            <FormGroup>
-              <Label for="email">Email</Label>
-              <Input
-                type="email"
-                name="email"
-                id="exampleEmail"
-                placeholder="with a placeholder"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="password">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                id="examplePassword"
-                placeholder="password placeholder"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label check>
-                <Input type="checkbox" /> Check me out
-              </Label>
-            </FormGroup>
-            <button className='primary-btn-small'>Log In</button>
-          </Form>
-          <p>Don't have an account? Sign Up</p>
+    <div className="container row login__container">
+        <div className="col-md-6">
+          <img src="assets/images/login.svg" alt="login icon" />
+        </div>
+        <div className="col-md-6">
+          <div className="login__input__container">
+            <h1>Log In</h1>
+            <HorizontalLine position="left" mTop="1.5rem" mBottom="3rem" />
+            <Form>
+              <FormGroup>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                />
+              </FormGroup>
+              <FormGroup>
+                <input
+                  type="password"
+                  className="mt-4"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                />
+              </FormGroup>
+              <button className="primary-btn-small mt-5">Log In</button>
+            </Form>
+            <p>
+              Don't have an account? <a href="#">Sign Up</a>
+            </p>
+            <p>or</p>
+           <button className="primary-btn-big mt-5">
+              {" "}
+              <FontAwesomeIcon icon={faGoogle} />
+              Sign in with google
+            </button>
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 
