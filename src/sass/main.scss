@@ -21,5 +21,12 @@
 @import './pages/login';
 @import './pages/signup';
 
+// PAYMENT GATEWAY
+@import './pages/stripe-modal';
+@import './pages/stripe-form';
+
 // DASHBOARD
 @import './pages/sidebar';
+@import './pages/myappointment';
+@import './pages/takeappoinment';
+@import './pages/givefeedback';

@@ -1,0 +1,8 @@
+.stripe__modal__container {
+border: 2px solid crimson;
+& .modal-header{
+        & button{
+            border: none;
+        }
+}
+}

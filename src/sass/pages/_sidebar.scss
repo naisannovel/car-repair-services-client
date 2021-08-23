@@ -1,0 +1,53 @@
+.sidebar__main__container {
+    // position: relative;
+  & .sidebar__nav__container {
+    height: 80px;
+    width: 100%;
+    background-color: #ecf0f1;
+    position: fixed;
+    top: 0;
+    z-index: 11;
+  }
+  & .sidebar__container {
+      position: relative;
+      top: 80px;
+    & .sidebar {
+      width: 25%;
+      height: calc(100vh - 80px);
+      background-color: #f3f3f3;
+      position: fixed;
+      display: flex;
+    justify-content: center;
+      & .sidebar__nav{
+          position: relative;
+          margin-top: 5rem;
+          & a{
+              color: gray;
+              text-decoration: none;
+              display: flex;
+            align-items: center;
+              font-size: 1.5rem;
+              font-weight: 100;
+              z-index: 111;
+              &:not(:last-child){
+                  margin-bottom: 2rem;
+              }
+              & svg{
+                  margin-right: 1rem;
+              }
+          }
+          & .sidebar__nav__last__child{
+              position: absolute;
+              bottom: 8rem;
+              left: 0;
+          }
+      }
+    }
+    & .sidebar__dashboard__routing{
+        width: calc(100% - 25%);
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+  }
+}

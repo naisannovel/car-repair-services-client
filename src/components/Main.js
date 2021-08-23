@@ -6,6 +6,7 @@ import Sidebar from './dashboard/Sidebar';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import NavBar from './Header/NavBar';
+import StripeModal from './payment/StripeModal';
 
 const Main = () => {
     return (
@@ -16,7 +17,8 @@ const Main = () => {
             <Footer/> */}
             {/* <Login/> */}
             {/* <Signup/> */}
-            <Sidebar/>
+            {/* <Sidebar/> */}
+            <StripeModal/>
         </div>
     );
 };
