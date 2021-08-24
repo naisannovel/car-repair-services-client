@@ -17,8 +17,8 @@ const Main = () => {
             <Footer/> */}
             {/* <Login/> */}
             {/* <Signup/> */}
-            {/* <Sidebar/> */}
-            <StripeModal/>
+            <Sidebar/>
+            {/* <StripeModal/> */}
         </div>
     );
 };

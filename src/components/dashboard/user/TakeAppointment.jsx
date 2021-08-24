@@ -1,15 +1,17 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import HorizontalLine from "../../utilities/HorizontalLine";
 
 const TakeAppointment = () => {
   return (
-    <div>
+    <div className='take__new__appointment__container'>
       <h1>Take New Appointment</h1>
+      <HorizontalLine position='left' mTop='2rem' mBottom='4rem' />
 
       <Form>
         <FormGroup>
-          <Label for="exampleSelect">Select</Label>
-          <Input type="select" name="select" id="exampleSelect">
+          <Label for="select">Take New Services</Label>
+          <Input type="select" name="select" id='select' style={{fontSize:'16px',marginBottom:'20px'}}>
             <option>services</option>
             <option>1</option>
             <option>2</option>
@@ -18,7 +20,7 @@ const TakeAppointment = () => {
             <option>5</option>
           </Input>
         </FormGroup>
-        <Button>Submit</Button>
+        <button className='primary-btn-small'>Submit</button>
       </Form>
     </div>
   );

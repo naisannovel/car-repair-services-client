@@ -12,6 +12,10 @@ import {
 import MyAppointment from "./user/MyAppointment";
 import TakeAppointment from "./user/TakeAppointment";
 import GiveFeedback from "./user/GiveFeedback";
+import OrderList from "./admin/OrderList";
+import MakeAdmin from "./admin/MakeAdmin";
+import AddService from "./admin/AddService";
+import ManageService from "./admin/ManageService";
 
 const Sidebar = () => {
   return (
@@ -64,8 +68,12 @@ const Sidebar = () => {
         </div>
         <div className="sidebar__dashboard__routing">
           {/* <MyAppointment/> */}
-          <TakeAppointment/>
+          {/* <TakeAppointment/> */}
           {/* <GiveFeedback/> */}
+          {/* <OrderList/> */}
+          {/* <MakeAdmin/> */}
+          <AddService/>
+          {/* <ManageService/> */}
         </div>
       </div>
     </div>
