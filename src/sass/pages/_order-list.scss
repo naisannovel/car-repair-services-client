@@ -1,10 +1,14 @@
-.order__list__container{
-    width: 100%;
-    margin: 5rem auto;
-    & th{
-        font-size: 1.5rem;
-    }
-    & td{
-        font-size: 1.4rem;
-    }
+.order__list__container {
+  width: 100%;
+  margin: 5rem auto;
+  & th {
+    font-size: 1.5rem;
+  }
+  & td {
+    font-size: 1.4rem;
+    & select {
+        border:0px;
+        outline:0px;
+     }
+  }
 }

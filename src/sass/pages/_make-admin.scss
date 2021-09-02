@@ -1,4 +1,4 @@
-.add__service__container{
+.make__admin__container{
     width: 80%;
     margin: 5rem auto;
     & .form-group {
@@ -10,9 +10,5 @@
     }
     & input {
       font-size: 1.6rem;
-    }
-    & textarea {
-      width: 100%;
-      height: 150px;
     }
 }

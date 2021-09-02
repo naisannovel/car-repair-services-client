@@ -72,8 +72,8 @@ const Sidebar = () => {
           {/* <GiveFeedback/> */}
           {/* <OrderList/> */}
           {/* <MakeAdmin/> */}
-          <AddService/>
-          {/* <ManageService/> */}
+          {/* <AddService/> */}
+          <ManageService/>
         </div>
       </div>
     </div>
