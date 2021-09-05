@@ -3,8 +3,11 @@ import HorizontalLine from "../utilities/HorizontalLine";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 const Login = () => {
+  const history = useHistory()
   return (
     <div className="container row login__container">
         <div className="col-md-6">
@@ -35,7 +38,7 @@ const Login = () => {
               <button className="primary-btn-small mt-5">Log In</button>
             </Form>
             <p>
-              Don't have an account? <a href="#">Sign Up</a>
+              Don't have an account? <Link to='/signup'>Sign Up</Link>
             </p>
             <p>or</p>
            <button className="primary-btn-big mt-5">

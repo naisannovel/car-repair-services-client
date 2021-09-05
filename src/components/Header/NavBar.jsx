@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import { Link, animateScroll } from "react-scroll";
 import {
   Collapse,
@@ -29,6 +30,8 @@ const NavBar = (props) => {
   };
 
   window.addEventListener("scroll", scrollHandler);
+
+  const history = useHistory()
 
   return (
     <Navbar
@@ -71,7 +74,7 @@ const NavBar = (props) => {
             </NavItem>
             <NavItem>
               <NavLink href="#">
-                <button className="primary-btn-small">Login</button>
+                <button className="primary-btn-small" onClick={()=>history.push('/login')}>Login</button>
               </NavLink>
             </NavItem>
           </Nav>
