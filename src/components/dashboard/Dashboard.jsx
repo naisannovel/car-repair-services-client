@@ -16,9 +16,11 @@ import OrderList from "./admin/OrderList";
 import MakeAdmin from "./admin/MakeAdmin";
 import AddService from "./admin/AddService";
 import ManageService from "./admin/ManageService";
-import { Link, Route, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { useHistory } from "react-router";
+import PrivateRoute from "../privateRoute/PrivateRoute";
+import AdminRoute from "../privateRoute/AdminRoute";
 
 const Dashboard = () => {
   const { path } = useRouteMatch()
@@ -72,16 +74,17 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="sidebar__dashboard__routing">
-          <Route path={`${path}/my-appointment`} component={MyAppointment} />
-          <Route path={`${path}/take-appointment`} component={TakeAppointment} />
-          <Route path={`${path}/give-feedback`} component={GiveFeedback} />
-          {/* <Route path={`${path}`} exact component={MyAppointment} /> */}
-          {/* admin Route */}
-          <Route path={`${path}/order-list`} component={OrderList} />
-          <Route path={`${path}/make-new-admin`} component={MakeAdmin} />
-          <Route path={`${path}/add-new-service`} component={AddService} />
-          <Route path={`${path}/manage-services`} component={ManageService} />
-          {/* <Route path={`${path}`} exact component={OrderList} /> */}
+          {/* user route */}
+          <PrivateRoute path={`${path}/my-appointment`} component={MyAppointment} />
+          <PrivateRoute path={`${path}/take-appointment`} component={TakeAppointment} />
+          <PrivateRoute path={`${path}/give-feedback`} component={GiveFeedback} />
+          {/* <PrivateRoute path={`${path}`} exact component={MyAppointment} /> */}
+          {/* admin route */}
+          <AdminRoute path={`${path}/order-list`} component={OrderList} />
+          <AdminRoute path={`${path}/make-new-admin`} component={MakeAdmin} />
+          <AdminRoute path={`${path}/add-new-service`} component={AddService} />
+          <AdminRoute path={`${path}/manage-services`} component={ManageService} />
+          {/* <AdminRoute path={`${path}`} exact component={OrderList} /> */}
         </div>
       </div>
     </div>
