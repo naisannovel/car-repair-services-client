@@ -17,7 +17,7 @@ import MakeAdmin from "./admin/MakeAdmin";
 import AddService from "./admin/AddService";
 import ManageService from "./admin/ManageService";
 
-const Sidebar = () => {
+const Dashboard = () => {
   return (
     <div className="sidebar__main__container">
       <div className="sidebar__nav__container">
@@ -80,4 +80,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Dashboard;

@@ -1,4 +1,6 @@
 import React from "react";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 import About from "./about/About";
 import Contact from "./contact/Contact";
 import Works from "./how-works/Works";
@@ -9,12 +11,14 @@ import Vehicle from "./vehicle-items/Vehicle";
 const Body = () => {
   return (
     <div>
+      <Header/>
       <About />
       <Works/>
       <Services/>
       <Vehicle/>
       <Reviews/>
       <Contact/>
+      <Footer/>
     </div>
   );
 };

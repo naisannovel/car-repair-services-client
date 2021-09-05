@@ -2,23 +2,21 @@ import React from 'react';
 import Login from './authentication/Login';
 import Signup from './authentication/Signup';
 import Body from './Body/Body';
-import Sidebar from './dashboard/Sidebar';
-import Footer from './Footer/Footer';
-import Header from './Header/Header';
+import Dashboard from './dashboard/Dashboard';
 import NavBar from './Header/NavBar';
-import StripeModal from './payment/StripeModal';
+import { Route,Switch } from 'react-router-dom';
 
 const Main = () => {
     return (
         <div>
-            {/* <NavBar/> */}
-            {/* <Header/>
-            <Body/>
-            <Footer/> */}
-            {/* <Login/> */}
-            {/* <Signup/> */}
-            <Sidebar/>
-            {/* <StripeModal/> */}
+
+            <NavBar/>
+            <Switch>
+            <Route path='/' exact component={Body} />
+            <Route path='/login' exact component={Login} />
+            <Route path='/signup' exact component={Signup} />
+            {/* <Dashboard/> */}
+            </Switch>
         </div>
     );
 };
