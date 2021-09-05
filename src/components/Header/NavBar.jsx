@@ -36,8 +36,8 @@ const NavBar = (props) => {
   return (
     <Navbar
       className="navbar__container"
-      style={{ position: navSticky ? "sticky" : "",top:navSticky?'0':''}}
-      color="light"
+      style={{ position: navSticky ? "sticky" : "",top:navSticky?'0':'',backgroundColor:'#ECF0F1'}}
+      color='light'
       light
       expand="md"
     >
@@ -70,6 +70,11 @@ const NavBar = (props) => {
             <NavItem>
               <NavLink href="#">
                 <Link to='contact' smooth={true} duration={500} exact='true' spy={true}>contact</Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link onClick={()=>history.push('/dashboard')} style={{cursor:'pointer'}}>Dashboard</Link>
               </NavLink>
             </NavItem>
             <NavItem>

@@ -5,7 +5,7 @@ import { Table } from "reactstrap";
 const OrderList = (props) => {
   return (
     <div className="order__list__container">
-      <h1>My Appointment</h1>
+      <h1>Order List</h1>
       <HorizontalLine position="left" mTop="2rem" mBottom="3rem" />
       <Table striped>
         <thead>

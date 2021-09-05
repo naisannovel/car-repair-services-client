@@ -5,11 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import AuthHeader from "./AuthHeader";
 
 const Login = () => {
-  const history = useHistory()
+  
   return (
-    <div className="container row login__container">
+    <div>
+      <AuthHeader/>
+      <div className="container row login__container">
         <div className="col-md-6">
           <img src="assets/images/login.svg" alt="login icon" />
         </div>
@@ -49,6 +52,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

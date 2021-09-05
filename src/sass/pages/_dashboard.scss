@@ -1,7 +1,7 @@
 .sidebar__main__container {
     // position: relative;
   & .sidebar__nav__container {
-    height: 80px;
+    height: 70px;
     width: 100%;
     background-color: #ecf0f1;
     position: fixed;
@@ -10,7 +10,7 @@
   }
   & .sidebar__container {
       position: relative;
-      top: 80px;
+      top: 70px;
     & .sidebar {
       width: 25%;
       height: calc(100vh - 80px);
