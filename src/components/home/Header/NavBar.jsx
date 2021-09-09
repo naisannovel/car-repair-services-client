@@ -16,27 +16,12 @@ const NavBar = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const [navSticky, setNavSticky] = useState(false);
-
-  var scrollPrev = window.pageYOffset;
-  const scrollHandler = () => {
-    var scrollCur = window.pageYOffset;
-    if (scrollPrev > scrollCur) {
-      setNavSticky(true);
-    } else {
-      setNavSticky(false);
-    }
-    scrollPrev = scrollCur;
-  };
-
-  window.addEventListener("scroll", scrollHandler);
 
   const history = useHistory()
 
   return (
     <Navbar
       className="navbar__container"
-      style={{ position: navSticky ? "sticky" : "",top:navSticky?'0':'',backgroundColor:'#ECF0F1'}}
       color='light'
       light
       expand="md"
@@ -53,32 +38,32 @@ const NavBar = (props) => {
             navbar
           >
             <NavItem>
-              <NavLink href="#">
-              <Link to='home' smooth={true} duration={500} exact='true' spy={true}>home</Link>
+              <NavLink style={{cursor:'pointer'}}>
+              <Link to='home' smooth={true} duration={500} exact='true' offset={-70} spy={true}>home</Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">
-              <Link to='about' smooth={true} duration={500} exact='true' spy={true}>about</Link>
+              <NavLink style={{cursor:'pointer'}}>
+              <Link to='about' smooth={true} duration={500} exact='true' offset={-70} spy={true}>about</Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">
-              <Link to='service' smooth={true} duration={500} exact='true' spy={true}>service</Link>
+              <NavLink style={{cursor:'pointer'}}>
+              <Link to='service' smooth={true} duration={500} exact='true' offset={-70} spy={true}>service</Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">
-                <Link to='contact' smooth={true} duration={500} exact='true' spy={true}>contact</Link>
+              <NavLink style={{cursor:'pointer'}}>
+                <Link to='contact' smooth={true} duration={500} exact='true' offset={-70} spy={true}>contact</Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>
+              <NavLink style={{cursor:'pointer'}}>
                 <Link onClick={()=>history.push('/dashboard')} style={{cursor:'pointer'}}>Dashboard</Link>
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">
+              <NavLink style={{cursor:'pointer'}}>
                 <button className="primary-btn-small" onClick={()=>history.push('/login')}>Login</button>
               </NavLink>
             </NavItem>

@@ -21,7 +21,7 @@ const About = () => {
   }
 
   return (
-    <div className="about__container" id='about'>
+    <div id='about' className="about__container">
       <h1 className="about__header">We Provide Expert Service</h1>
       <p className="about__description">
         We aim to earn your trust and have a long term relationship with you
