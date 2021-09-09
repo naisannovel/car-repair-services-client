@@ -4,13 +4,13 @@ import { Form, FormGroup } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
-import AuthHeader from "./AuthHeader";
+import SignupAndLoginNavbar from "./SignupAndLoginNavbar";
 
 const Login = () => {
   
   return (
     <div>
-      <AuthHeader/>
+      <SignupAndLoginNavbar/>
       <div className="container row login__container">
         <div className="col-md-6">
           <img src="assets/images/login.svg" alt="login icon" />

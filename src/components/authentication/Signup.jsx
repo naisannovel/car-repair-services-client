@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import AuthHeader from "./AuthHeader";
+import SignupAndLoginNavbar from "./SignupAndLoginNavbar";
 
 const Signup = () => {
   const history = useHistory();
   return (
     <div>
-      <AuthHeader/>
+      <SignupAndLoginNavbar/>
       <div className="container row login__container">
       <div className="col-md-6">
         <div className="login__input__container">
