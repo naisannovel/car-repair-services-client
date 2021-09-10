@@ -5,8 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 import SignupAndLoginNavbar from "./SignupAndLoginNavbar";
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
   
   return (
     <div>
@@ -19,23 +23,23 @@ const Login = () => {
           <div className="login__input__container">
             <h1>Log In</h1>
             <HorizontalLine position="left" mTop="1.5rem" mBottom="3rem" />
-            <Form>
+            <Form onSubmit={handleSubmit(onSubmit)}>
               <FormGroup>
                 <input
                   type="email"
-                  name="email"
-                  id="email"
                   placeholder="Email"
+                  {...register("email", { required: true, pattern:/\S+@\S+\.\S+/,minLength:5,maxLength:255 })}
                 />
+                {errors.email && <span className='form-error-style'>required</span>}
               </FormGroup>
               <FormGroup>
                 <input
                   type="password"
                   className="mt-4"
-                  name="password"
-                  id="password"
                   placeholder="Password"
+                  {...register("password", { required: true,minLength:5,maxLength:255 })}
                 />
+                {errors.password && <span className='form-error-style'>required</span>}
               </FormGroup>
               <button className="primary-btn-small mt-5">Log In</button>
             </Form>
