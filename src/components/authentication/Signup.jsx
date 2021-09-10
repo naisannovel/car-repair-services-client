@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HorizontalLine from "../utilities/HorizontalLine";
 import { Form, FormGroup } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +8,7 @@ import SignupAndLoginNavbar from "./SignupAndLoginNavbar";
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { auth } from '../../redux/authActionCreators';
+import { Alert } from 'reactstrap';
 
 
 const mapDispatchToProps = dispatch =>{
@@ -16,7 +17,16 @@ const mapDispatchToProps = dispatch =>{
   }
 }
 
-const Signup = ({ auth }) => {
+const mapStateToProps = state =>{
+  console.log(state);
+  return {
+    authFailedMsg: state.auth.errMsg,
+    loadingSpinner: state.auth.isLoading,
+    userData: state.auth.userData
+  }
+}
+
+const Signup = ({auth,loadingSpinner,userData,authFailedMsg}) => {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => auth(data,'signup');
@@ -24,9 +34,12 @@ const Signup = ({ auth }) => {
   return (
     <div>
       <SignupAndLoginNavbar/>
-      <div className="container row login__container">
+
+      <div className="container row signup__container">
       <div className="col-md-6">
-        <div className="login__input__container">
+        
+        <div className="signup__input__container">
+        { authFailedMsg !== null && <Alert color='danger' style={{fontSize:'16px'}}>{authFailedMsg}</Alert>}
           <h1>Sign Up</h1>
           <HorizontalLine position="left" mTop="1.5rem" mBottom="3rem" />
           <Form onSubmit={handleSubmit(onSubmit)}>
@@ -60,11 +73,11 @@ const Signup = ({ auth }) => {
         </div>
       </div>
       <div className="col-md-6">
-        <img src="assets/images/signup.svg" alt="login icon" />
+        <img src="assets/images/signup.svg" alt="signup icon" />
       </div>
     </div>
     </div>
   );
 };
 
-export default connect(null,mapDispatchToProps)(Signup);
+export default connect(mapStateToProps,mapDispatchToProps)(Signup);
