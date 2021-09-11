@@ -10,6 +10,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
+import { isAuthenticated, userInfo } from '../authentication/authUtilities';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,11 +58,14 @@ const NavBar = (props) => {
                 <Link to='contact' smooth={true} duration={500} exact='true' offset={-70} spy={true}>contact</Link>
               </NavLink>
             </NavItem>
-            <NavItem>
+            {
+              isAuthenticated() ?
+              <NavItem>
               <NavLink style={{cursor:'pointer'}}>
                 <Link onClick={()=>history.push('/dashboard')} style={{cursor:'pointer'}}>Dashboard</Link>
               </NavLink>
-            </NavItem>
+            </NavItem>:''
+            }
             <NavItem>
               <NavLink style={{cursor:'pointer'}}>
                 <button className="primary-btn-small" onClick={()=>history.push('/login')}>Login</button>

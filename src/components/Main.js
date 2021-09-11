@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Login from './authentication/Login';
 import Signup from './authentication/Signup';
-import Home from './home/Home';
+import MainHome from './home/MainHome';
 import Dashboard from './dashboard/Dashboard';
 import { Route,Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -21,7 +21,7 @@ const Main = ({ userAuthCheck }) => {
     return (
         <div>
             <Switch>
-            <Route path='/' exact component={Home} />
+            <Route path='/' exact component={MainHome} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
             <PrivateRoute path='/dashboard'>

@@ -1,5 +1,5 @@
 import React from "react";
-import HorizontalLine from "../../utilities/HorizontalLine";
+import HorizontalLine from "../utilities/HorizontalLine";
 
 const Works = () => {
   const worksData = [

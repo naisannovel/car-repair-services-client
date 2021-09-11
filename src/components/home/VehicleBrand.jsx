@@ -1,5 +1,5 @@
 import React from "react";
-import HorizontalLine from "../../utilities/HorizontalLine";
+import HorizontalLine from "../utilities/HorizontalLine";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
