@@ -13,6 +13,7 @@ import {
 import { isAuthenticated, userInfo } from '../authentication/authUtilities';
 
 const NavBar = (props) => {
+  const { name } = isAuthenticated() ? userInfo() : '';
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -66,11 +67,16 @@ const NavBar = (props) => {
               </NavLink>
             </NavItem>:''
             }
-            <NavItem>
+            {
+              isAuthenticated() ? 
+              <span className='navbar-user-name-icon'>{name.trim().toUpperCase()[0]}</span>
+              :
+              <NavItem>
               <NavLink style={{cursor:'pointer'}}>
                 <button className="primary-btn-small" onClick={()=>history.push('/login')}>Login</button>
               </NavLink>
             </NavItem>
+            }
           </Nav>
         </Collapse>
       </div>

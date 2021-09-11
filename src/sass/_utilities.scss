@@ -62,3 +62,13 @@
     color: red;
     font-size: 1.4rem;
 }
+
+.navbar-user-name-icon{
+    border: 3px solid $primary-color;
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin-left: 1rem;
+    @include center-flex;
+}

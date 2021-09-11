@@ -18,11 +18,13 @@ import AddService from "./admin/AddService";
 import ManageService from "./admin/ManageService";
 import { Link, useRouteMatch } from 'react-router-dom';
 import logo from '../../assets/logo.png';
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import PrivateRoute from "../protectedRoutes/PrivateRoute";
 import AdminRoute from "../protectedRoutes/AdminRoute";
+import { isAuthenticated, userInfo } from "../authentication/authUtilities";
 
 const Dashboard = () => {
+  const { role, name } = isAuthenticated() ? userInfo() : '';
   const { path } = useRouteMatch()
   const history = useHistory()
   return (
@@ -32,41 +34,55 @@ const Dashboard = () => {
           <NavbarBrand onClick={()=>history.push('/')}>
             <img src={logo} className="w-md-50" style={{width:'85%',cursor:'pointer'}} alt="Logo" />
           </NavbarBrand>
-          <NavbarText className="mr-auto" style={{ fontSize: "16px" }}>
-            Simple Text
+          <NavbarText className="mr-auto" style={{ fontSize: "20px",textTransform:'capitalize' }}>
+            {name}
           </NavbarText>
         </Navbar>
       </div>
       <div class="sidebar__container">
         <div className="sidebar">
           <div class="sidebar__nav">
-            <Link to={`${path}/my-appointment`}>
-              <FontAwesomeIcon icon={faList} /> My Appointment
-            </Link>
-            <Link to={`${path}/take-appointment`}>
-              {" "}
-              <FontAwesomeIcon icon={faPlusSquare} /> Take Appointment
-            </Link>
-            <Link to={`${path}/give-feedback`}>
-              {" "}
-              <FontAwesomeIcon icon={faCommentDots} /> Give Feedback
-            </Link>
-            <Link to={`${path}/order-list`}>
-              {" "}
-              <FontAwesomeIcon icon={faList} /> Order List
-            </Link>
-            <Link to={`${path}/add-new-service`}>
-              {" "}
-              <FontAwesomeIcon icon={faPlusSquare} /> Add Services
-            </Link>
-            <Link to={`${path}/make-new-admin`}>
-              {" "}
-              <FontAwesomeIcon icon={faUserPlus} /> Make Admin
-            </Link>
-            <Link to={`${path}/manage-services`}>
-              {" "}
-              <FontAwesomeIcon icon={faThList} /> Manage Services
-            </Link>
+            {
+              isAuthenticated() && role === 'user' &&
+              <>
+                <Link to={`${path}`}>
+                <FontAwesomeIcon icon={faList} /> My Appointment
+                </Link>
+                {/* <Link to={`${path}/my-appointment`}>
+                <FontAwesomeIcon icon={faList} /> My Appointment
+                </Link> */}
+                <Link to={`${path}/take-appointment`}>
+                  {" "}
+                  <FontAwesomeIcon icon={faPlusSquare} /> Take Appointment
+                </Link>
+                <Link to={`${path}/give-feedback`}>
+                  {" "}
+                  <FontAwesomeIcon icon={faCommentDots} /> Give Feedback
+                </Link>
+              </>
+            }
+         {
+           isAuthenticated() && role === 'admin' && 
+           <>
+              <Link to={`${path}/order-list`}>
+                {" "}
+            <FontAwesomeIcon icon={faList} /> Order List
+              </Link>
+              <Link to={`${path}/add-new-service`}>
+                {" "}
+                <FontAwesomeIcon icon={faPlusSquare} /> Add Services
+              </Link>
+              <Link to={`${path}/make-new-admin`}>
+                {" "}
+                <FontAwesomeIcon icon={faUserPlus} /> Make Admin
+              </Link>
+              <Link to={`${path}/manage-services`}>
+                {" "}
+                <FontAwesomeIcon icon={faThList} /> Manage Services
+              </Link>
+           </>
+
+         }
             <Link to='' className="sidebar__nav__last__child">
               {" "}
               <FontAwesomeIcon icon={faSignOutAlt} /> Log Out
@@ -75,18 +91,18 @@ const Dashboard = () => {
         </div>
         <div className="sidebar__dashboard__routing">
           {/* user route */}
-          <PrivateRoute path={`${path}/my-appointment`}>
+          {/* <PrivateRoute path={`${path}/my-appointment`}>
             <MyAppointment/>
-          </PrivateRoute>
+          </PrivateRoute> */}
           <PrivateRoute path={`${path}/take-appointment`}>
             <TakeAppointment/>
           </PrivateRoute>
           <PrivateRoute path={`${path}/give-feedback`}>
             <GiveFeedback/>
           </PrivateRoute>
-          {/* <PrivateRoute path={`${path}`} exact>
+          <PrivateRoute path={`${path}`} exact>
             <MyAppointment/>
-          </PrivateRoute> */}
+          </PrivateRoute>
           {/* admin route */}
           <AdminRoute path={`${path}/order-list`}>
             <OrderList/>

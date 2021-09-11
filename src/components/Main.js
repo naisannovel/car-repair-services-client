@@ -7,6 +7,7 @@ import { Route,Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authCheck } from '../redux/authActionCreators';
 import PrivateRoute from './protectedRoutes/PrivateRoute';
+import { Redirect } from "react-router";
 
 const mapDispatchToProps = dispatch =>{
     return {
@@ -27,6 +28,7 @@ const Main = ({ userAuthCheck }) => {
             <PrivateRoute path='/dashboard'>
                 <Dashboard/>
             </PrivateRoute>
+            <Redirect to='/' />
             </Switch>
         </div>
     );
