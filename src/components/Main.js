@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { authCheck } from '../redux/authActionCreators';
 import PrivateRoute from './protectedRoutes/PrivateRoute';
 import { Redirect } from "react-router";
+import { isAuthenticated,userInfo } from './authentication/authUtilities';
 
 const mapDispatchToProps = dispatch =>{
     return {
@@ -19,13 +20,14 @@ const Main = ({ userAuthCheck }) => {
     useEffect(()=>{
         userAuthCheck()
     },[])
+    const { role } = isAuthenticated() ? userInfo() : '';
     return (
         <div>
             <Switch>
             <Route path='/' exact component={MainHome} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
-            <PrivateRoute path='/dashboard'>
+            <PrivateRoute path={`/${role}/dashboard`}>
                 <Dashboard/>
             </PrivateRoute>
             <Redirect to='/' />

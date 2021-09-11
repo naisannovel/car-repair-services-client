@@ -13,7 +13,7 @@ import {
 import { isAuthenticated, userInfo } from '../authentication/authUtilities';
 
 const NavBar = (props) => {
-  const { name } = isAuthenticated() ? userInfo() : '';
+  const { name, role } = isAuthenticated() ? userInfo() : '';
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -63,7 +63,7 @@ const NavBar = (props) => {
               isAuthenticated() ?
               <NavItem>
               <NavLink style={{cursor:'pointer'}}>
-                <Link onClick={()=>history.push('/dashboard')} style={{cursor:'pointer'}}>Dashboard</Link>
+                <Link onClick={()=>history.push(`/${role}/dashboard`)} style={{cursor:'pointer'}}>Dashboard</Link>
               </NavLink>
             </NavItem>:''
             }

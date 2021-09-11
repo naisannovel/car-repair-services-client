@@ -34,37 +34,31 @@ const Dashboard = () => {
   if (isAuthenticated() && role === "user") {
     dashboardSidebar = (
       <>
-        <Link to={`${path}`}>
+        <Link to={`${path}/my-appointment`}>
           <FontAwesomeIcon icon={faList} /> My Appointment
         </Link>
-        {/* <Link to={`${path}/my-appointment`}>
-    <FontAwesomeIcon icon={faList} /> My Appointment
-    </Link> */}
         <Link to={`${path}/take-appointment`}>
-          {" "}
           <FontAwesomeIcon icon={faPlusSquare} /> Take Appointment
         </Link>
         <Link to={`${path}/give-feedback`}>
-          {" "}
           <FontAwesomeIcon icon={faCommentDots} /> Give Feedback
         </Link>
+       
       </>
     );
     // user route
     dashboardRouting = (
       <>
-        {/* <PrivateRoute path={`${path}/my-appointment`}>
+        <PrivateRoute path={`${path}/my-appointment`} exact>
             <MyAppointment/>
-          </PrivateRoute> */}
-        <PrivateRoute path={`${path}/take-appointment`}>
+          </PrivateRoute>
+        <PrivateRoute path={`${path}/take-appointment`} exact>
           <TakeAppointment />
         </PrivateRoute>
-        <PrivateRoute path={`${path}/give-feedback`}>
+        <PrivateRoute path={`${path}/give-feedback`} exact>
           <GiveFeedback />
         </PrivateRoute>
-        <PrivateRoute path={`${path}`} exact>
-          <MyAppointment />
-        </PrivateRoute>
+        <Redirect from={`${path}`} to={`${path}/my-appointment`} />
       </>
     );
   } else if (isAuthenticated() && role === "admin") {
