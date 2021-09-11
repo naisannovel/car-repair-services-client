@@ -9,6 +9,8 @@ import { useForm } from 'react-hook-form';
 import { useHistory, useLocation } from 'react-router-dom';
 import { auth } from '../../redux/authActionCreators';
 import { connect } from 'react-redux';
+import { isAuthenticated } from '../authentication/authUtilities';
+import { Redirect } from "react-router";
 
 const mapDispatchToProps = dispatch =>{
   return {
@@ -24,8 +26,14 @@ const Login = ({ authLogin }) => {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => authLogin(data,'login',()=>history.replace(from));
+
+  const redirectUser = () => {
+    if (isAuthenticated()) return <Redirect to="/" />
+}
+
   return (
     <div>
+      {redirectUser()}
       <SignupAndLoginNavbar/>
       <div className="container row login__container">
         <div className="col-md-6">

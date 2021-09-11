@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import { auth } from '../../redux/authActionCreators';
 import { Alert } from 'reactstrap';
 import { useHistory, useLocation } from 'react-router-dom';
+import { isAuthenticated } from '../authentication/authUtilities';
+import { Redirect } from "react-router";
 
 
 const mapDispatchToProps = dispatch =>{
@@ -39,9 +41,13 @@ const Signup = ({authSignup,loadingSpinner,userData,authFailedMsg}) => {
     reset()
   };
 
+  const redirectUser = () => {
+    if (isAuthenticated()) return <Redirect to="/" />
+}
 
   return (
     <div>
+      {redirectUser()}
       <SignupAndLoginNavbar/>
 
       <div className="container row signup__container">

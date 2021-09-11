@@ -9,6 +9,8 @@ export const isAuthenticated = () => {
             return true;
         } else {
             localStorage.removeItem('token');
+            localStorage.removeItem('_id');
+            localStorage.removeItem('expirationTime');
             return false;
         }
     } else return false;
