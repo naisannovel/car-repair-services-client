@@ -6,12 +6,24 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 import SignupAndLoginNavbar from "./SignupAndLoginNavbar";
 import { useForm } from 'react-hook-form';
+import { useHistory, useLocation } from 'react-router-dom';
+import { auth } from '../../redux/authActionCreators';
+import { connect } from 'react-redux';
 
-const Login = () => {
+const mapDispatchToProps = dispatch =>{
+  return {
+    authLogin: (data,mode,cb)=> dispatch(auth(data,mode,cb))
+  }
+}
+
+const Login = ({ authLogin }) => {
+  
+  const history = useHistory()
+  const location = useLocation()
+  let { from } = location.state || { from: { pathname: '/' } };
 
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
-  
+  const onSubmit = data => authLogin(data,'login',()=>history.replace(from));
   return (
     <div>
       <SignupAndLoginNavbar/>
@@ -59,4 +71,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect(null,mapDispatchToProps)(Login);

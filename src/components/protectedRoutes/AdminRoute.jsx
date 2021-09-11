@@ -1,12 +1,14 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router';
+import { isAuthenticated, userInfo } from '../authentication/authUtilities';
 
-const PrivateRoute = ({ children, ...rest }) => {
+const AdminRoute = ({ children, ...rest }) => {
+  const { role } = userInfo();
     return (
         <Route
       {...rest}
       render={({ location }) =>
-        true ? (
+      isAuthenticated() && role === 'admin' ? (
           children
         ) : (
           <Redirect
@@ -21,4 +23,4 @@ const PrivateRoute = ({ children, ...rest }) => {
     );
 };
 
-export default PrivateRoute;
+export default AdminRoute;

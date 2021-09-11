@@ -9,16 +9,16 @@ import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { auth } from '../../redux/authActionCreators';
 import { Alert } from 'reactstrap';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 const mapDispatchToProps = dispatch =>{
   return {
-    auth: (data,mode)=> dispatch(auth(data,mode))
+    authSignup: (data,mode,cb)=> dispatch(auth(data,mode,cb))
   }
 }
 
 const mapStateToProps = state =>{
-  console.log(state);
   return {
     authFailedMsg: state.auth.errMsg,
     loadingSpinner: state.auth.isLoading,
@@ -26,10 +26,19 @@ const mapStateToProps = state =>{
   }
 }
 
-const Signup = ({auth,loadingSpinner,userData,authFailedMsg}) => {
+const Signup = ({authSignup,loadingSpinner,userData,authFailedMsg}) => {
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => auth(data,'signup');
+  const history = useHistory()
+  const location = useLocation()
+
+  let { from } = location.state || { from: { pathname: '/' } };
+
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const onSubmit = data => {
+    authSignup(data,'signup',()=>history.replace(from));
+    reset()
+  };
+
 
   return (
     <div>

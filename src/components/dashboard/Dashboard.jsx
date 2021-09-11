@@ -19,8 +19,8 @@ import ManageService from "./admin/ManageService";
 import { Link, useRouteMatch } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { useHistory } from "react-router";
-import PrivateRoute from "../privateRoute/PrivateRoute";
-import AdminRoute from "../privateRoute/AdminRoute";
+import PrivateRoute from "../protectedRoutes/PrivateRoute";
+import AdminRoute from "../protectedRoutes/AdminRoute";
 
 const Dashboard = () => {
   const { path } = useRouteMatch()
@@ -75,16 +75,34 @@ const Dashboard = () => {
         </div>
         <div className="sidebar__dashboard__routing">
           {/* user route */}
-          <PrivateRoute path={`${path}/my-appointment`} component={MyAppointment} />
-          <PrivateRoute path={`${path}/take-appointment`} component={TakeAppointment} />
-          <PrivateRoute path={`${path}/give-feedback`} component={GiveFeedback} />
-          {/* <PrivateRoute path={`${path}`} exact component={MyAppointment} /> */}
+          <PrivateRoute path={`${path}/my-appointment`}>
+            <MyAppointment/>
+          </PrivateRoute>
+          <PrivateRoute path={`${path}/take-appointment`}>
+            <TakeAppointment/>
+          </PrivateRoute>
+          <PrivateRoute path={`${path}/give-feedback`}>
+            <GiveFeedback/>
+          </PrivateRoute>
+          {/* <PrivateRoute path={`${path}`} exact>
+            <MyAppointment/>
+          </PrivateRoute> */}
           {/* admin route */}
-          <AdminRoute path={`${path}/order-list`} component={OrderList} />
-          <AdminRoute path={`${path}/make-new-admin`} component={MakeAdmin} />
-          <AdminRoute path={`${path}/add-new-service`} component={AddService} />
-          <AdminRoute path={`${path}/manage-services`} component={ManageService} />
-          {/* <AdminRoute path={`${path}`} exact component={OrderList} /> */}
+          <AdminRoute path={`${path}/order-list`}>
+            <OrderList/>
+          </AdminRoute>
+          <AdminRoute path={`${path}/make-new-admin`}>
+            <MakeAdmin/>
+          </AdminRoute>
+          <AdminRoute path={`${path}/add-new-service`}>
+            <AddService/>
+          </AdminRoute>
+          <AdminRoute path={`${path}/manage-services`}>
+            <ManageService/>
+          </AdminRoute>
+          {/* <AdminRoute path={`${path}`} exact>
+            <OrderList/>
+          </AdminRoute> */}
         </div>
       </div>
     </div>

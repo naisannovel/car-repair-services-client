@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import * as actionTypes from "./actionTypes";
 
-const userAuth = (userState = { userData: {token: null, data: null}, isLoading: false, errMsg: null }, action) => {
+const userAuth = (userState = { userData: {token: null, id: null}, isLoading: false, errMsg: null }, action) => {
     switch (action.type) {
         case actionTypes.AUTH_LOADING:
             return {
@@ -11,19 +11,22 @@ const userAuth = (userState = { userData: {token: null, data: null}, isLoading: 
         case actionTypes.AUTH_SUCCESS:
             return {
                 ...userState,
-                isLoading:false,
                 userData:{
                     token:action.payload.token,
-                    data: action.payload.data
+                    id: action.payload.id
                 },
                 errMsg: null,
             }
         case actionTypes.AUTH_FAILED:
             return {
                 ...userState,
-                isLoading:false,
-                userData: {token: null, data: null},
+                userData: {token: null, id: null},
                 errMsg: action.payload,
+            }
+        case actionTypes.AUTH_LOGOUT:
+            return {
+                ...userState,
+                userData: {token: null, id: null}
             }
         default:
             return userState;
