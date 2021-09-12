@@ -17,27 +17,26 @@ const mapDispatchToProps = dispatch =>{
     }
 }
 
-class Main extends Component{
-  componentDidMount(){
-      this.props.googleLogin();
-      this.props.userAuthCheck();
-  }
-    render(){
-        const { role } = isAuthenticated() ? userInfo() : '';
+const Main = ({userAuthCheck})=>{
+  useEffect(()=>{
+    userAuthCheck();
+  },[])
         return (
         <div>
             <Switch>
             <Route path='/' exact component={MainHome} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
-            <PrivateRoute path={`/${role}/dashboard`}>
+            <PrivateRoute path={`/user/dashboard`}>
+                <Dashboard/>
+            </PrivateRoute>
+            <PrivateRoute path={`/admin/dashboard`}>
                 <Dashboard/>
             </PrivateRoute>
             <Redirect to='/' />
             </Switch>
         </div>
     );
-}
 };
 
 export default connect(null,mapDispatchToProps)(Main);

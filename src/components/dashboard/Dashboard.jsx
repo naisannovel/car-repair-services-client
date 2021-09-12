@@ -58,7 +58,9 @@ const Dashboard = () => {
         <PrivateRoute path={`${path}/give-feedback`} exact>
           <GiveFeedback />
         </PrivateRoute>
-        <Redirect from={`${path}`} to={`${path}/my-appointment`} />
+        <PrivateRoute path={`${path}`} exact>
+            <MyAppointment/>
+          </PrivateRoute>
       </>
     );
   } else if (isAuthenticated() && role === "admin") {
@@ -85,21 +87,21 @@ const Dashboard = () => {
     // admin route
     dashboardRouting = (
       <>
-        <AdminRoute path={`${path}/order-list`}>
+        <AdminRoute path={`${path}/order-list`} exact>
           <OrderList />
         </AdminRoute>
-        <AdminRoute path={`${path}/make-new-admin`}>
+        <AdminRoute path={`${path}/make-new-admin`} exact>
           <MakeAdmin />
         </AdminRoute>
-        <AdminRoute path={`${path}/add-new-service`}>
+        <AdminRoute path={`${path}/add-new-service`} exact>
           <AddService />
         </AdminRoute>
-        <AdminRoute path={`${path}/manage-services`}>
+        <AdminRoute path={`${path}/manage-services`} exact>
           <ManageService />
         </AdminRoute>
-        {/* <AdminRoute path={`${path}`} exact>
+        <AdminRoute path={`${path}`} exact>
             <OrderList/>
-          </AdminRoute> */}
+          </AdminRoute>
       </>
     );
   }
