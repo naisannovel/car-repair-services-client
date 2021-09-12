@@ -55,6 +55,22 @@ export const auth = (data,mode,cb)=>{
     }
 }
 
+export const googleAuth = ()=> dispatch => {
+    // dispatch(isLoading(true))
+    const url = `${API}/auth/google/redirect`;
+    axios.get(url)
+    .then(response =>{
+        // dispatch(isLoading(false)) 
+        console.log(response);  
+    })
+    
+    // .catch(err=>{
+    //     dispatch(isLoading(false))
+    //     dispatch(authFailed(err.response.data))
+    //     setTimeout(()=>dispatch(authFailed(null)),2000)
+    // })
+}
+
 export const logout = ()=>{
     localStorage.removeItem('token');
     localStorage.removeItem('userData');
