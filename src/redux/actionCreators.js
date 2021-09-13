@@ -19,6 +19,13 @@ export const addService = service =>{
     }
 }
 
+export const SuccessServiceMsg = msg =>{
+    return {
+        type: actionTypes.SUCCESS_SERVICE_MSG,
+        payload: msg
+    }
+}
+
 export const loadService = service =>{
     return {
         type: actionTypes.LOAD_SERVICE,
@@ -26,12 +33,6 @@ export const loadService = service =>{
     }
 }
 
-export const errorServiceLoad = err =>{
-    return {
-        type: actionTypes.ERROR_LOAD_SERVICE,
-        payload: err
-    }
-}
 export const errorService = err =>{
     return {
         type: actionTypes.ERROR_SERVICE,
@@ -41,7 +42,7 @@ export const errorService = err =>{
 
 // create service
 export const createNewService = data => dispatch =>{
-    loadingService(true);
+    dispatch(loadingService(true));
     const formData = new FormData();
     formData.append('name',data.name);
     formData.append('price',data.price);
@@ -53,13 +54,17 @@ export const createNewService = data => dispatch =>{
             "Content-Type": "multipart/form-data",
             "Authorization": `Bearer ${token}`
         }})
-    .then(response => response.data)
-    .then(newService => {
+    .then(response => {
         dispatch(loadingService(false));
-        dispatch(addService(newService));
+        if(response.status === 200){
+            dispatch(SuccessServiceMsg('successfully added'))
+        }
+        setTimeout(()=>dispatch(SuccessServiceMsg(null)),2000)
+        dispatch(addService(response.data));
     })
     .catch(err => {
         dispatch(loadingService(false));
         dispatch(dispatch(errorService(err.response.data)))
+        setTimeout(()=>dispatch(errorService(null)),2000)
     })
 }

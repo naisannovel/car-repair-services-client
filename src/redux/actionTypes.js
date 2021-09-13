@@ -7,6 +7,6 @@ export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 // service action types
 export const LOADING_SERVICE = 'LOADING_SERVICE';
 export const ADD_SERVICE = 'ADD_SERVICE';
+export const SUCCESS_SERVICE_MSG = 'SUCCESS_SERVICE_MSG';
 export const LOAD_SERVICE = 'LOAD_SERVICE';
 export const ERROR_SERVICE = 'ERROR_SERVICE';
-export const ERROR_LOAD_SERVICE = 'ERROR_LOAD_SERVICE';

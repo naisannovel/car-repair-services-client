@@ -33,27 +33,27 @@ const userAuth = (userState = { userData: {token: null, id: null}, isLoading: fa
     }
 };
 
-const vehicleService = (serviceState = {services: [], isLoading: false, loadErrMsg: null, errMsg: null}, action)=>{
+const vehicleService = (serviceState = {services: [], isLoading: false, successMsg: null, errMsg: null}, action)=>{
     switch (action.type) {
         case actionTypes.LOADING_SERVICE:
             return {
                 ...serviceState,
-                isLoading: true
+                isLoading: action.payload
             }
         case actionTypes.ADD_SERVICE:
             return {
                 ...serviceState,
                 services: serviceState.services.concat(action.payload)
             }
+        case actionTypes.SUCCESS_SERVICE_MSG:
+            return {
+                ...serviceState,
+                successMsg: action.payload
+            }
         case actionTypes.LOAD_SERVICE:
             return {
                 ...serviceState,
                 services: action.payload
-            }
-        case actionTypes.ERROR_LOAD_SERVICE:
-            return {
-                ...serviceState,
-                loadErrMsg: action.payload
             }
         case actionTypes.ERROR_SERVICE:
             return {
