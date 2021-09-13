@@ -33,6 +33,40 @@ const userAuth = (userState = { userData: {token: null, id: null}, isLoading: fa
     }
 };
 
+const vehicleService = (serviceState = {services: [], isLoading: false, loadErrMsg: null, errMsg: null}, action)=>{
+    switch (action.type) {
+        case actionTypes.LOADING_SERVICE:
+            return {
+                ...serviceState,
+                isLoading: true
+            }
+        case actionTypes.ADD_SERVICE:
+            return {
+                ...serviceState,
+                services: serviceState.services.concat(action.payload)
+            }
+        case actionTypes.LOAD_SERVICE:
+            return {
+                ...serviceState,
+                services: action.payload
+            }
+        case actionTypes.ERROR_LOAD_SERVICE:
+            return {
+                ...serviceState,
+                loadErrMsg: action.payload
+            }
+        case actionTypes.ERROR_SERVICE:
+            return {
+                ...serviceState,
+                errMsg: action.payload
+            }
+
+        default:
+            return serviceState;
+    }
+}
+
 export const reducer = combineReducers({
     auth: userAuth,
+    service: vehicleService
 });
