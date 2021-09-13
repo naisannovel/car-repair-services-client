@@ -68,3 +68,5 @@ export const createNewService = data => dispatch =>{
         setTimeout(()=>dispatch(errorService(null)),2000)
     })
 }
+
+// update
