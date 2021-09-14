@@ -11,6 +11,22 @@
         font-size: 1.4rem;
         & svg{
             margin-left: .5rem;
+            cursor: pointer;
+        }
+        & .manage__service__edit__icon{
+            transition: .5s;
+            &:hover{
+                transform: scale(1.8);
+                color: green;
+            }
+        }
+        & .manage__service__delete__icon{
+            margin-left: 1.8rem;
+            transition: .5s;
+            &:hover{
+                transform: scale(1.8);
+                color: red;
+            }
         }
         & button{
             font-size: 1.5rem;

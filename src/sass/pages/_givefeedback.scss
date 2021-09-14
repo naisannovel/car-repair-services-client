@@ -9,10 +9,13 @@
     margin-bottom: 1rem;
   }
   & input {
-    font-size: 1.6rem;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 0.8rem;
   }
   & textarea {
     width: 100%;
     height: 150px;
+    font-size: 1.5rem;
   }
 }

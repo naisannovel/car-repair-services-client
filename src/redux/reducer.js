@@ -55,7 +55,12 @@ const vehicleService = (serviceState = {services: [], isLoading: false, successM
                 ...serviceState,
                 services: action.payload
             }
-        case actionTypes.ERROR_SERVICE:
+        case actionTypes.DELETE_SERVICE:
+            return {
+                ...serviceState,
+                services: serviceState.services.filter(item => item._id !== action.payload)
+            }
+        case actionTypes.ERROR_SERVICE_MSG:
             return {
                 ...serviceState,
                 errMsg: action.payload
@@ -66,7 +71,41 @@ const vehicleService = (serviceState = {services: [], isLoading: false, successM
     }
 }
 
+const userReview = ( reviewState={reviews:[],isLoading:false,successMsg:null,errMsg:null},action )=>{
+    switch (action.type) {
+        case actionTypes.LOADING_REVIEW:
+            return {
+                ...reviewState,
+                isLoading: action.payload
+            }
+        case actionTypes.ADD_REVIEW:
+            return {
+                ...reviewState,
+                reviews: reviewState.reviews.concat(action.payload)
+            }
+        case actionTypes.SUCCESS_REVIEW_MSG:
+            return {
+                ...reviewState,
+                successMsg: action.payload
+            }
+        case actionTypes.ERROR_REVIEW_MSG:
+            return {
+                ...reviewState,
+                errMsg: action.payload
+            }
+        case actionTypes.LOAD_REVIEW:
+            return {
+                ...reviewState,
+                reviews: action.payload
+            }
+    
+        default:
+            return reviewState;
+    }
+}
+
 export const reducer = combineReducers({
     auth: userAuth,
-    service: vehicleService
+    service: vehicleService,
+    review: userReview
 });

@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import About from "./about/About";
 import Contact from "./contact/Contact";
 import HowWeWorks from "./HowWeWorks";
-import CustomerReviews from "./CustomerReviews";
+import Reviews from "./Reviews";
 import OurServices from "./OurServices";
 import VehicleBrand from "./VehicleBrand";
 import Hero from "./Hero";
@@ -18,7 +18,7 @@ const MainHome = () => {
       <HowWeWorks/>
       <OurServices/>
       <VehicleBrand/>
-      <CustomerReviews/>
+      <Reviews/>
       <Contact/>
       <Footer/>
     </>

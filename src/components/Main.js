@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { authCheck, googleAuth } from '../redux/authActionCreators';
 import PrivateRoute from './protectedRoutes/PrivateRoute';
 import { Redirect } from "react-router";
-import { isAuthenticated,userInfo } from './authentication/authUtilities';
 
 const mapDispatchToProps = dispatch =>{
     return {

@@ -46,7 +46,7 @@ const AddService = ({addNewService,loading,successMsg,errMsg}) => {
     </FormGroup>
     <FormGroup>
       <Label for="file" style={{ display: "block" }}>
-        File
+        Image
       </Label>
       <input type="file" name='image' {...register("image", { required: true })} />
       {errors.image && <span className='form-error-style' style={{display:'block'}}>image is required</span>}
