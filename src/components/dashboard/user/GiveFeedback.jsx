@@ -1,14 +1,11 @@
 import React from "react";
 import HorizontalLine from "../../utilities/HorizontalLine";
-import { Form, FormGroup, Label, Input, Alert } from "reactstrap";
+import { FormGroup, Label, Alert } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { createNewReview } from '../../../redux/actionCreators';
 import { connect } from "react-redux";
 import { isAuthenticated,userInfo } from '../../authentication/authUtilities';
 import Spinner from '../../utilities/Spinner';
-
-
-
 
 
 const mapDispatchToProps = dispatch =>{
@@ -28,7 +25,6 @@ const GiveFeedback = ({addNewReview,loading,successMsg,errMsg}) => {
   const { name, _id } = isAuthenticated() ? userInfo() : "";
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = data => {
-    data.userId = _id
     addNewReview(data);
     reset();
   };
