@@ -17,4 +17,12 @@ export const LOADING_REVIEW = 'LOADING_REVIEW';
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const SUCCESS_REVIEW_MSG = 'SUCCESS_REVIEW_MSG';
 export const ERROR_REVIEW_MSG = 'ERROR_REVIEW_MSG';
-export const LOAD_REVIEW = 'LOAD_REVIEW';  
+export const LOAD_REVIEW = 'LOAD_REVIEW';
+
+// take service action types
+export const TAKE_SERVICE_LOADING = 'TAKE_SERVICE_LOADING' ;
+export const TAKE_SERVICE = 'TAKE_SERVICE';
+export const MY_SERVICE_SUCCESS_MSG = 'MY_SERVICE_SUCCESS_MSG';
+export const LOAD_MY_TAKEN_SERVICE = 'LOAD_MY_TAKEN_SERVICE';
+export const MY_SERVICE_ERR_MSG = 'MY_SERVICE_ERR_MSG';
+export const PAYMENT_MODAL = 'PAYMENT_MODAL';

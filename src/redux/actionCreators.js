@@ -171,3 +171,82 @@ export const createNewReview = data => dispatch =>{
         setTimeout(()=>dispatch(errorReviewMsg(null)),2000)
     })
 }
+
+
+// take service
+
+export const takeServiceLoading = isLoading =>{
+    return {
+        type: actionTypes.TAKE_SERVICE_LOADING,
+        payload: isLoading
+    }
+}
+
+export const takeService = service =>{
+    return {
+        type: actionTypes.TAKE_SERVICE,
+        payload: service
+    }
+}
+
+export const myServiceSuccessMsg = msg =>{
+    return {
+        type: actionTypes.MY_SERVICE_SUCCESS_MSG,
+        payload: msg
+    }
+}
+
+export const loadMyTakenService = myService =>{
+    return {
+        type: actionTypes.LOAD_MY_TAKEN_SERVICE,
+        payload: myService
+    }
+}
+
+export const myServiceErrMsg = err =>{
+    return {
+        type: actionTypes.MY_SERVICE_ERR_MSG,
+        payload: err
+    }
+}
+
+export const paymentModal = isOpen =>{
+    return {
+        type: actionTypes.PAYMENT_MODAL,
+        payload: isOpen
+    }
+}
+
+
+export const serviceAddInCart = data => dispatch =>{
+    const { token } = isAuthenticated() ? userInfo() : "";
+
+    dispatch(takeServiceLoading(true));
+    
+    axios.post(`${API}/cart/${data}`,null,{
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }})
+    .then(response => {
+        dispatch(takeServiceLoading(false));
+        if(response.status === 200){
+            dispatch(myServiceSuccessMsg('successfully added'))
+        }
+        dispatch(takeService(response.data));
+        setTimeout(()=>dispatch(myServiceSuccessMsg(null)),2000)
+    })
+    .catch(err => {
+        dispatch(takeServiceLoading(false));
+        dispatch(dispatch(myServiceErrMsg(err.response.data)))
+        setTimeout(()=>dispatch(myServiceErrMsg(null)),2000)
+    })
+}
+
+export const getMyService = ()=> dispatch =>{
+    dispatch(takeServiceLoading(true));
+    axios.get(`${API}/cart`)
+    .then(response =>{
+        dispatch(takeServiceLoading(false));
+        dispatch(loadMyTakenService(response.data));
+    })
+}
