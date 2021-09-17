@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Spinner from '../utilities/Spinner';
 import { MAIN_API } from "../../redux/baseURL";
 import { serviceAddInCart } from '../../redux/actionCreators';
+import { isAuthenticated, isAuthenticateds } from '../authentication/authUtilities';
 
 // Import Swiper styles
 import "swiper/swiper.min.css";
@@ -13,7 +14,8 @@ import "swiper/components/navigation/navigation.min.css";
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
-import StripeModal from "../payment/StripeModal";
+import StripePaymentGateway from "../payment/StripePaymentGateway";
+import { useHistory } from "react-router";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
@@ -26,19 +28,17 @@ const mapDispatchToProps = dispatch =>{
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     loading: state.service.isLoading,
     service: state.service.services,
   }
 }
 
-const Services = ({fetchService,loading,service,getService}) => {
+const Services = ({fetchService,loading,service}) => {
 
   useEffect(()=>fetchService(),[])
-
-  // const appointmentButtonHandler = ()=>{
-
-  // }
+  const history = useHistory()
 
   const serviceCard = service.map(item =>{
       return (
@@ -48,7 +48,11 @@ const Services = ({fetchService,loading,service,getService}) => {
                 <h2> { item.price } </h2>
                 <img src={ `${MAIN_API}/${item.image}` } alt="service-icon"/>
                 <h6> { item.about } </h6>
-                <button className='primary-btn-small' onClick={()=>getService(item._id)}>Appointment</button>
+                {
+                  isAuthenticated() ? 
+                  <StripePaymentGateway name={item.name} price={item.price} id={item._id} />:
+                  <button className='primary-btn-small' onClick={()=>history.push('/login')}>Appointment</button>
+                }
                 </div>
             </SwiperSlide>
       )
@@ -79,7 +83,6 @@ const Services = ({fetchService,loading,service,getService}) => {
     <div className="container-fluid service__container" id='service'>
       <h1>Our Services</h1>
       <p className="service__sub__title">Fixed price car servicing packages</p>
-      <StripeModal open='true' />
       { ourServicesPage }
     </div>
   );

@@ -182,13 +182,6 @@ export const takeServiceLoading = isLoading =>{
     }
 }
 
-export const takeService = service =>{
-    return {
-        type: actionTypes.TAKE_SERVICE,
-        payload: service
-    }
-}
-
 export const myServiceSuccessMsg = msg =>{
     return {
         type: actionTypes.MY_SERVICE_SUCCESS_MSG,
@@ -228,11 +221,11 @@ export const serviceAddInCart = data => dispatch =>{
             "Authorization": `Bearer ${token}`
         }})
     .then(response => {
+        console.log(response);
         dispatch(takeServiceLoading(false));
         if(response.status === 200){
-            dispatch(myServiceSuccessMsg('successfully added'))
+            dispatch(myServiceSuccessMsg(response.data))
         }
-        dispatch(takeService(response.data));
         setTimeout(()=>dispatch(myServiceSuccessMsg(null)),2000)
     })
     .catch(err => {
