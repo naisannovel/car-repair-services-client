@@ -31,12 +31,12 @@ const AddService = ({addNewService,loading,successMsg,errMsg}) => {
     addServicePage = <Form onSubmit={handleSubmit(onSubmit)}>
     <FormGroup>
       <Label for="name">Service Name</Label>
-      <input type="text" {...register("name", { required: true })} />
+      <input type="text" {...register("name", { required: true })} placeholder='name' />
       {errors.name && <span className='form-error-style'>service name is required</span>}
     </FormGroup>
     <FormGroup>
       <Label for="price">Price</Label>
-      <input type="price" {...register("price", { required: true })} />
+      <input type="price" {...register("price", { required: true })} placeholder='price' />
       {errors.price && <span className='form-error-style'>price is required</span>}
     </FormGroup>
     <FormGroup>

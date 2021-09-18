@@ -11,6 +11,7 @@ export const SUCCESS_SERVICE_MSG = 'SUCCESS_SERVICE_MSG';
 export const LOAD_SERVICE = 'LOAD_SERVICE';
 export const ERROR_SERVICE_MSG = 'ERROR_SERVICE';
 export const DELETE_SERVICE = 'DELETE_SERVICE';
+export const UPDATED_SERVICE = 'UPDATED_SERVICE'; 
 export const SERVICE_UPDATED_MSG = 'SERVICE_UPDATED_MSG';
 
 // review action types

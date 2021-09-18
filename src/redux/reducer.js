@@ -65,6 +65,13 @@ const vehicleService = (serviceState = {services: [], isLoading: false, successM
                 ...serviceState,
                 errMsg: action.payload
             }
+        case actionTypes.UPDATED_SERVICE:
+            const index = serviceState.services.findIndex(item => item._id === action.payload._id);
+            serviceState.services[index] = action.payload;
+            return {
+                ...serviceState,
+                services: serviceState.services
+            }
         case actionTypes.SERVICE_UPDATED_MSG:
             return {
                 ...serviceState,

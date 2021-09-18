@@ -7,6 +7,7 @@ import { faCheck, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { getAllService, deleteService,servicePriceUpdate } from "../../../redux/actionCreators";
 import Spinner from '../../utilities/Spinner';
+import { useForm } from "react-hook-form";
 
 const mapDispatchToProps = dispatch =>{
   return {
@@ -29,9 +30,7 @@ const ManageService = ({fetchService,loading,service,removeService,priceUpdateHa
   const [InputPrice,setInputPrice] = useState({ price:'' })
   useEffect(()=>fetchService(),[])
 
-
-
-  const mapService = service.map((item,i) =>{
+  const mapService = service?.map((item,i) =>{
     return (
       <tr>
             <th scope="row" style={{ width: "5%" }}>

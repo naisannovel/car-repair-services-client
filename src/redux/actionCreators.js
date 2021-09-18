@@ -44,6 +44,13 @@ export const errorServiceMsg = err =>{
         payload: err
     }
 }
+export const updatedService = item =>{
+    return {
+        type: actionTypes.UPDATED_SERVICE,
+        payload: item
+    }
+}
+
 export const serviceUpdateMsg = msg =>{
     return {
         type: actionTypes.SERVICE_UPDATED_MSG,
@@ -103,6 +110,7 @@ export const servicePriceUpdate = (id,value,cb) => dispatch => {
     })
     .then(response =>{
         dispatch(loadingService(false));
+        dispatch(updatedService(response?.data))
         cb()
         dispatch(serviceUpdateMsg('successfully updated'));
         setTimeout(()=>dispatch(serviceUpdateMsg(null)),2000)
