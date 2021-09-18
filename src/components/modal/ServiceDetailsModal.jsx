@@ -8,15 +8,15 @@ import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
-    loading: state.service.isLoading,
     orderSuccessMsg: state.myService.successMsg,
+    addCartLoading: state.myService.isLoading
   }
 }
 
-const ServiceDetailsModal = ({ isOpenModal, setIsOpenModal, data, orderSuccessMsg }) => {
+const ServiceDetailsModal = ({ isOpenModal, setIsOpenModal, data, orderSuccessMsg,addCartLoading }) => {
 
   const toggle = () => setIsOpenModal(!isOpenModal);
-
+  
   return (
     <div className="stripe__modal__container">
       <Modal isOpen={isOpenModal} toggle={toggle} backdrop={"static"} style={{marginTop:'70px'}}>
@@ -39,9 +39,9 @@ const ServiceDetailsModal = ({ isOpenModal, setIsOpenModal, data, orderSuccessMs
           <Button
             color="secondary"
             style={{ fontSize: "13px" }}
-            onClick={toggle}
+            onClick={addCartLoading ? '': toggle}
           >
-            Cancel
+            {addCartLoading ? <span className="fa fa-spinner fa-pulse"></span> : 'cancel'}
           </Button>
         </ModalFooter>
       </Modal>

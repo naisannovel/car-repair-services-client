@@ -1,18 +1,20 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 import { MAIN_API } from '../../redux/baseURL';
-import { serviceIsCart, serviceAddInCart } from "../../redux/actionCreators";
+import { serviceIsCart, serviceAddInCart, takeServiceLoading } from "../../redux/actionCreators";
 import { connect } from "react-redux";
+import icon from '../../assets/service.svg'
 
 
 const mapDispatchToProps = dispatch =>{
   return {
     isCart: data => dispatch(serviceIsCart(data)),
-    getService: data => dispatch(serviceAddInCart(data))
+    getService: data => dispatch(serviceAddInCart(data)),
+    loading: data => dispatch(takeServiceLoading(data))
   }
 }
 
-const StripePaymentGateway = ({name,price,id,getService}) => {
+const StripePaymentGateway = ({name,price,id,getService,loading}) => {
 
   const makePayment = token => {
     const service = {
@@ -22,6 +24,7 @@ const StripePaymentGateway = ({name,price,id,getService}) => {
     const headers = {
       "Content-Type": "application/json"
     };
+    loading(true)
 
     return fetch(`${MAIN_API}/payment`, {
       method: "POST",
@@ -41,7 +44,7 @@ const StripePaymentGateway = ({name,price,id,getService}) => {
     <div className='text-center mt-4 mb-3'>
                <StripeCheckout
           stripeKey='pk_test_51IeH6gL6cSctvL5CRe1beBmNAcztwKzQhl1oMTXv8wYOPYkbG4MtD9pEDbBbueHPeMjKlSKqceONsJxIXNsKX5IW00ycWi9yhb'
-          image="assets/images/service.svg"
+          image={icon}
           token={makePayment}
           name="Car Repair Service"
           amount={price * 100}

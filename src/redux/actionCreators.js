@@ -203,18 +203,11 @@ export const myServiceErrMsg = err =>{
     }
 }
 
-export const paymentModal = isOpen =>{
-    return {
-        type: actionTypes.PAYMENT_MODAL,
-        payload: isOpen
-    }
-}
-
 
 export const serviceAddInCart = data => dispatch =>{
     const { token } = isAuthenticated() ? userInfo() : "";
 
-    dispatch(takeServiceLoading(true));
+    // dispatch(takeServiceLoading(true));
     
     axios.post(`${API}/cart/${data}`,null,{
         headers: {
@@ -228,7 +221,7 @@ export const serviceAddInCart = data => dispatch =>{
     .catch(err => {
         dispatch(takeServiceLoading(false));
         dispatch(myServiceErrMsg(err?.response?.data))
-        setTimeout(()=>dispatch(myServiceErrMsg(null)),3000)
+        setTimeout(()=>dispatch(myServiceErrMsg(null)),2000)
     })
 }
 
@@ -241,12 +234,10 @@ export const serviceIsCart = (data,cb) => dispatch =>{
             "Authorization": `Bearer ${token}`
         }})
     .then(response => {
-        console.log(response);
         dispatch(takeServiceLoading(false));
         cb()
     })
     .catch(err => {
-        console.log(err);
         dispatch(takeServiceLoading(false));
         dispatch(myServiceErrMsg(err.response.data))
         setTimeout(()=>dispatch(myServiceErrMsg(null)),2000)

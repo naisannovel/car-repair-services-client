@@ -6,6 +6,7 @@ import Spinner from '../utilities/Spinner';
 import { MAIN_API } from "../../redux/baseURL";
 import { serviceAddInCart, serviceIsCart } from '../../redux/actionCreators';
 import { isAuthenticated } from '../authentication/authUtilities';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 // Import Swiper styles
@@ -18,6 +19,7 @@ import SwiperCore, { Pagination, Navigation } from "swiper/core";
 import { useHistory } from "react-router";
 import { Alert } from "reactstrap";
 import ServiceDetailsModal from "../modal/ServiceDetailsModal";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
@@ -32,14 +34,14 @@ const mapDispatchToProps = dispatch =>{
 
 const mapStateToProps = state => {
   return {
-    loading: state.service.isLoading,
+    serviceLoading: state.service.isLoading,
     service: state.service.services,
-    orderSuccessMsg: state.myService.successMsg,
-    orderErrMsg: state.myService.errMsg
+    orderErrMsg: state.myService.errMsg,
+    addCartLoading: state.myService.isLoading
   }
 }
 
-const Services = ({fetchService,loading,service,orderSuccessMsg,orderErrMsg,isCart}) => {
+const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCartLoading}) => {
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [data, setData] = useState(null);
@@ -47,7 +49,7 @@ const Services = ({fetchService,loading,service,orderSuccessMsg,orderErrMsg,isCa
   useEffect(()=>fetchService(),[])
   const history = useHistory()
 
-  const serviceCard = service.map(item =>{
+  const serviceCard = service.map((item,i) =>{
       return (
             <SwiperSlide>
                 <div className='service__card__container'>
@@ -64,14 +66,14 @@ const Services = ({fetchService,loading,service,orderSuccessMsg,orderErrMsg,isCa
                   }else{
                     history.push('/login')
                   }
-                }}>Appointment</button>
+                }}> {addCartLoading ? <span className="fa fa-spinner fa-pulse"></span> : 'Appointment'}</button>
                 </div>
             </SwiperSlide>
       )
   })
 
   let ourServicesPage = null;
-  if(!loading){
+  if(!serviceLoading){
     ourServicesPage = <Swiper
     slidesPerView={3}
     spaceBetween={30}

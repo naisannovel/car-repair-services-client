@@ -112,11 +112,6 @@ const userTakenService = ( myServiceState={services:[],isLoading:false,successMs
                 ...myServiceState,
                 isLoading: action.payload
             }
-        case actionTypes.TAKE_SERVICE:
-            return {
-                ...myServiceState,
-                services: myServiceState.services.concat(action.payload)
-            }
         case actionTypes.MY_SERVICE_SUCCESS_MSG:
             return {
                 ...myServiceState,
