@@ -21,7 +21,7 @@ import logo from "../../assets/logo.png";
 import { Redirect, useHistory } from "react-router";
 import PrivateRoute from "../protectedRoutes/PrivateRoute";
 import AdminRoute from "../protectedRoutes/AdminRoute";
-import { isAuthenticated, userInfo } from "../authentication/authUtilities";
+import { isAuthenticated, logOut, userInfo } from "../authentication/authUtilities";
 
 const Dashboard = () => {
   const { role, name } = isAuthenticated() ? userInfo() : "";
@@ -130,8 +130,7 @@ const Dashboard = () => {
         <div className="sidebar">
           <div class="sidebar__nav">
             {dashboardSidebar}
-            <Link to="" className="sidebar__nav__last__child">
-              {" "}
+            <Link to="" className="sidebar__nav__last__child" onClick={logOut}>
               <FontAwesomeIcon icon={faSignOutAlt} /> Log Out
             </Link>
           </div>

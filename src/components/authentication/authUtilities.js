@@ -21,3 +21,9 @@ export const userInfo = () => {
     const decoded = jwt_decode(token);
     return { ...decoded, token }
 }
+
+export const logOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationTime');
+    localStorage.removeItem('userId');
+}
