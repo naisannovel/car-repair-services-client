@@ -221,16 +221,34 @@ export const serviceAddInCart = data => dispatch =>{
             "Authorization": `Bearer ${token}`
         }})
     .then(response => {
-        console.log(response);
         dispatch(takeServiceLoading(false));
-        if(response.status === 200){
             dispatch(myServiceSuccessMsg(response.data))
-        }
-        setTimeout(()=>dispatch(myServiceSuccessMsg(null)),2000)
+        setTimeout(()=>dispatch(myServiceSuccessMsg(null)),3000)
     })
     .catch(err => {
         dispatch(takeServiceLoading(false));
-        dispatch(dispatch(myServiceErrMsg(err.response.data)))
+        dispatch(myServiceErrMsg(err?.response?.data))
+        setTimeout(()=>dispatch(myServiceErrMsg(null)),3000)
+    })
+}
+
+export const serviceIsCart = (data,cb) => dispatch =>{
+    const { token } = isAuthenticated() ? userInfo() : "";
+    dispatch(takeServiceLoading(true));
+    
+    axios.get(`${API}/cart/${data}`,{
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }})
+    .then(response => {
+        console.log(response);
+        dispatch(takeServiceLoading(false));
+        cb()
+    })
+    .catch(err => {
+        console.log(err);
+        dispatch(takeServiceLoading(false));
+        dispatch(myServiceErrMsg(err.response.data))
         setTimeout(()=>dispatch(myServiceErrMsg(null)),2000)
     })
 }

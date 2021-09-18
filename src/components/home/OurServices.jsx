@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { getAllService } from '../../redux/actionCreators';
 import { connect } from "react-redux";
 import Spinner from '../utilities/Spinner';
 import { MAIN_API } from "../../redux/baseURL";
-import { serviceAddInCart } from '../../redux/actionCreators';
-import { isAuthenticated, isAuthenticateds } from '../authentication/authUtilities';
+import { serviceAddInCart, serviceIsCart } from '../../redux/actionCreators';
+import { isAuthenticated } from '../authentication/authUtilities';
+
 
 // Import Swiper styles
 import "swiper/swiper.min.css";
@@ -14,8 +15,9 @@ import "swiper/components/navigation/navigation.min.css";
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
-import StripePaymentGateway from "../payment/StripePaymentGateway";
 import { useHistory } from "react-router";
+import { Alert } from "reactstrap";
+import ServiceDetailsModal from "../modal/ServiceDetailsModal";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
@@ -23,19 +25,24 @@ SwiperCore.use([Pagination, Navigation]);
 const mapDispatchToProps = dispatch =>{
   return {
     fetchService: ()=> dispatch(getAllService()),
-    getService: data => dispatch(serviceAddInCart(data))
+    getService: data => dispatch(serviceAddInCart(data)),
+    isCart: (data,cb) => dispatch(serviceIsCart(data,cb))
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     loading: state.service.isLoading,
     service: state.service.services,
+    orderSuccessMsg: state.myService.successMsg,
+    orderErrMsg: state.myService.errMsg
   }
 }
 
-const Services = ({fetchService,loading,service}) => {
+const Services = ({fetchService,loading,service,orderSuccessMsg,orderErrMsg,isCart}) => {
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [data, setData] = useState(null);
 
   useEffect(()=>fetchService(),[])
   const history = useHistory()
@@ -48,11 +55,16 @@ const Services = ({fetchService,loading,service}) => {
                 <h2> { item.price } </h2>
                 <img src={ `${MAIN_API}/${item.image}` } alt="service-icon"/>
                 <h6> { item.about } </h6>
-                {
-                  isAuthenticated() ? 
-                  <StripePaymentGateway name={item.name} price={item.price} id={item._id} />:
-                  <button className='primary-btn-small' onClick={()=>history.push('/login')}>Appointment</button>
-                }
+                <button className='primary-btn-small' onClick={()=>{
+                  if(isAuthenticated()){
+                    isCart(item._id,()=>{
+                      setData(item);
+                      setIsOpenModal(!isOpenModal)
+                    })
+                  }else{
+                    history.push('/login')
+                  }
+                }}>Appointment</button>
                 </div>
             </SwiperSlide>
       )
@@ -70,7 +82,7 @@ const Services = ({fetchService,loading,service}) => {
       clickable: true,
     }}
     // navigation={true}
-    autoplay={{ delay: 5000 }}
+    autoplay={{ delay: 20000 }}
     className="swipper__container"
   >
       { serviceCard }
@@ -83,6 +95,8 @@ const Services = ({fetchService,loading,service}) => {
     <div className="container-fluid service__container" id='service'>
       <h1>Our Services</h1>
       <p className="service__sub__title">Fixed price car servicing packages</p>
+      { orderErrMsg !== null && <Alert color='danger' style={{fontSize:'16px'}}>{orderErrMsg}</Alert>}
+      <ServiceDetailsModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} data={data} />
       { ourServicesPage }
     </div>
   );

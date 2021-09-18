@@ -1,17 +1,18 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 import { MAIN_API } from '../../redux/baseURL';
-import { serviceAddInCart } from "../../redux/actionCreators";
+import { serviceIsCart, serviceAddInCart } from "../../redux/actionCreators";
 import { connect } from "react-redux";
 
 
 const mapDispatchToProps = dispatch =>{
   return {
+    isCart: data => dispatch(serviceIsCart(data)),
     getService: data => dispatch(serviceAddInCart(data))
   }
 }
 
-const StripePaymentGateway =({name,price,id,getService}) => {
+const StripePaymentGateway = ({name,price,id,getService}) => {
 
   const makePayment = token => {
     const service = {
@@ -37,20 +38,17 @@ const StripePaymentGateway =({name,price,id,getService}) => {
   };
 
   return (
-    <div>
-        <StripeCheckout
+    <div className='text-center mt-4 mb-3'>
+               <StripeCheckout
           stripeKey='pk_test_51IeH6gL6cSctvL5CRe1beBmNAcztwKzQhl1oMTXv8wYOPYkbG4MtD9pEDbBbueHPeMjKlSKqceONsJxIXNsKX5IW00ycWi9yhb'
           image="assets/images/service.svg"
           token={makePayment}
           name="Car Repair Service"
-          description={ name }
           amount={price * 100}
           allowRememberMe
         //   shippingAddress
         //   billingAddress
-        >
-          <button className='primary-btn-small'>Appointment</button>
-        </StripeCheckout>
+        />
     </div>
   );
 }
