@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import HorizontalLine from '../../utilities/HorizontalLine';
-import { Button, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 import axios from 'axios';
 import { API } from '../../../redux/baseURL';
 import { isAuthenticated, userInfo } from '../../authentication/authUtilities';
@@ -18,19 +18,19 @@ const MyAppointment = () => {
       }})
       .then(response =>{
         setLoading(false)
-        setServiceData(response.data[0].myService)
+        setServiceData(response.data)
       })
   },[]);
 
-    const tableData = serviceData.map((item,index)=>
+    const tableData = serviceData.length ? serviceData.map((item,index)=>
       <tr style={{height:'50px',lineHeight:'50px'}} key={item.service._id}>
         <th scope="row" style={{width:'5%'}}>1</th>
         <td style={{width:'50%'}}> { item.service.name } </td>
         <td style={{width:'15%'}}>{ item.service.price }</td>
         <td style={{width:'15%'}}>paid </td>
-        <td style={{width:'15%'}}><Button color="danger" style={{fontSize:'12px'}}>{ item.status }</Button> </td>
+        <td style={{width:'15%'}}>{ item.status }</td>
       </tr>
-    )
+    ): <h1 style={{marginTop:'20px'}}>No Data Available</h1>
 
     let myAppointmentPage = null;
     if(!loading){

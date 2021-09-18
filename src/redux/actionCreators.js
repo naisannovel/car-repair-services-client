@@ -98,8 +98,7 @@ export const deleteService = id => dispatch =>{
             dispatch(removeService(id));
         })
     .catch(err => {
-            dispatch(loadingService(false))
-            console.log(err.response.data)})
+            dispatch(loadingService(false))})
 }
 
 
@@ -215,12 +214,12 @@ export const serviceAddInCart = data => dispatch =>{
         }})
     .then(response => {
         dispatch(takeServiceLoading(false));
-            dispatch(myServiceSuccessMsg(response.data))
+            dispatch(myServiceSuccessMsg('successfully added in your cart'))
         setTimeout(()=>dispatch(myServiceSuccessMsg(null)),3000)
     })
     .catch(err => {
         dispatch(takeServiceLoading(false));
-        dispatch(myServiceErrMsg(err?.response?.data))
+        dispatch(myServiceErrMsg(err.response.data))
         setTimeout(()=>dispatch(myServiceErrMsg(null)),2000)
     })
 }

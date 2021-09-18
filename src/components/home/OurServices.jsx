@@ -6,7 +6,9 @@ import Spinner from '../utilities/Spinner';
 import { MAIN_API } from "../../redux/baseURL";
 import { serviceAddInCart, serviceIsCart } from '../../redux/actionCreators';
 import { isAuthenticated } from '../authentication/authUtilities';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useHistory } from "react-router";
+import { Alert } from "reactstrap";
+import ServiceDetailsModal from "../modal/ServiceDetailsModal";
 
 
 // Import Swiper styles
@@ -16,10 +18,6 @@ import "swiper/components/navigation/navigation.min.css";
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
-import { useHistory } from "react-router";
-import { Alert } from "reactstrap";
-import ServiceDetailsModal from "../modal/ServiceDetailsModal";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
