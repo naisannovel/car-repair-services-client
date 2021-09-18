@@ -1,17 +1,18 @@
-import { Button } from "reactstrap";
+import { Alert, Button } from "reactstrap";
 import React, { useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import HorizontalLine from "../../utilities/HorizontalLine";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { getAllService, deleteService } from "../../../redux/actionCreators";
+import { getAllService, deleteService,servicePriceUpdate } from "../../../redux/actionCreators";
 import Spinner from '../../utilities/Spinner';
 
 const mapDispatchToProps = dispatch =>{
   return {
     fetchService: ()=> dispatch(getAllService()),
-    removeService: (id)=> dispatch(deleteService(id))
+    removeService: (id)=> dispatch(deleteService(id)),
+    priceUpdateHandler: (id,value,cb) => dispatch(servicePriceUpdate(id,value,cb))
   }
 }
 
@@ -19,13 +20,16 @@ const mapStateToProps = state => {
   return {
     loading: state.service.isLoading,
     service: state.service.services,
+    serviceUpdateMsg: state.service.updateSuccessMsg
   }
 }
 
-const ManageService = ({fetchService,loading,service,removeService}) => {
+const ManageService = ({fetchService,loading,service,removeService,priceUpdateHandler,serviceUpdateMsg}) => {
   const [editId,setEditId] = useState(null);
   const [InputPrice,setInputPrice] = useState({ price:'' })
   useEffect(()=>fetchService(),[])
+
+
 
   const mapService = service.map((item,i) =>{
     return (
@@ -50,7 +54,8 @@ const ManageService = ({fetchService,loading,service,removeService}) => {
                 setEditId(item?._id);
                 setInputPrice({price: item?.price})
               }} /> :
-              <FontAwesomeIcon className='manage__service__check__icon' icon={faCheck} onClick={()=>setEditId(null)} />
+              <FontAwesomeIcon className='manage__service__check__icon' icon={faCheck} 
+              onClick={()=>priceUpdateHandler(item?._id,InputPrice,()=>setEditId(null))} />
             }
             <FontAwesomeIcon onClick={()=> removeService(item._id)} className='manage__service__delete__icon' icon={faTrashAlt} />
             </td>
@@ -82,6 +87,7 @@ const ManageService = ({fetchService,loading,service,removeService}) => {
     <div className="manage__service__container">
       <h1>Manage Services</h1>
       <HorizontalLine position="left" mTop="2rem" mBottom="3rem" />
+      { serviceUpdateMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{serviceUpdateMsg}</Alert>}
       { manageServicePage }
     </div>
   );

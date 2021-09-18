@@ -44,6 +44,12 @@ export const errorServiceMsg = err =>{
         payload: err
     }
 }
+export const serviceUpdateMsg = msg =>{
+    return {
+        type: actionTypes.SERVICE_UPDATED_MSG,
+        payload: msg
+    }
+}
 
 // create service
 export const createNewService = data => dispatch =>{
@@ -82,6 +88,24 @@ export const getAllService = ()=> dispatch =>{
     .then(response =>{
         dispatch(loadingService(false));
         dispatch(loadService(response.data));
+    })
+}
+
+//update
+export const servicePriceUpdate = (id,value,cb) => dispatch => {
+    dispatch(loadingService(true));
+    const { token } = isAuthenticated() ? userInfo() : "";
+    axios.put(`${API}/service/${id}`,value,{
+      headers: {
+        "Content-Type":"application/json",
+        "Authorization": `Bearer ${token}`,
+    }
+    })
+    .then(response =>{
+        dispatch(loadingService(false));
+        cb()
+        dispatch(serviceUpdateMsg('successfully updated'));
+        setTimeout(()=>dispatch(serviceUpdateMsg(null)),2000)
     })
 }
 

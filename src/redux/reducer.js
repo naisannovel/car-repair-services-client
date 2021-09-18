@@ -33,7 +33,7 @@ const userAuth = (userState = { userData: {token: null, id: null}, isLoading: fa
     }
 };
 
-const vehicleService = (serviceState = {services: [], isLoading: false, successMsg: null, errMsg: null}, action)=>{
+const vehicleService = (serviceState = {services: [], isLoading: false, successMsg: null, errMsg: null,updateSuccessMsg:null}, action)=>{
     switch (action.type) {
         case actionTypes.LOADING_SERVICE:
             return {
@@ -64,6 +64,11 @@ const vehicleService = (serviceState = {services: [], isLoading: false, successM
             return {
                 ...serviceState,
                 errMsg: action.payload
+            }
+        case actionTypes.SERVICE_UPDATED_MSG:
+            return {
+                ...serviceState,
+                updateSuccessMsg: action.payload
             }
 
         default:
