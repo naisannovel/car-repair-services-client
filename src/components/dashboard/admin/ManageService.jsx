@@ -34,7 +34,7 @@ const ManageService = ({fetchService,loading,service,removeService}) => {
               { i+1 }
             </th>
             <td> { item.name } </td>
-            <td> 
+            <td className='text-center'> 
               { 
               editId !== item?._id ?
               item.price :             
@@ -44,11 +44,13 @@ const ManageService = ({fetchService,loading,service,removeService}) => {
             </td>
             <td>
             {
+              editId !== item?._id ?
               <FontAwesomeIcon className='manage__service__edit__icon' icon={faEdit} 
               onClick={()=>{
                 setEditId(item?._id);
                 setInputPrice({price: item?.price})
-              }} />
+              }} /> :
+              <FontAwesomeIcon className='manage__service__check__icon' icon={faCheck} onClick={()=>setEditId(null)} />
             }
             <FontAwesomeIcon onClick={()=> removeService(item._id)} className='manage__service__delete__icon' icon={faTrashAlt} />
             </td>
@@ -64,7 +66,7 @@ const ManageService = ({fetchService,loading,service,removeService}) => {
       <tr>
         <th>#</th>
         <th>Service</th>
-        <th>Amount</th>
+        <th className='text-center'>Amount</th>
         <th>Action</th>
       </tr>
     </thead>

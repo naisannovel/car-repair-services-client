@@ -13,10 +13,35 @@
             margin-left: .5rem;
             cursor: pointer;
         }
+        & input{
+            width: 30%;
+            height: 30px;
+            font-size: 1.5rem;
+            padding: 0.8rem;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            outline: none;
+            appearance: none;
+            text-align: center;
+        }
+        &  input[type=number]::-webkit-inner-spin-button, 
+        &  input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0; 
+        }
         & .manage__service__edit__icon{
             transition: .5s;
             &:hover{
                 transform: scale(1.8);
+                color: blue;
+            }
+        }
+        & .manage__service__check__icon{
+            @extend .manage__service__edit__icon;
+            &:hover{
                 color: green;
             }
         }
