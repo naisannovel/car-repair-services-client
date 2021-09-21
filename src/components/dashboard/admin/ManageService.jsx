@@ -35,7 +35,7 @@ const ManageService = ({fetchService,loading,service,removeService,priceUpdateHa
             <th scope="row" style={{ width: "5%" }}>
               { i+1 }
             </th>
-            <td> { item.name } </td>
+            <td key={item._id}> { item.name } </td>
             <td className='text-center'> 
               { 
               editId !== item?._id ?
@@ -64,19 +64,19 @@ const ManageService = ({fetchService,loading,service,removeService,priceUpdateHa
   let manageServicePage = null;
   if(!loading){
     manageServicePage = 
-    <Table striped>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Service</th>
-        <th className='text-center'>Amount</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      { mapService }
-    </tbody>
-  </Table>
+      <Table striped>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Service</th>
+          <th className='text-center'>Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        { mapService }
+      </tbody>
+    </Table>
   }else{
     manageServicePage = <Spinner/>
   }

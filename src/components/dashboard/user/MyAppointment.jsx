@@ -9,6 +9,7 @@ import Spinner from '../../utilities/Spinner';
 const MyAppointment = () => {
   const [loading,setLoading] = useState(false);
   const [serviceData,setServiceData] = useState([]);
+
   useEffect(()=>{
     const { token } = isAuthenticated() ? userInfo() : "";
     setLoading(true)
@@ -36,18 +37,18 @@ const MyAppointment = () => {
     if(!loading){
       myAppointmentPage = 
       <Table striped>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Service</th>
-          <th>Amount</th>
-          <th>Condition</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-            { tableData }
-      </tbody>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Service</th>
+            <th>Amount</th>
+            <th>Condition</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+              { tableData }
+        </tbody>
     </Table>
     }else{
       myAppointmentPage = <Spinner/>

@@ -3,11 +3,12 @@ import { isAuthenticated, userInfo } from "../components/authentication/authUtil
 import { API } from './baseURL';
 
 // service action types
+
 const LOADING_SERVICE = 'LOADING_SERVICE';
 const ADD_SERVICE = 'ADD_SERVICE';
 const SUCCESS_SERVICE_MSG = 'SUCCESS_SERVICE_MSG';
 const LOAD_SERVICE = 'LOAD_SERVICE';
-const ERROR_SERVICE_MSG = 'ERROR_SERVICE';
+const ERROR_SERVICE_MSG = 'ERROR_SERVICE_MSG';
 const DELETE_SERVICE = 'DELETE_SERVICE';
 const UPDATED_SERVICE = 'UPDATED_SERVICE'; 
 const SERVICE_UPDATED_MSG = 'SERVICE_UPDATED_MSG';

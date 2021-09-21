@@ -49,7 +49,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
 
   const serviceCard = service.map((item,i) =>{
       return (
-            <SwiperSlide>
+            <SwiperSlide key={item._id}>
                 <div className='service__card__container'>
                 <h4> { item.name } </h4>
                 <h2> { item.price } </h2>
@@ -72,23 +72,24 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
 
   let ourServicesPage = null;
   if(!serviceLoading){
-    ourServicesPage = <Swiper
-    slidesPerView={3}
-    spaceBetween={30}
-    slidesPerGroup={1}
-    loop={true}
-    loopFillGroupWithBlank={true}
-    pagination={{
-      clickable: true,
-    }}
-    // navigation={true}
-    autoplay={{ delay: 20000 }}
-    className="swipper__container"
-  >
-      { serviceCard }
-  </Swiper>
+    ourServicesPage = 
+        <Swiper
+              slidesPerView={3}
+              spaceBetween={30}
+              slidesPerGroup={1}
+              loop={true}
+              loopFillGroupWithBlank={true}
+              pagination={{
+                clickable: true,
+              }}
+              // navigation={true}
+              autoplay={{ delay: 20000 }}
+              className="swipper__container"
+            >
+            { serviceCard }
+      </Swiper>
   }else{
-    ourServicesPage = <Spinner/>
+      ourServicesPage = <Spinner/>
   }
 
   return (

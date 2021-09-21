@@ -35,20 +35,20 @@ const OrderList = () => {
   }
 
   const orderListItem = cartItem.length ? cartItem.map((item)=>(
-    <tr style={{ height: "50px", lineHeight: "50px" }}>
-    <td> { item?.service?.name } </td>
-    <td> { item?.user?.email } </td>
-    <td> { item?.user?.name } </td>
-    <td>
-      <select id="cars" name="cars" className="naisan" defaultValue={item?.status} 
-      onChange={(e)=>itemStatusUpdateHandler(item?._id,e.target.value)
-      }>
-        <option value="pending">pending</option>
-        <option value="ongoing">ongoing</option>
-        <option value="done">done</option>
-      </select>
-    </td>
-  </tr>
+      <tr style={{ height: "50px", lineHeight: "50px" }}>
+        <td key={item.user._id}> { item?.service?.name } </td>
+        <td> { item?.user?.email } </td>
+        <td> { item?.user?.name } </td>
+        <td>
+          <select id="cars" name="cars" className="naisan" defaultValue={item?.status} 
+          onChange={(e)=>itemStatusUpdateHandler(item?._id,e.target.value)
+          }>
+            <option value="pending">pending</option>
+            <option value="ongoing">ongoing</option>
+            <option value="done">done</option>
+          </select>
+        </td>
+      </tr>
   )): <h1 style={{marginTop:'20px'}}>No Data Available</h1>
 
   return (

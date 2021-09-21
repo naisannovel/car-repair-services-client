@@ -23,7 +23,9 @@ const mapStateToProps = state => {
 }
 
 const TakeAppointment = ({fetchService,loading,service,isCart,orderErrMsg}) => {
+
   useEffect(()=>fetchService(),[])
+
   const [data, setData] = useState(null);
   const [selectedService,setSelectedService] = useState(null);
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -35,24 +37,25 @@ const TakeAppointment = ({fetchService,loading,service,isCart,orderErrMsg}) => {
   let takeAppointmentPage = null;
   if(!loading){
     takeAppointmentPage = 
-    <form onSubmit={(e)=>{
-      isCart(selectedService,()=>{
-        const selectedData = service.filter(item => item._id === selectedService)
-        setData(selectedData[0]);
-        setIsOpenModal(!isOpenModal)
-      })
-      e.preventDefault();
-    }}>
-      <Label for="select">Take New Services</Label>
-      <Input type="select" onChange={(e)=>setSelectedService(e.target.value)} style={{fontSize:'16px',marginBottom:'20px'}}>
-      <option>services</option>
-        { serviceList }
-      </Input>
-    <button type='submit' className='primary-btn-small'>Submit</button>
-  </form>
+        <form onSubmit={(e)=>{
+          isCart(selectedService,()=>{
+            const selectedData = service.filter(item => item._id === selectedService)
+            setData(selectedData[0]);
+            setIsOpenModal(!isOpenModal)
+          })
+          e.preventDefault();
+        }}>
+              <Label for="select">Take New Services</Label>
+              <Input type="select" onChange={(e)=>setSelectedService(e.target.value)} style={{fontSize:'16px',marginBottom:'20px'}}>
+              <option>services</option>
+                { serviceList }
+              </Input>
+            <button type='submit' className='primary-btn-small'>Submit</button>
+      </form>
   }else{
     takeAppointmentPage = <Spinner/>
   }
+  
   return (
     <div className='take__new__appointment__container'>
       <h1>Take New Appointment</h1>

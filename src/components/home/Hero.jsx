@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -14,7 +14,6 @@ import SwiperCore, {
   Pagination,
   Autoplay,
 } from "swiper/core";
-import NavBar from "./NavBar";
 
 SwiperCore.use([EffectFade, Navigation, Pagination, Autoplay]);
 

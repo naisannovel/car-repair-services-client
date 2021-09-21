@@ -41,21 +41,23 @@ const MakeAdmin = () => {
   let makeAdminPage = null;
 
   if(!loading){
-    makeAdminPage = <Form onSubmit={handleSubmit(onSubmit)}>
-    <FormGroup>
-      <Label for="email">Email</Label>
-      <input
-        type="email"
-        {...register("email", { required: true, pattern:/\S+@\S+\.\S+/,minLength:5,maxLength:255 })}
-        placeholder="Enter email address"
-      />
-      {errors.email && <span className='form-error-style'>email is required</span>}
-    </FormGroup>
-    <button className="primary-btn-small">Submit</button>
-  </Form>
+    makeAdminPage = 
+      <Form onSubmit={handleSubmit(onSubmit)}>
+      <FormGroup>
+        <Label for="email">Email</Label>
+        <input
+          type="email"
+          {...register("email", { required: true, pattern:/\S+@\S+\.\S+/,minLength:5,maxLength:255 })}
+          placeholder="Enter email address"
+        />
+        {errors.email && <span className='form-error-style'>email is required</span>}
+      </FormGroup>
+      <button className="primary-btn-small">Submit</button>
+    </Form>
   }else{
     makeAdminPage = <Spinner/>
   }
+  
   return (
     <div className="make__admin__container">
        { resSuccessMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{resSuccessMsg}</Alert>}

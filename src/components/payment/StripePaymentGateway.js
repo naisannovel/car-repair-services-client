@@ -1,7 +1,7 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 import { MAIN_API } from '../../redux/baseURL';
-import { serviceIsCart, serviceAddInCart, takeServiceLoading } from "../../redux/cartActionCreators";
+import { serviceIsCart, serviceAddInCart, cartLoading } from "../../redux/cartActionCreators";
 import { connect } from "react-redux";
 import icon from '../../assets/service.svg'
 
@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch =>{
   return {
     isCart: data => dispatch(serviceIsCart(data)),
     getService: data => dispatch(serviceAddInCart(data)),
-    loading: data => dispatch(takeServiceLoading(data))
+    loading: data => dispatch(cartLoading(data))
   }
 }
 

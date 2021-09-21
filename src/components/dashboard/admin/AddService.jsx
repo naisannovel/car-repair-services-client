@@ -28,34 +28,36 @@ const AddService = ({addNewService,loading,successMsg,errMsg}) => {
 
   let addServicePage = null;
   if(!loading){
-    addServicePage = <Form onSubmit={handleSubmit(onSubmit)}>
-    <FormGroup>
-      <Label for="name">Service Name</Label>
-      <input type="text" {...register("name", { required: true })} placeholder='name' />
-      {errors.name && <span className='form-error-style'>service name is required</span>}
-    </FormGroup>
-    <FormGroup>
-      <Label for="price">Price</Label>
-      <input type="price" {...register("price", { required: true })} placeholder='price' />
-      {errors.price && <span className='form-error-style'>price is required</span>}
-    </FormGroup>
-    <FormGroup>
-      <Label for="description">About Service</Label>
-      <textarea type="textarea" {...register("about", { required: true })} />
-      {errors.about && <span className='form-error-style'>about is required</span>}
-    </FormGroup>
-    <FormGroup>
-      <Label for="file" style={{ display: "block" }}>
-        Image
-      </Label>
-      <input type="file" name='image' {...register("image", { required: true })} />
-      {errors.image && <span className='form-error-style' style={{display:'block'}}>image is required</span>}
-    </FormGroup>
-    <button className="primary-btn-small">Submit</button>
-  </Form>
+    addServicePage = 
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <FormGroup>
+          <Label for="name">Service Name</Label>
+          <input type="text" {...register("name", { required: true })} placeholder='name' />
+          {errors.name && <span className='form-error-style'>service name is required</span>}
+        </FormGroup>
+        <FormGroup>
+          <Label for="price">Price</Label>
+          <input type="price" {...register("price", { required: true })} placeholder='price' />
+          {errors.price && <span className='form-error-style'>price is required</span>}
+        </FormGroup>
+        <FormGroup>
+          <Label for="description">About Service</Label>
+          <textarea type="textarea" {...register("about", { required: true })} />
+          {errors.about && <span className='form-error-style'>about is required</span>}
+        </FormGroup>
+        <FormGroup>
+          <Label for="file" style={{ display: "block" }}>
+            Image
+          </Label>
+          <input type="file" name='image' {...register("image", { required: true })} />
+          {errors.image && <span className='form-error-style' style={{display:'block'}}>image is required</span>}
+        </FormGroup>
+        <button className="primary-btn-small">Submit</button>
+      </Form>
   }else{
     addServicePage = <Spinner/>
   }
+  
   return (
     <div className="add__service__container">
       { errMsg !== null && <Alert color='danger' style={{fontSize:'16px'}}>{errMsg}</Alert>}

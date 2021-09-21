@@ -5,38 +5,38 @@ import { isAuthenticated,userInfo } from '../components/authentication/authUtili
 
 //cart action types
 
-export const TAKE_SERVICE_LOADING = 'TAKE_SERVICE_LOADING';
-export const MY_SERVICE_SUCCESS_MSG = 'MY_SERVICE_SUCCESS_MSG';
-export const LOAD_MY_TAKEN_SERVICE = 'LOAD_MY_TAKEN_SERVICE';
-export const MY_SERVICE_ERR_MSG = 'MY_SERVICE_ERR_MSG';
+export const CART_LOADING = 'CART_LOADING';
+export const ADD_TO_CART_SUCCESS_MSG = 'ADD_TO_CART_SUCCESS_MSG';
+export const LOAD_MY_CART_ITEM = 'LOAD_MY_CART_ITEM';
+export const ADD_TO_CART_ERR_MSG = 'ADD_TO_CART_ERR_MSG';
 
 
 // cart action
 
-export const takeServiceLoading = isLoading =>{
+export const cartLoading = isLoading =>{
     return {
-        type: TAKE_SERVICE_LOADING,
+        type: CART_LOADING,
         payload: isLoading
     }
 }
 
-export const myServiceSuccessMsg = msg =>{
+export const addToCartSuccessMsg = msg =>{
     return {
-        type: MY_SERVICE_SUCCESS_MSG,
+        type: ADD_TO_CART_SUCCESS_MSG,
         payload: msg
     }
 }
 
-export const loadMyTakenService = myService =>{
+export const loadMyCartItem = myService =>{
     return {
-        type: LOAD_MY_TAKEN_SERVICE,
+        type: LOAD_MY_CART_ITEM,
         payload: myService
     }
 }
 
-export const myServiceErrMsg = err =>{
+export const addToCartErrMsg = err =>{
     return {
-        type: MY_SERVICE_ERR_MSG,
+        type: ADD_TO_CART_ERR_MSG,
         payload: err
     }
 }
@@ -46,21 +46,21 @@ export const myServiceErrMsg = err =>{
 export const serviceAddInCart = data => dispatch =>{
     const { token } = isAuthenticated() ? userInfo() : "";
 
-    // dispatch(takeServiceLoading(true));
+    // dispatch(cartLoading(true));
     
     axios.post(`${API}/cart/${data}`,null,{
         headers: {
             "Authorization": `Bearer ${token}`
         }})
     .then(response => {
-        dispatch(takeServiceLoading(false));
-            dispatch(myServiceSuccessMsg('successfully added in your cart'))
-        setTimeout(()=>dispatch(myServiceSuccessMsg(null)),3000)
+        dispatch(cartLoading(false));
+            dispatch(addToCartSuccessMsg('successfully added in your cart'))
+        setTimeout(()=>dispatch(addToCartSuccessMsg(null)),3000)
     })
     .catch(err => {
-        dispatch(takeServiceLoading(false));
-        dispatch(myServiceErrMsg(err.response.data))
-        setTimeout(()=>dispatch(myServiceErrMsg(null)),2000)
+        dispatch(cartLoading(false));
+        dispatch(addToCartErrMsg(err.response.data))
+        setTimeout(()=>dispatch(addToCartErrMsg(null)),2000)
     })
 }
 
@@ -68,59 +68,59 @@ export const serviceAddInCart = data => dispatch =>{
 
 export const serviceIsCart = (data,cb) => dispatch =>{
     const { token } = isAuthenticated() ? userInfo() : "";
-    dispatch(takeServiceLoading(true));
+    dispatch(cartLoading(true));
     
     axios.get(`${API}/cart/${data}`,{
         headers: {
             "Authorization": `Bearer ${token}`
         }})
     .then(response => {
-        dispatch(takeServiceLoading(false));
+        dispatch(cartLoading(false));
         cb()
     })
     .catch(err => {
-        dispatch(takeServiceLoading(false));
-        dispatch(myServiceErrMsg(err.response.data))
-        setTimeout(()=>dispatch(myServiceErrMsg(null)),2000)
+        dispatch(cartLoading(false));
+        dispatch(addToCartErrMsg(err.response.data))
+        setTimeout(()=>dispatch(addToCartErrMsg(null)),2000)
     })
 }
 
 // get
 
 export const getMyService = ()=> dispatch =>{
-    dispatch(takeServiceLoading(true));
+    dispatch(cartLoading(true));
     axios.get(`${API}/cart`)
     .then(response =>{
-        dispatch(takeServiceLoading(false));
-        dispatch(loadMyTakenService(response.data));
+        dispatch(cartLoading(false));
+        dispatch(loadMyCartItem(response.data));
     })
 }
 
 // cart reducer
-export const userTakenService = ( myServiceState={services:[],isLoading:false,successMsg:null,errMsg:null},action )=>{
+export const userTakenService = ( myCart={cart:[],isLoading:false,successMsg:null,errMsg:null},action )=>{
     switch (action.type) {
-        case TAKE_SERVICE_LOADING:
+        case CART_LOADING:
             return {
-                ...myServiceState,
+                ...myCart,
                 isLoading: action.payload
             }
-        case MY_SERVICE_SUCCESS_MSG:
+        case ADD_TO_CART_SUCCESS_MSG:
             return {
-                ...myServiceState,
+                ...myCart,
                 successMsg: action.payload
             }
-        case MY_SERVICE_ERR_MSG:
+        case ADD_TO_CART_ERR_MSG:
             return {
-                ...myServiceState,
+                ...myCart,
                 errMsg: action.payload
             }
-        case LOAD_MY_TAKEN_SERVICE:
+        case LOAD_MY_CART_ITEM:
             return {
-                ...myServiceState,
+                ...myCart,
                 services: action.payload
             }
     
         default:
-            return myServiceState;
+            return myCart;
     }
 }

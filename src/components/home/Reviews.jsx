@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInfoCircle,
-  faCar,
-  faCog,
-  faQuoteLeft,
-  faQuoteRight,
-} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { MAIN_API, API } from "../../redux/baseURL";
 import Spinner from '../utilities/Spinner';
-
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -41,7 +32,7 @@ const Reviews = () => {
 
   const reviewCard = userReview.map(item => {
     return (
-      <SwiperSlide>
+      <SwiperSlide key={item._id}>
         <div className="container m-auto review__slide__container d-flex">
           <div className="review__img__container">
             <img src={`${MAIN_API}/${item.image}`} alt="img" />

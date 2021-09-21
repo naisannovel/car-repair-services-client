@@ -3,17 +3,17 @@ import { isAuthenticated, userInfo } from "../components/authentication/authUtil
 import { API } from "./baseURL";
 
 // review action types
-const LOADING_REVIEW = 'LOADING_REVIEW';
+const LOADING = 'LOADING';
 const ADD_REVIEW = 'ADD_REVIEW';
-const SUCCESS_REVIEW_MSG = 'SUCCESS_REVIEW_MSG';
-const ERROR_REVIEW_MSG = 'ERROR_REVIEW_MSG';
-const LOAD_REVIEW = 'LOAD_REVIEW';
+const SUCCESS_ADD_REVIEW_MSG = 'SUCCESS_ADD_REVIEW_MSG';
+const ERROR_ADD_REVIEW_MSG = 'ERROR_ADD_REVIEW_MSG';
+const LOAD_ALL_REVIEW = 'LOAD_ALL_REVIEW';
 
 // review action creators
 
-export const loadingReview = isLoading =>{
+export const loading = isLoading =>{
     return {
-        type: LOADING_REVIEW,
+        type: LOADING,
         payload: isLoading
     }
 }
@@ -25,23 +25,23 @@ export const addReview = service =>{
     }
 }
 
-export const successReviewMsg = msg =>{
+export const successAddReviewMsg = msg =>{
     return {
-        type: SUCCESS_REVIEW_MSG,
+        type: SUCCESS_ADD_REVIEW_MSG,
         payload: msg
     }
 }
 
-export const loadReview = review =>{
+export const loadAllReview = review =>{
     return {
-        type: LOAD_REVIEW,
+        type: LOAD_ALL_REVIEW,
         payload: review
     }
 }
 
-export const errorReviewMsg = err =>{
+export const errorAddReviewMsg = err =>{
     return {
-        type: ERROR_REVIEW_MSG,
+        type: ERROR_ADD_REVIEW_MSG,
         payload: err
     }
 }
@@ -49,7 +49,7 @@ export const errorReviewMsg = err =>{
 // create review 
 
 export const createNewReview = data => dispatch =>{
-    dispatch(loadingReview(true));
+    dispatch(loading(true));
     const { token } = isAuthenticated() ? userInfo() : "";
     const formData = new FormData();
     formData.append('name',data.name);
@@ -64,17 +64,17 @@ export const createNewReview = data => dispatch =>{
             "Authorization": `Bearer ${token}`
         }})
     .then(response => {
-        dispatch(loadingReview(false));
+        dispatch(loading(false));
         if(response.status === 200){
-            dispatch(successReviewMsg('successfully added'))
+            dispatch(successAddReviewMsg('successfully added'))
         }
         dispatch(addReview(response.data));
-        setTimeout(()=>dispatch(successReviewMsg(null)),2000)
+        setTimeout(()=>dispatch(successAddReviewMsg(null)),2000)
     })
     .catch(err => {
-        dispatch(loadingReview(false));
-        dispatch(dispatch(errorReviewMsg(err.response.data)))
-        setTimeout(()=>dispatch(errorReviewMsg(null)),2000)
+        dispatch(loading(false));
+        dispatch(dispatch(errorAddReviewMsg(err.response.data)))
+        setTimeout(()=>dispatch(errorAddReviewMsg(null)),2000)
     })
 }
 
@@ -82,7 +82,7 @@ export const createNewReview = data => dispatch =>{
 
 export const userReview = ( reviewState={reviews:[],isLoading:false,successMsg:null,errMsg:null},action )=>{
     switch (action.type) {
-        case LOADING_REVIEW:
+        case LOADING:
             return {
                 ...reviewState,
                 isLoading: action.payload
@@ -92,17 +92,17 @@ export const userReview = ( reviewState={reviews:[],isLoading:false,successMsg:n
                 ...reviewState,
                 reviews: reviewState.reviews.concat(action.payload)
             }
-        case SUCCESS_REVIEW_MSG:
+        case SUCCESS_ADD_REVIEW_MSG:
             return {
                 ...reviewState,
                 successMsg: action.payload
             }
-        case ERROR_REVIEW_MSG:
+        case ERROR_ADD_REVIEW_MSG:
             return {
                 ...reviewState,
                 errMsg: action.payload
             }
-        case LOAD_REVIEW:
+        case LOAD_ALL_REVIEW:
             return {
                 ...reviewState,
                 reviews: action.payload

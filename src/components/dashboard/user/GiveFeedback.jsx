@@ -22,7 +22,7 @@ const mapStateToProps = state =>{
 }
 
 const GiveFeedback = ({addNewReview,loading,successMsg,errMsg}) => {
-  const { name, _id } = isAuthenticated() ? userInfo() : "";
+  const { name } = isAuthenticated() ? userInfo() : "";
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = data => {
     addNewReview(data);
@@ -30,42 +30,45 @@ const GiveFeedback = ({addNewReview,loading,successMsg,errMsg}) => {
   };
 
   let giveFeedbackPage = null;
+  
   if(!loading){
-    giveFeedbackPage = <form onSubmit={handleSubmit(onSubmit)}>
-    <FormGroup>
-      <Label for="name">Name</Label>
-      <input
-        type="text"
-        value={name}
-        placeholder="Enter Your Name"
-        {...register("name", { required: true })}
-        readOnly
-      />
-    </FormGroup>
-    <FormGroup>
-      <Label for="Profession">Profession</Label>
-      <input
-        type="text"
-        {...register("profession", { required: true })}
-        placeholder="Enter Your profession"
-      />
-      {errors.profession && <span className='form-error-style'>required</span>}
-    </FormGroup>
-    <FormGroup>
-      <Label for="textarea">Feedback</Label>
-      <textarea type="textarea" {...register("feedback", { required: true })} placeholder="About us..." />
-      {errors.feedback && <span className='form-error-style'>required</span>}
-    </FormGroup>
-      <Label for="file" style={{ display: "block" }}>
-        Image
-      </Label>
-      <input type="file" name='image' {...register("image", { required: true })} />
-      {errors.image && <span className='form-error-style'>required</span>}
-    <button className="primary-btn-small">Submit</button>
-  </form>
+    giveFeedbackPage = 
+      <form onSubmit={handleSubmit(onSubmit)}>
+      <FormGroup>
+        <Label for="name">Name</Label>
+        <input
+          type="text"
+          value={name}
+          placeholder="Enter Your Name"
+          {...register("name", { required: true })}
+          readOnly
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for="Profession">Profession</Label>
+        <input
+          type="text"
+          {...register("profession", { required: true })}
+          placeholder="Enter Your profession"
+        />
+        {errors.profession && <span className='form-error-style'>required</span>}
+      </FormGroup>
+      <FormGroup>
+        <Label for="textarea">Feedback</Label>
+        <textarea type="textarea" {...register("feedback", { required: true })} placeholder="About us..." />
+        {errors.feedback && <span className='form-error-style'>required</span>}
+      </FormGroup>
+        <Label for="file" style={{ display: "block" }}>
+          Image
+        </Label>
+        <input type="file" name='image' {...register("image", { required: true })} />
+        {errors.image && <span className='form-error-style'>required</span>}
+      <button className="primary-btn-small">Submit</button>
+    </form>
   }else{
     giveFeedbackPage = <Spinner/>
   }
+
   return (
     <div className="feedback__container">
         { errMsg !== null && <Alert color='danger' style={{fontSize:'16px'}}>{errMsg}</Alert>}

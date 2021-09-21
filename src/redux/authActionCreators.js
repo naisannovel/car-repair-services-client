@@ -12,7 +12,7 @@ const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
 // auth actions
 
-export const isLoading = loading =>{
+export const authLoading = loading =>{
     return {
         type: AUTH_LOADING,
         payload: loading
@@ -37,7 +37,7 @@ export const authFailed = msg =>{
 
 export const auth = (data,mode,cb)=>{
     return dispatch => {
-        dispatch(isLoading(true))
+        dispatch(authLoading(true))
         let authUrl = null;
         if(mode === 'signup'){
             authUrl = `${API}/user/signup`
@@ -46,7 +46,7 @@ export const auth = (data,mode,cb)=>{
         }
         axios.post(authUrl,data)
         .then(response =>{
-            dispatch(isLoading(false))
+            dispatch(authLoading(false))
             localStorage.setItem('token',JSON.stringify(response.data.token));
             localStorage.setItem('_id',response.data.data._id);
             const { exp } = jwt_decode(response.data.token);
@@ -57,7 +57,7 @@ export const auth = (data,mode,cb)=>{
             
         })
         .catch(err=>{
-            dispatch(isLoading(false))
+            dispatch(authLoading(false))
             dispatch(authFailed(err.response.data))
             setTimeout(()=>dispatch(authFailed(null)),2000)
         })
@@ -65,16 +65,16 @@ export const auth = (data,mode,cb)=>{
 }
 
 export const googleAuth = ()=> dispatch => {
-    // dispatch(isLoading(true))
+    // dispatch(authLoading(true))
     const url = `${API}/auth/google/redirect`;
     axios.get(url)
     .then(response =>{
-        // dispatch(isLoading(false)) 
+        // dispatch(authLoading(false)) 
         console.log('response ',response);  
     })
     
     .catch(err=>{
-        // dispatch(isLoading(false))
+        // dispatch(authLoading(false))
         // dispatch(authFailed(err.response.data))
         console.log('err.response.data ', err?.response?.data);
         // setTimeout(()=>dispatch(authFailed(null)),2000)

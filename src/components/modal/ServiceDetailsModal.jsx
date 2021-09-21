@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Modal, ModalBody, ModalFooter, Alert } from "reactstrap";
 import HorizontalLine from "../utilities/HorizontalLine";
 import { MAIN_API } from "../../redux/baseURL";

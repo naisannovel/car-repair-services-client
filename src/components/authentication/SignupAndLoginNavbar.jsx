@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
-import {
-  Navbar,
-  NavbarBrand,
-} from 'reactstrap';
+import { Navbar, NavbarBrand } from 'reactstrap';
 
 const AuthHeader = (props) => {
     const history = useHistory()

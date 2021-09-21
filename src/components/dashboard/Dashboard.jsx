@@ -18,7 +18,7 @@ import AddService from "./admin/AddService";
 import ManageService from "./admin/ManageService";
 import { Link, useRouteMatch } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
 import PrivateRoute from "../protectedRoutes/PrivateRoute";
 import AdminRoute from "../protectedRoutes/AdminRoute";
 import { isAuthenticated, logOut, userInfo } from "../authentication/authUtilities";
