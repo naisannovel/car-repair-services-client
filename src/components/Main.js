@@ -16,12 +16,14 @@ const mapDispatchToProps = dispatch =>{
     }
 }
 
-const Main = ({userAuthCheck})=>{
+const Main = ({userAuthCheck,googleLogin})=>{
+
   useEffect(()=>{
     userAuthCheck();
   },[])
+    
         return (
-        <div>
+        <>
             <Switch>
             <Route path='/' exact component={MainHome} />
             <Route path='/login' component={Login} />
@@ -34,7 +36,7 @@ const Main = ({userAuthCheck})=>{
             </PrivateRoute>
             <Redirect to='/' />
             </Switch>
-        </div>
+        </>
     );
 };
 

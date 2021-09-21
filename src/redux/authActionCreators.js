@@ -70,14 +70,15 @@ export const googleAuth = ()=> dispatch => {
     axios.get(url)
     .then(response =>{
         // dispatch(isLoading(false)) 
-        console.log(response);  
+        console.log('response ',response);  
     })
     
-    // .catch(err=>{
-    //     dispatch(isLoading(false))
-    //     dispatch(authFailed(err.response.data))
-    //     setTimeout(()=>dispatch(authFailed(null)),2000)
-    // })
+    .catch(err=>{
+        // dispatch(isLoading(false))
+        // dispatch(authFailed(err.response.data))
+        console.log('err.response.data ', err?.response?.data);
+        // setTimeout(()=>dispatch(authFailed(null)),2000)
+    })
 }
 
 export const logout = ()=>{

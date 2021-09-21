@@ -79,7 +79,6 @@ const Login = ({ authLogin, authFailedMsg, loadingSpinner }) => {
         </p>
         <p>or</p>
        <button className="primary-btn-big mt-5" onClick={()=>window.open(`${API}/auth/google`, "_self")}>
-          {" "}
           <FontAwesomeIcon icon={faGoogle} />
           Sign in with google
         </button>
