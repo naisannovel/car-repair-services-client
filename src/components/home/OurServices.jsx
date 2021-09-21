@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { getAllService } from '../../redux/actionCreators';
+import { getAllService } from '../../redux/serviceActionCreators';
 import { connect } from "react-redux";
 import Spinner from '../utilities/Spinner';
 import { MAIN_API } from "../../redux/baseURL";
-import { serviceAddInCart, serviceIsCart } from '../../redux/actionCreators';
+import { serviceAddInCart, serviceIsCart } from '../../redux/cartActionCreators';
 import { isAuthenticated } from '../authentication/authUtilities';
 import { useHistory } from "react-router";
 import { Alert } from "reactstrap";

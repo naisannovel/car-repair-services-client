@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Form, FormGroup, Label, Input, FormText, Alert } from "reactstrap";
 import HorizontalLine from "../../utilities/HorizontalLine";
-import { getAllService, serviceIsCart } from "../../../redux/actionCreators";
+import { getAllService } from "../../../redux/serviceActionCreators";
+import { serviceIsCart } from '../../../redux/cartActionCreators';
 import { connect } from "react-redux";
 import Spinner from '../../utilities/Spinner';
 import ServiceDetailsModal from "../../modal/ServiceDetailsModal";

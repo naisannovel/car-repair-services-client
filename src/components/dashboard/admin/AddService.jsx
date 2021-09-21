@@ -2,7 +2,7 @@ import React from "react";
 import { Alert, Form, FormGroup, Label } from "reactstrap";
 import HorizontalLine from "../../utilities/HorizontalLine";
 import { useForm } from "react-hook-form";
-import { createNewService } from '../../../redux/actionCreators';
+import { createNewService } from '../../../redux/serviceActionCreators';
 import { connect } from "react-redux";
 import Spinner from '../../utilities/Spinner';
 

@@ -24,7 +24,7 @@ const MyAppointment = () => {
 
     const tableData = serviceData.length ? serviceData.map((item,index)=>
       <tr style={{height:'50px',lineHeight:'50px'}} key={item.service._id}>
-        <th scope="row" style={{width:'5%'}}>1</th>
+        <th scope="row" style={{width:'5%'}}> { index+1 } </th>
         <td style={{width:'50%'}}> { item.service.name } </td>
         <td style={{width:'15%'}}>{ item.service.price }</td>
         <td style={{width:'15%'}}>paid </td>

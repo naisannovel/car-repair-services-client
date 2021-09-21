@@ -2,7 +2,7 @@ import React from "react";
 import HorizontalLine from "../../utilities/HorizontalLine";
 import { FormGroup, Label, Alert } from "reactstrap";
 import { useForm } from "react-hook-form";
-import { createNewReview } from '../../../redux/actionCreators';
+import { createNewReview } from '../../../redux/reviewActionCreators';
 import { connect } from "react-redux";
 import { isAuthenticated,userInfo } from '../../authentication/authUtilities';
 import Spinner from '../../utilities/Spinner';

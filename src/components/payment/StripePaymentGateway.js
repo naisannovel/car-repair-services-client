@@ -1,7 +1,7 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 import { MAIN_API } from '../../redux/baseURL';
-import { serviceIsCart, serviceAddInCart, takeServiceLoading } from "../../redux/actionCreators";
+import { serviceIsCart, serviceAddInCart, takeServiceLoading } from "../../redux/cartActionCreators";
 import { connect } from "react-redux";
 import icon from '../../assets/service.svg'
 

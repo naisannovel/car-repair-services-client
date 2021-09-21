@@ -1,18 +1,27 @@
-import * as actionTypes from './actionTypes';
 import { API } from './baseURL';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
+// auth action types
+
+const AUTH_SUCCESS = 'AUTH_SUCCESS';
+const AUTH_FAILED = 'AUTH_FAILED';
+const AUTH_LOADING = 'AUTH_LOADING';
+const AUTH_LOGOUT = 'AUTH_LOGOUT';
+
+
+// auth actions
+
 export const isLoading = loading =>{
     return {
-        type: actionTypes.AUTH_LOADING,
+        type: AUTH_LOADING,
         payload: loading
     }
 }
 
 export const authSuccess = (token,id) =>{
     return {
-        type: actionTypes.AUTH_SUCCESS,
+        type: AUTH_SUCCESS,
         payload:{
             token, id
         }
@@ -21,7 +30,7 @@ export const authSuccess = (token,id) =>{
 
 export const authFailed = msg =>{
     return {
-        type: actionTypes.AUTH_FAILED,
+        type: AUTH_FAILED,
         payload: msg
     }
 }
@@ -76,7 +85,7 @@ export const logout = ()=>{
     localStorage.removeItem('userData');
     localStorage.removeItem('expirationTime');
     return {
-        type: actionTypes.AUTH_LOGOUT
+        type: AUTH_LOGOUT
     }
 }
 
@@ -95,3 +104,37 @@ export const authCheck = ()=>dispatch=>{
         }
     }
 }
+
+// auth reducer
+
+export const userAuth = (userState = { userData: {token: null, id: null}, isLoading: false, errMsg: null }, action) => {
+    switch (action.type) {
+        case AUTH_LOADING:
+            return {
+                ...userState,
+                isLoading: action.payload
+            }
+        case AUTH_SUCCESS:
+            return {
+                ...userState,
+                userData:{
+                    token:action.payload.token,
+                    id: action.payload.id
+                },
+                errMsg: null,
+            }
+        case AUTH_FAILED:
+            return {
+                ...userState,
+                userData: {token: null, id: null},
+                errMsg: action.payload,
+            }
+        case AUTH_LOGOUT:
+            return {
+                ...userState,
+                userData: {token: null, id: null}
+            }
+        default:
+            return userState;
+    }
+};
