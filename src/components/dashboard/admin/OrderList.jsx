@@ -36,7 +36,7 @@ const OrderList = () => {
 
   const orderListItem = cartItem.length ? cartItem.map((item)=>(
       <tr style={{ height: "50px", lineHeight: "50px" }}>
-        <td key={item.user._id}> { item?.service?.name } </td>
+        <td> { item?.service?.name } </td>
         <td> { item?.user?.email } </td>
         <td> { item?.user?.name } </td>
         <td>

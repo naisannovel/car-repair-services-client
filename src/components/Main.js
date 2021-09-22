@@ -5,13 +5,12 @@ import MainHome from './home/MainHome';
 import Dashboard from './dashboard/Dashboard';
 import { Route,Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authCheck, googleAuth } from '../redux/authActionCreators';
+import { authCheck } from '../redux/authActionCreators';
 import PrivateRoute from './protectedRoutes/PrivateRoute';
 import { Redirect } from "react-router";
 
 const mapDispatchToProps = dispatch =>{
     return {
-        googleLogin: () => dispatch(googleAuth()),
         userAuthCheck: ()=> dispatch(authCheck())
     }
 }

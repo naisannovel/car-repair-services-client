@@ -54,7 +54,6 @@ export const auth = (data,mode,cb)=>{
             localStorage.setItem('expirationTime',expirationTime);
             dispatch(authSuccess(response.data.token,response.data.data._id));
             cb()
-            
         })
         .catch(err=>{
             dispatch(authLoading(false))

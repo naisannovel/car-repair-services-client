@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWrench } from "@fortawesome/free-solid-svg-icons";
+import { faMinus, faPlus, faWrench } from "@fortawesome/free-solid-svg-icons";
 
 const AboutSection1 = () => {
+
+  const [readMore,setReadMore] = useState(false);
+
   const additonalServices = [
     "FREE Loaner Cars",
     "FREE Shuttle Service",
@@ -12,7 +15,7 @@ const AboutSection1 = () => {
     "Exhaust System Repair",
     "Engine Cooling System Maintenance",
     "Electrical Diagnostics",
-    "Starting and Charging Repair",
+    "Starting and Charging",
     "Wheel Alignment",
     "Computer Diagnostic Testing",
     "Manufacturer Recommended Service",
@@ -28,12 +31,20 @@ const AboutSection1 = () => {
     "Steering and Suspension Work",
   ];
 
-  const additionalServiceContent = additonalServices.map((item) => (
+  const renderItems = () => {
+    if (readMore) {
+      return additonalServices;
+    }
+    return additonalServices.slice(0, 10);
+  }
+
+  const additionalServiceContent = renderItems().map((item) => (
     <span className="d-flex mt-3">
       <FontAwesomeIcon icon={faWrench} />
       <span>{item}</span>
     </span>
   ));
+
   return (
     <div className="container-fluid">
       <div className="row about__first__content__row__container">
@@ -46,6 +57,12 @@ const AboutSection1 = () => {
             <div className="about__first__content__col__container__content">
               {additionalServiceContent}
             </div>
+              <div className='read__more__toggle__icon'>
+                { !readMore ?
+                <h4 onClick={()=>setReadMore(true)}><FontAwesomeIcon icon={faPlus} />More Services</h4>:''
+                // <h4 onClick={()=>setReadMore(false)}><FontAwesomeIcon icon={faMinus} />Less Services</h4>
+                }
+              </div>
           </div>
         </div>
       </div>
