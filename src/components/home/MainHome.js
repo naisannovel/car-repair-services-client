@@ -1,17 +1,19 @@
-import React from "react";
-import Footer from "./Footer";
+import React, { lazy, Suspense } from "react";
 import NavBar from "./NavBar";
-import About from "./about/About";
-import Contact from "./contact/Contact";
-import HowWeWorks from "./HowWeWorks";
-import Reviews from "./Reviews";
-import OurServices from "./OurServices";
-import VehicleBrand from "./VehicleBrand";
-import Hero from "./Hero";
+import Spinner from '../utilities/Spinner';
+
+const Hero = lazy(()=> import("./Hero"));
+const About = lazy(()=> import("./about/About"));
+const HowWeWorks = lazy(()=> import("./HowWeWorks"));
+const OurServices = lazy(()=> import("./OurServices"));
+const VehicleBrand = lazy(()=> import("./VehicleBrand"));
+const Reviews = lazy(()=> import("./Reviews"));
+const Contact = lazy(()=> import("./contact/Contact"));
+const Footer = lazy(()=> import("./Footer"));
 
 const MainHome = () => {
   return (
-    <>
+    <Suspense fallback={<Spinner/>}>
       <NavBar/>
       <Hero/>
       <About />
@@ -21,7 +23,7 @@ const MainHome = () => {
       <Reviews/>
       <Contact/>
       <Footer/>
-    </>
+    </Suspense>
   );
 };
 
