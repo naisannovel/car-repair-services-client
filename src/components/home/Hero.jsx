@@ -24,7 +24,7 @@ const Hero = () => {
       slide: () => (
         <SwiperSlide className="first__slide__container">
           <div className="container row m-auto first__slide__row__container">
-            <div className="col-8">
+            <div className="col-md-8">
               <h4>offer fast</h4>
               <h1>reliable service</h1>
               <h5>
@@ -44,7 +44,7 @@ const Hero = () => {
       slide: () => (
         <SwiperSlide className="second__slide__container">
           <div className="container row m-auto second__slide__row__container">
-            <div className="col-8">
+            <div className="col-md-8">
               <h4>multi-point</h4>
               <h1>vehicle inspection</h1>
               <h5>
@@ -64,7 +64,7 @@ const Hero = () => {
       slide: () => (
         <SwiperSlide className="third__slide__container">
           <div className="container row m-auto third__slide__row__container">
-            <div className="col-8">
+            <div className="col-md-8">
               <h4>multi-point</h4>
               <h1>vehicle inspection</h1>
               <h5>

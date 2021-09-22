@@ -10,10 +10,16 @@
     font-weight: 600;
     color: white;
     padding-top: 7rem;
+    @include respond(phone){
+      font-size: 3rem;
+  }
   }
   & .service__sub__title {
     font-size: 1.6rem;
     color: white;
+    @include respond(phone){
+      font-size: 1.4rem;
+  }
   }
   & .swipper__container {
       margin-top: 5rem;

@@ -23,7 +23,7 @@ const Works = () => {
 
   const workLayout = worksData.map((data,i) => {
     return (
-        <div className="col-md-3 works__col__container" key={i}>
+        <div className="col-md-3 col-6 works__col__container" key={i}>
           <img src={data.icon} alt="service" />
           <p>{data.title}</p>
         </div>

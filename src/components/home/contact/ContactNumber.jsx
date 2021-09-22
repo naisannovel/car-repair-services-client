@@ -18,7 +18,7 @@ const Contact = () => {
             </p>
           </div>
         </div>
-        <div className="col-md-4 offset-1 contact__second__col__container">
+        <div className="col-md-4 offset-md-1 contact__second__col__container">
           <div>
             <FontAwesomeIcon icon={faPhone} />
             <span>1-800-123-4567</span>

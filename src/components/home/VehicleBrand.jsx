@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HorizontalLine from "../utilities/HorizontalLine";
 
 // Import Swiper React components
@@ -33,6 +33,14 @@ const vehicleItem = brand.map((item) => {
 });
 
 const Vehicle = () => {
+
+    // media query
+    const [windowWidth,setWindowWidth] = useState(window.innerWidth)
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+     };
+    window.addEventListener("resize", handleResize);
+
   return (
     <div className="vehicle__container">
       <h1>We Repair All Makes of Automobiles</h1>
@@ -40,7 +48,7 @@ const Vehicle = () => {
       <HorizontalLine position="center" mTop="2.5rem" mBottom="2.5rem" />
 
       <Swiper
-        slidesPerView={4}
+        slidesPerView={windowWidth > 640 ? 4:1}
         spaceBetween={30}
         freeMode={true}
         // pagination={{

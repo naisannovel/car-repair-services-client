@@ -39,6 +39,10 @@
     padding: 1rem 2.2rem;
     font-size: 1.8rem;
     text-transform: uppercase;
+    @include respond(phone){
+        padding: .6rem 1.8rem;
+        font-size: 1.4rem;
+    }
     &::after{
         content: '';
         position: absolute;

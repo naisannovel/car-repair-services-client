@@ -6,11 +6,17 @@
     text-transform: capitalize;
     font-weight: 600;
     margin: 0;
+    @include respond(phone){
+      font-size: 2.5rem;
+    }
   }
   .about__description {
     text-align: center;
     font-size: 1.6rem;
     margin: 0.6rem 0;
+    @include respond(phone){
+      font-size: 1.4rem;
+    }
   }
   & .about__item__container {
     padding-bottom: 2.2rem;
@@ -41,12 +47,19 @@
     & svg {
       width: 7rem;
       height: 7rem;
+      @include respond(phone){
+        width: 4rem;
+        height: 4rem;
+      }
     }
     & h5 {
       font-size: 1.8rem;
       font-weight: 800;
       text-transform: capitalize;
       margin-top: 1.6rem;
+      @include respond(phone){
+        font-size: 1.4rem;
+      }
     }
   }
   & .about__second__item__container {
@@ -72,10 +85,16 @@
         font-size: 1.6rem;
         color: $tertiary-color;
         margin: 2.5rem 0;
+        @include respond(phone){
+          font-size: 1.4rem;
+        }
       }
       & span {
         font-size: 1.4rem;
         color: $tertiary-color;
+        @include respond(phone){
+          font-size: 1.3rem;
+        }
       }
       & svg {
         font-size: 1.5rem;
@@ -102,6 +121,9 @@
         & svg {
           color: $primary-color;
           font-size: 5rem;
+          @include respond(phone){
+            font-size: 3.5rem;
+          }
         }
         & div {
           width: 40rem;
@@ -112,11 +134,17 @@
             font-weight: 700;
             margin-top: 1rem;
             color: $tertiary-color;
+            @include respond(phone){
+              font-size: 1.8rem;
+            }
           }
           & p {
             font-size: 1.5rem;
             margin-top: 2rem;
             color: $tertiary-color;
+            @include respond(phone){
+              font-size: 1.3rem;
+            }
           }
         }
       }
@@ -134,15 +162,24 @@
         color: $tertiary-color;
         font-size: 4.5rem;
         font-weight: 600;
+        @include respond(phone){
+          font-size: 3rem;
+        }
       }
       & p {
         font-size: 1.4rem;
         color: $tertiary-color;
         margin: 2.5rem 0;
+        @include respond(phone){
+          font-size: 1.3rem;
+        }
       }
       & span {
         font-size: 1.5rem;
         color: $tertiary-color;
+        @include respond(phone){
+          font-size: 1.3rem;
+        }
       }
       & svg {
         font-size: 1.5rem;

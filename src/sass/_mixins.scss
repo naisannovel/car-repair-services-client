@@ -12,6 +12,10 @@
     text-transform: capitalize;
     font-weight: 700;
     margin: 0;
+    @include respond(phone){
+        font-size: 2.8rem;
+        text-align: center;
+    }
 }
 // SLIDER HEADER
 @mixin slider-header{
@@ -19,6 +23,10 @@
     font-size: 6.5rem;
     color: $primary-color;
     margin: .8rem 0;
+    @include respond(phone){
+        font-size: 4.8rem;
+        text-align: center;
+    }
 }
 // SLIDER DESCRIPTION
 @mixin slider-description{
@@ -28,6 +36,11 @@
     text-transform: lowercase;
     line-height: 2.5rem;
     margin-bottom: 3rem;
+    @include respond(phone){
+        font-size: 1.4rem;
+        text-align: center;
+        padding: 0 2rem;
+    }
 }
 
 // RESPONSIVE
