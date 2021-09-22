@@ -44,6 +44,14 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [data, setData] = useState(null);
 
+  // media query
+  const [windowWidth,setWindowWidth] = useState(window.innerWidth)
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+   };
+  window.addEventListener("resize", handleResize);
+
+
   useEffect(()=>fetchService(),[])
   const history = useHistory()
 
@@ -74,7 +82,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
   if(!serviceLoading){
     ourServicesPage = 
         <Swiper
-              slidesPerView={3}
+              slidesPerView={windowWidth > 640 ? 3:1}
               spaceBetween={30}
               slidesPerGroup={1}
               loop={true}
