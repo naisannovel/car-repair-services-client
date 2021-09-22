@@ -33,7 +33,7 @@ const Reviews = () => {
   const reviewCard = userReview.map(item => {
     return (
       <SwiperSlide key={item._id}>
-        <div className="container m-auto review__slide__container d-flex">
+        <div className="container m-auto review__slide__container">
           <div className="review__img__container">
             <img src={`${MAIN_API}/${item.image}`} alt="img" />
           </div>

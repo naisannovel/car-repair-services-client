@@ -46,7 +46,7 @@ const Login = ({ authLogin, authFailedMsg, loadingSpinner }) => {
 
   if(!loadingSpinner){
     loginPage= <div className="container row login__container">
-    <div className="col-md-6">
+    <div className="col-md-6 order-1">
       <img src="assets/images/login.svg" alt="login icon" />
     </div>
     <div className="col-md-6">

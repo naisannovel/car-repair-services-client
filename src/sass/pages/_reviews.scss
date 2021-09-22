@@ -11,10 +11,16 @@
     font-weight: 600;
     color: white;
     padding-top: 5rem;
+    @include respond(phone){
+      font-size: 2.6rem;
+    }
   }
   & .review__sub__title {
     font-size: 1.6rem;
     color: white;
+    @include respond(phone){
+      font-size: 1.4rem;
+    }
   }
   & .swipper__container {
     margin-top: 5rem;
@@ -25,9 +31,16 @@
       padding: 0 !important;
       display: flex;
       justify-content: center;
+      @include respond(phone){
+        flex-direction: column;
+      }
         & .review__img__container{
           width: 50%;
           clip-path: polygon(100% 0, 96% 50%, 92% 100%, 0% 100%, 0 51%, 0% 0%);
+          @include respond(phone){
+            width: 100%;
+            clip-path: polygon(100% 0, 100% 100%, 100% 100%, 0% 100%, 0 100%, 0% 0%);
+          }
           & img{
             width: 100%;
           }
@@ -41,11 +54,18 @@
           padding: 3rem;
           margin: auto 0;
           position: relative;
+          @include respond(phone){
+            width: 100%;
+            align-items: center;
+          }
 
           & .review{
             text-align: left;
             font-size: 1.6rem;
             line-height: 2.5rem;
+            @include respond(phone){
+              text-align: center;
+            }
           }
           & .review__author__info{
             font-size: 1.9rem;
@@ -64,6 +84,9 @@
           background-color: $primary-color;
           padding: 20px;
           border-radius: 50%;
+          @include respond(phone){
+            display: none;
+          }
           
           & img{
             width: 50px;
