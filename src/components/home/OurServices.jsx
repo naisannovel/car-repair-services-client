@@ -60,7 +60,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
             <SwiperSlide key={item._id}>
                 <div className='service__card__container'>
                 <h4> { item.name } </h4>
-                <h2> { item.price } </h2>
+                <h2> ${ item.price } </h2>
                 <img src={ `${MAIN_API}/${item.image}` } alt="service-icon"/>
                 <h6> { item.about } </h6>
                 <button className='primary-btn-small' onClick={()=>{
