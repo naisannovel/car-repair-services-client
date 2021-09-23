@@ -44,7 +44,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [data, setData] = useState(null);
   const [onClickServiceItem,setOnClickServiceItem] = useState(null);
-console.log(onClickServiceItem);
+  
   // media query
   const [windowWidth,setWindowWidth] = useState(window.innerWidth)
   const handleResize = () => {
