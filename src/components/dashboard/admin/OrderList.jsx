@@ -6,6 +6,9 @@ import axios from "axios";
 import { API } from "../../../redux/baseURL";
 
 const OrderList = () => {
+
+  document.title = "Car Repair Service - Order List"
+
   const [cartItem,setCartItem] = useState([]);
   const [updatedMsg,setUpdatedMsg] = useState(null);
 

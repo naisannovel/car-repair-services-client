@@ -28,6 +28,8 @@ const mapStateToProps = state =>{
 
 const Signup = ({authSignup,loadingSpinner,authFailedMsg}) => {
 
+  document.title = "Car Repair Service - SignUp"
+
   const history = useHistory()
   const location = useLocation()
 

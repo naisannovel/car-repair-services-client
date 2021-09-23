@@ -24,6 +24,8 @@ const mapStateToProps = state => {
 
 const TakeAppointment = ({fetchService,loading,service,isCart,orderErrMsg}) => {
 
+  document.title = "Car Repair Service - Take New Service"
+
   useEffect(()=>fetchService(),[])
 
   const [data, setData] = useState(null);

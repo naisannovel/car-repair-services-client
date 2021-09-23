@@ -112,22 +112,24 @@ export const getAllService = ()=> dispatch =>{
 }
 
 //update
-export const servicePriceUpdate = (id,value,cb) => dispatch => {
-    dispatch(loadingService(true));
-    const { token } = isAuthenticated() ? userInfo() : "";
-    axios.put(`${API}/service/${id}`,value,{
-      headers: {
-        "Content-Type":"application/json",
-        "Authorization": `Bearer ${token}`,
+export const servicePriceUpdate = (item,value,cb) => dispatch => {
+    if(item?.price !== value?.price){
+        dispatch(loadingService(true));
+        const { token } = isAuthenticated() ? userInfo() : "";
+        axios.put(`${API}/service/${item?._id}`,value,{
+          headers: {
+            "Content-Type":"application/json",
+            "Authorization": `Bearer ${token}`,
+        }
+        })
+        .then(response =>{
+            dispatch(loadingService(false));
+            dispatch(updatedService(response?.data))
+            dispatch(serviceUpdateMsg('successfully updated'));
+            setTimeout(()=>dispatch(serviceUpdateMsg(null)),2000)
+        })
     }
-    })
-    .then(response =>{
-        dispatch(loadingService(false));
-        dispatch(updatedService(response?.data))
-        cb()
-        dispatch(serviceUpdateMsg('successfully updated'));
-        setTimeout(()=>dispatch(serviceUpdateMsg(null)),2000)
-    })
+    cb()
 }
 
 // delete

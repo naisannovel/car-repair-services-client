@@ -11,6 +11,8 @@ const { token } = isAuthenticated() ? userInfo() : "";
 
 const MakeAdmin = () => {
 
+  document.title = "Car Repair Service - Make Admin"
+
   const [resSuccessMsg,setResSuccessMsg] = useState(null);
   const [resErrMsg,setResErrMsg] = useState(null);
 

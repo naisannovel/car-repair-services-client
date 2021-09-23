@@ -7,6 +7,9 @@ import { isAuthenticated, userInfo } from '../../authentication/authUtilities';
 import Spinner from '../../utilities/Spinner';
 
 const MyAppointment = () => {
+
+  document.title = "Car Repair Service - My Appointment"
+
   const [loading,setLoading] = useState(false);
   const [serviceData,setServiceData] = useState([]);
 

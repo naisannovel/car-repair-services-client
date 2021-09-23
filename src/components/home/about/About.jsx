@@ -7,6 +7,7 @@ import AboutSection2 from "./AboutSection2";
 import AboutSection3 from "./AboutSection3";
 
 const About = () => {
+
   const [item1, setItem1] = useState(true);
   const [item2, setItem2] = useState(false);
   const [item3, setItem3] = useState(false);

@@ -30,7 +30,8 @@ const mapStateToProps = state =>{
 
 const Login = ({ authLogin, authFailedMsg, loadingSpinner }) => {
 
-  
+  document.title = "Car Repair Service - Login"
+
   const history = useHistory()
   const location = useLocation()
   let { from } = location.state || { from: { pathname: '/' } };

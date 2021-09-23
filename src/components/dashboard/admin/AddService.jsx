@@ -19,6 +19,9 @@ const mapStateToProps = state =>{
   }
 }
 const AddService = ({addNewService,loading,successMsg,errMsg}) => {
+
+  document.title = "Car Repair Service - Add Service"
+
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = data => {

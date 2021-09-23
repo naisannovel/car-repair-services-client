@@ -18,6 +18,9 @@ import SwiperCore, {
 SwiperCore.use([EffectFade, Navigation, Pagination, Autoplay]);
 
 const Hero = () => {
+
+  document.title = "Car Repair Service - Home"
+
   const slides = [
     {
       id: 1,

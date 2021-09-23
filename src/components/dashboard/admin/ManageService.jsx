@@ -25,8 +25,13 @@ const mapStateToProps = state => {
 }
 
 const ManageService = ({fetchService,loading,service,removeService,priceUpdateHandler,serviceUpdateMsg}) => {
+
+  document.title = "Car Repair Service - Manage Service"
+
   const [editId,setEditId] = useState(null);
+
   const [InputPrice,setInputPrice] = useState({ price:'' })
+
   useEffect(()=>fetchService(),[])
 
   const mapService = service?.map((item,i) =>{
@@ -53,7 +58,7 @@ const ManageService = ({fetchService,loading,service,removeService,priceUpdateHa
                 setInputPrice({price: item?.price})
               }} /> :
               <FontAwesomeIcon className='manage__service__check__icon' icon={faCheck} 
-              onClick={()=>priceUpdateHandler(item?._id,InputPrice,()=>setEditId(null))} />
+              onClick={()=>priceUpdateHandler(item,InputPrice,()=>setEditId(null))} />
             }
             <FontAwesomeIcon onClick={()=> removeService(item._id)} className='manage__service__delete__icon' icon={faTrashAlt} />
             </td>

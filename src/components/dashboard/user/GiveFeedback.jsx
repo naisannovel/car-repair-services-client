@@ -22,6 +22,9 @@ const mapStateToProps = state =>{
 }
 
 const GiveFeedback = ({addNewReview,loading,successMsg,errMsg}) => {
+
+  document.title = "Car Repair Service - Feedback"
+
   const { name } = isAuthenticated() ? userInfo() : "";
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = data => {
