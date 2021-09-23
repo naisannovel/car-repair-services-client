@@ -43,7 +43,8 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [data, setData] = useState(null);
-
+  const [onClickServiceItem,setOnClickServiceItem] = useState(null);
+console.log(onClickServiceItem);
   // media query
   const [windowWidth,setWindowWidth] = useState(window.innerWidth)
   const handleResize = () => {
@@ -64,6 +65,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
                 <img src={ `data:image/png;base64,${item.image.img}` } alt="service-icon"/>
                 <h6> { item.about } </h6>
                 <button className='primary-btn-small' onClick={()=>{
+                  setOnClickServiceItem(item._id)
                   if(isAuthenticated()){
                     isCart(item._id,()=>{
                       setData(item);
@@ -72,7 +74,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
                   }else{
                     history.push('/login')
                   }
-                }}> {addCartLoading ? <span className="fa fa-spinner fa-pulse"></span> : 'Appointment'}</button>
+                }}> {addCartLoading && onClickServiceItem === item._id ? <span className="fa fa-spinner fa-pulse"></span> : 'Appointment'}</button>
                 </div>
             </SwiperSlide>
       )

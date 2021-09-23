@@ -28,7 +28,7 @@ const ServiceDetailsModal = ({ isOpenModal, setIsOpenModal, data, orderSuccessMs
           { orderSuccessMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{orderSuccessMsg}</Alert>}
         <ModalBody>
           <div style={{textAlign:'center'}}>
-          <img src={`${MAIN_API}/${data?.image}`} alt="service-img" />
+          <img src={ `data:image/png;base64,${data?.image?.img}` } alt="service-img" />
           </div>
           <h2>name: { data?.name }</h2>
           <h2>price: { data?.price }</h2>
