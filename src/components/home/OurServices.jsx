@@ -61,7 +61,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
                 <div className='service__card__container'>
                 <h4> { item.name } </h4>
                 <h2> ${ item.price } </h2>
-                <img src={ `${MAIN_API}/${item.image}` } alt="service-icon"/>
+                <img src={ `data:image/png;base64,${item.image.img}` } alt="service-icon"/>
                 <h6> { item.about } </h6>
                 <button className='primary-btn-small' onClick={()=>{
                   if(isAuthenticated()){

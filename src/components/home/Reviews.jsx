@@ -35,7 +35,7 @@ const Reviews = () => {
       <SwiperSlide key={item._id}>
         <div className="container m-auto review__slide__container">
           <div className="review__img__container">
-            <img src={`${MAIN_API}/${item.image}`} alt="img" />
+            <img src={ `data:image/png;base64,${item.image.img}` } alt="img" />
           </div>
           <div className="review__content__container">
             <p className='review'> {`${item.feedback}`} </p>
