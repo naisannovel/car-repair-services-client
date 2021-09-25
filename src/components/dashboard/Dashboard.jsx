@@ -32,6 +32,7 @@ const Dashboard = () => {
   let dashboardRouting = null;
 
   if (isAuthenticated() && role === "user") {
+
     dashboardSidebar = (
       <>
         <Link to={`${path}/my-appointment`}>
@@ -43,9 +44,9 @@ const Dashboard = () => {
         <Link to={`${path}/give-feedback`}>
           <FontAwesomeIcon icon={faCommentDots} /> Give Feedback
         </Link>
-       
       </>
     );
+
     // user route
     dashboardRouting = (
       <>
@@ -63,7 +64,9 @@ const Dashboard = () => {
           </PrivateRoute>
       </>
     );
+
   } else if (isAuthenticated() && role === "admin") {
+
     dashboardSidebar = (
       <>
         <Link to={`${path}/order-list`}>
@@ -84,6 +87,7 @@ const Dashboard = () => {
         </Link>
       </>
     );
+    
     // admin route
     dashboardRouting = (
       <>

@@ -11,7 +11,7 @@ const Reviews = lazy(()=> import("./Reviews"));
 const Contact = lazy(()=> import("./contact/Contact"));
 const Footer = lazy(()=> import("./Footer"));
 
-const MainHome = () => {
+const Home = () => {
   return (
     <Suspense fallback={<Spinner/>}>
       <NavBar/>
@@ -27,4 +27,4 @@ const MainHome = () => {
   );
 };
 
-export default MainHome;
+export default Home;
