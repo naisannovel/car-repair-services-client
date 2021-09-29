@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
-import Login from './authentication/Login';
-import Signup from './authentication/Signup';
-import Home from './home/Home';
-import Dashboard from './dashboard/Dashboard';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Route,Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authCheck } from '../redux/authActionCreators';
 import PrivateRoute from './protectedRoutes/PrivateRoute';
 import { Redirect } from "react-router";
+import Spinner from '../components/utilities/Spinner';
+
+const Home = lazy(()=> import('./home/Home'));
+const Login = lazy(()=> import('./authentication/Login'));
+const Signup = lazy(()=> import('./authentication/Signup'));
+const Dashboard = lazy(()=> import('./dashboard/Dashboard'))
 
 const mapDispatchToProps = dispatch =>{
     return {
@@ -22,7 +24,7 @@ const Main = ({userAuthCheck,googleLogin})=>{
   },[])
     
         return (
-        <>
+        <Suspense fallback={<Spinner/>}>
             <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/login' component={Login} />
@@ -35,7 +37,7 @@ const Main = ({userAuthCheck,googleLogin})=>{
             </PrivateRoute>
             <Redirect to='/' />
             </Switch>
-        </>
+        </Suspense>
     );
 };
 
