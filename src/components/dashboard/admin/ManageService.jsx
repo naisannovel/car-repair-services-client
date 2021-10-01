@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { getAllServiceWithoutImage, deleteService,servicePriceUpdate } from "../../../redux/serviceActionCreators";
-import Spinner from '../../utilities/Spinner';
+import SpinnerSecondary from "../../utilities/SpinnerSecondary";
 
 const mapDispatchToProps = dispatch =>{
   return {
@@ -83,7 +83,7 @@ const ManageService = ({fetchService,loading,service,removeService,priceUpdateHa
       </tbody>
     </Table>
   }else{
-    manageServicePage = <Spinner/>
+    manageServicePage = <SpinnerSecondary/>
   }
 
   return (

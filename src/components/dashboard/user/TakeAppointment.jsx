@@ -4,7 +4,7 @@ import HorizontalLine from "../../utilities/HorizontalLine";
 import { getAllServiceWithoutImage } from "../../../redux/serviceActionCreators";
 import { serviceIsCart } from '../../../redux/cartActionCreators';
 import { connect } from "react-redux";
-import Spinner from '../../utilities/Spinner';
+import SpinnerSecondary from '../../utilities/SpinnerSecondary';
 import ServiceDetailsModal from "../../modal/ServiceDetailsModal";
 
 const mapDispatchToProps = dispatch =>{
@@ -55,7 +55,7 @@ const TakeAppointment = ({fetchService,loading,service,isCart,orderErrMsg}) => {
             <button type='submit' className='primary-btn-small'>Submit</button>
       </form>
   }else{
-    takeAppointmentPage = <Spinner/>
+    takeAppointmentPage = <SpinnerSecondary/>
   }
   
   return (

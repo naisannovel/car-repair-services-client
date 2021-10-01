@@ -4,7 +4,7 @@ import HorizontalLine from "../../utilities/HorizontalLine";
 import { useForm } from "react-hook-form";
 import { createNewService } from '../../../redux/serviceActionCreators';
 import { connect } from "react-redux";
-import Spinner from '../../utilities/Spinner';
+import SpinnerSecondary from "../../utilities/SpinnerSecondary";
 
 const mapDispatchToProps = dispatch =>{
   return {
@@ -58,7 +58,7 @@ const AddService = ({addNewService,loading,successMsg,errMsg}) => {
         <button className="primary-btn-small">Submit</button>
       </Form>
   }else{
-    addServicePage = <Spinner/>
+    addServicePage = <SpinnerSecondary/>
   }
   
   return (

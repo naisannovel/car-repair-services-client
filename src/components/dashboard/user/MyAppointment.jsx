@@ -4,7 +4,7 @@ import { Table } from 'reactstrap';
 import axios from 'axios';
 import { API } from '../../../redux/baseURL';
 import { isAuthenticated, userInfo } from '../../authentication/authUtilities';
-import Spinner from '../../utilities/Spinner';
+import SpinnerSecondary from '../../utilities/SpinnerSecondary';
 
 const MyAppointment = () => {
 
@@ -55,7 +55,7 @@ const MyAppointment = () => {
         </tbody>
     </Table>
     }else{
-      myAppointmentPage = <Spinner/>
+      myAppointmentPage = <SpinnerSecondary/>
     }
 
     return (

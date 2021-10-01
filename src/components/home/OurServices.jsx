@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { getAllService } from '../../redux/serviceActionCreators';
 import { connect } from "react-redux";
-import Spinner from '../utilities/Spinner';
 import { serviceAddInCart, serviceIsCart } from '../../redux/cartActionCreators';
 import { isAuthenticated } from '../authentication/authUtilities';
 import { useHistory } from "react-router";
@@ -17,6 +16,7 @@ import "swiper/components/navigation/navigation.min.css";
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
+import SpinnerSecondary from "../utilities/SpinnerSecondary";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
@@ -98,7 +98,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
             { serviceCard }
       </Swiper>
   }else{
-      ourServicesPage = <Spinner/>
+      ourServicesPage = <SpinnerSecondary/>
   }
 
   return (

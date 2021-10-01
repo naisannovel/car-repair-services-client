@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MAIN_API, API } from "../../redux/baseURL";
-import Spinner from '../utilities/Spinner';
+import SpinnerSecondary from "../utilities/SpinnerSecondary";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -69,7 +69,7 @@ const Reviews = () => {
     {reviewCard}
   </Swiper>
   }else{
-    reviewPage = <Spinner/>
+    reviewPage = <SpinnerSecondary/>
   }
 
   return (

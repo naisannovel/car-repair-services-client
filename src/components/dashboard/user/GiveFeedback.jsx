@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { createNewReview } from '../../../redux/reviewActionCreators';
 import { connect } from "react-redux";
 import { isAuthenticated,userInfo } from '../../authentication/authUtilities';
-import Spinner from '../../utilities/Spinner';
+import SpinnerSecondary from '../../utilities/SpinnerSecondary';
 
 
 const mapDispatchToProps = dispatch =>{
@@ -69,7 +69,7 @@ const GiveFeedback = ({addNewReview,loading,successMsg,errMsg}) => {
       <button className="primary-btn-small">Submit</button>
     </form>
   }else{
-    giveFeedbackPage = <Spinner/>
+    giveFeedbackPage = <SpinnerSecondary/>
   }
 
   return (

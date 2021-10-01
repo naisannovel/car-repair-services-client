@@ -4,7 +4,7 @@ import { Alert, Table } from "reactstrap";
 import { isAuthenticated, userInfo } from '../../authentication/authUtilities';
 import axios from "axios";
 import { API } from "../../../redux/baseURL";
-import Spinner from '../../utilities/Spinner';
+import SpinnerSecondary from "../../utilities/SpinnerSecondary";
 
 const OrderList = () => {
 
@@ -61,7 +61,7 @@ const OrderList = () => {
         </tr>
     )): <h1 style={{marginTop:'20px'}}>No Data Available</h1>
   }else{
-    orderListItem = <Spinner/>
+    orderListItem = <SpinnerSecondary/>
   }
 
 

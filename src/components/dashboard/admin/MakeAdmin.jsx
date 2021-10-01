@@ -3,9 +3,9 @@ import { Alert, Form, FormGroup, Label } from "reactstrap";
 import HorizontalLine from "../../utilities/HorizontalLine";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { API } from '../../../redux/baseURL'
-import Spinner from '../../utilities/Spinner';
+import { API } from '../../../redux/baseURL';
 import { isAuthenticated,userInfo } from '../../authentication/authUtilities';
+import SpinnerSecondary from "../../utilities/SpinnerSecondary";
 
 const { token } = isAuthenticated() ? userInfo() : "";
 
@@ -57,7 +57,7 @@ const MakeAdmin = () => {
       <button className="primary-btn-small">Submit</button>
     </Form>
   }else{
-    makeAdminPage = <Spinner/>
+    makeAdminPage = <SpinnerSecondary/>
   }
   
   return (
