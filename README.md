@@ -1,6 +1,5 @@
 <h1>Car Repair Services</h1>
 <br>
-<br>
 <a href="https://car-repair-service-bd.web.app/">Preview</a> | <a href="https://evening-reef-50770.herokuapp.com/">Api Server</a>
 <br>
 <h2>Features</h2>
@@ -23,7 +22,6 @@
     <li>Sass</li>
     <li>Stripe</li>
     <li>Swiper</li>
-    <li>Sass</li>
     <li>Google Map</li>
   </ul>
   <br>
