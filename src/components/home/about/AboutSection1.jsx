@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus, faWrench } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faWrench } from "@fortawesome/free-solid-svg-icons";
 
 const AboutSection1 = () => {
 

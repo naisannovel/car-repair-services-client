@@ -2,7 +2,7 @@ import React, { useState, lazy, Suspense } from "react";
 import HorizontalLine from "../../utilities/HorizontalLine";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faCar, faCog } from "@fortawesome/free-solid-svg-icons";
-import Spinner from '../../utilities/Spinner';
+import SpinnerSecondary from '../../utilities/SpinnerSecondary';
 
 const AboutSection1 = lazy(()=> import("./AboutSection1"));
 const AboutSection2 = lazy(()=> import("./AboutSection2"));
@@ -75,7 +75,7 @@ const About = () => {
           <h5>About Company</h5>
         </div>
       </div>
-      <Suspense fallback={<Spinner/>}> { content } </Suspense>
+      <Suspense fallback={<SpinnerSecondary/>}> { content } </Suspense>
     </div>
   );
 };
