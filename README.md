@@ -1,6 +1,6 @@
 <h1>Car Repair Services</h1>
 <br>
-<a href="https://car-repair-service-bd.web.app/">Preview</a> | <a href="https://evening-reef-50770.herokuapp.com/">Api Server</a>
+<a href="https://car-repair-service-bd.web.app/" target='_blank'>Preview</a> | <a href="https://evening-reef-50770.herokuapp.com/" target='_blank'>Api Server</a>
 <br>
 <h2>Features</h2>
  <ul>
@@ -35,4 +35,4 @@
     <li>Lodash</li>
   </ul>
 <br>
-<a href="https://github.com/naisannovel/car-repair-services-server">Back-end Repository</a>
+<a href="https://github.com/naisannovel/car-repair-services-server" target='_blank'>Back-end Repository</a>
