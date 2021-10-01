@@ -123,6 +123,7 @@ export const servicePriceUpdate = (item,value,cb) => dispatch => {
         }
         })
         .then(response =>{
+            console.log('response?.data ', response?.data);
             dispatch(loadingService(false));
             dispatch(updatedService(response?.data))
             dispatch(serviceUpdateMsg('successfully updated'));

@@ -23,7 +23,6 @@ const OrderList = () => {
       }})
       .then(response => {
         setLoading(false)
-        console.log(response.data);
         setCartItem(response.data);
       })
     },[]);
