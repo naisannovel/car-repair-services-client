@@ -60,7 +60,6 @@ const AboutSection1 = () => {
               <div className='read__more__toggle__icon'>
                 { !readMore ?
                 <h4 onClick={()=>setReadMore(true)}><FontAwesomeIcon icon={faPlus} />More Services</h4>:''
-                // <h4 onClick={()=>setReadMore(false)}><FontAwesomeIcon icon={faMinus} />Less Services</h4>
                 }
               </div>
           </div>

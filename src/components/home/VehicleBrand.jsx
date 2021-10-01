@@ -51,9 +51,6 @@ const Vehicle = () => {
         slidesPerView={windowWidth > 640 ? 4:1}
         spaceBetween={30}
         freeMode={true}
-        // pagination={{
-        //   clickable: true,
-        // }}
         autoplay={{ delay: 5000 }}
         loop={true}
         className="container"

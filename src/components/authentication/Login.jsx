@@ -12,7 +12,6 @@ import { connect } from 'react-redux';
 import { isAuthenticated } from '../authentication/authUtilities';
 import { Redirect } from "react-router";
 import { Alert } from 'reactstrap';
-import { API } from '../../redux/baseURL';
 import Spinner from '../utilities/Spinner';
 
 const mapDispatchToProps = dispatch =>{

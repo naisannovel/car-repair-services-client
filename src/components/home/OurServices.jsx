@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { getAllService } from '../../redux/serviceActionCreators';
 import { connect } from "react-redux";
 import Spinner from '../utilities/Spinner';
-import { MAIN_API } from "../../redux/baseURL";
 import { serviceAddInCart, serviceIsCart } from '../../redux/cartActionCreators';
 import { isAuthenticated } from '../authentication/authUtilities';
 import { useHistory } from "react-router";
@@ -103,7 +102,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
   }
 
   return (
-    <div className="container-fluid service__container" id='service'>
+    <div className="container-fluid service__container" id='service'  style={{backgroundImage:`url(assets/images/service-bg.jpg)`}}>
       <h1>Our Services</h1>
       <p className="service__sub__title">Fixed price car servicing packages</p>
       { orderErrMsg !== null && <Alert color='danger' style={{fontSize:'16px'}}>{orderErrMsg}</Alert>}

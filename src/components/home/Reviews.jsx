@@ -73,7 +73,7 @@ const Reviews = () => {
   }
 
   return (
-    <div className="container-fluid review__main__container">
+    <div className="container-fluid review__main__container" style={{backgroundImage:`url(assets/images/review-bg.jpg)`}}>
       <h1>Customer Reviews</h1>
       <p className="review__sub__title">People What Say About us</p>
 

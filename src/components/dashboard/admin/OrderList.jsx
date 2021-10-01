@@ -15,17 +15,18 @@ const OrderList = () => {
   const [loading,setLoading] = useState(false);
 
   useEffect(()=>{
-    setLoading(true)
+    setLoading(true);
     const { token } = isAuthenticated() ? userInfo() : "";
     axios.get(`${API}/cart/all/item`,{
       headers: {
           "Authorization": `Bearer ${token}`
       }})
-  .then(response => {
-    setLoading(false)
-    setCartItem(response.data);
-  })
-  },[]);
+      .then(response => {
+        setLoading(false)
+        console.log(response.data);
+        setCartItem(response.data);
+      })
+    },[]);
 
   const itemStatusUpdateHandler = (id,value)=>{
     const { token } = isAuthenticated() ? userInfo() : "";

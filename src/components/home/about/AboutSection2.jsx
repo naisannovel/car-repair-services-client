@@ -4,7 +4,7 @@ import React from "react";
 
 const AboutSection2 = () => {
   return (
-    <div class="container-fluid about__second__content__container">
+    <div class="container-fluid about__second__content__container" style={{backgroundImage:`url(assets/images/about-bg.jpg)`}}>
       <div class="container row m-auto about__second__content__row__container text-center">
         <div class="col about__second__content__col__container">
           <FontAwesomeIcon icon={faCheckSquare} />

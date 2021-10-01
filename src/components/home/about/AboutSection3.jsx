@@ -25,7 +25,6 @@ const AboutSection3 = () => {
         <div class="col-md-6 about__third__content__col__container-one">
           <h1>About Car Repair Services</h1>
           <HorizontalLine position="flex-start" mTop="1rem" mBottom="1rem" />
-          {/* horizontal style component */}
           <p>
             We use the latest diagnostic equipment to guarantee your vehicle is
             repaired or serviced properly and in a timely fashion. We are a

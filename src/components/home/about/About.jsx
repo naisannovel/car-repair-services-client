@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import HorizontalLine from "../../utilities/HorizontalLine";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faCar, faCog } from "@fortawesome/free-solid-svg-icons";
-import AboutSection1 from "./AboutSection1";
-import AboutSection2 from "./AboutSection2";
-import AboutSection3 from "./AboutSection3";
+import Spinner from '../../utilities/Spinner';
+
+const AboutSection1 = lazy(()=> import("./AboutSection1"));
+const AboutSection2 = lazy(()=> import("./AboutSection2"));
+const AboutSection3 = lazy(()=> import("./AboutSection3"));
 
 const About = () => {
 
@@ -27,8 +29,7 @@ const About = () => {
       <p className="about__description">
         We aim to earn your trust and have a long term relationship with you
       </p>
-      <HorizontalLine position="center" mTop="3rem" mBottom="3rem" />{" "}
-      {/* horizontal style component */}
+      <HorizontalLine position="center" mTop="3rem" mBottom="3rem" />
       <div className="container m-auto text-center row">
         <div
           className="col-4 about__item__container"
@@ -74,7 +75,7 @@ const About = () => {
           <h5>About Company</h5>
         </div>
       </div>
-      {content}
+      <Suspense fallback={<Spinner/>}> { content } </Suspense>
     </div>
   );
 };
