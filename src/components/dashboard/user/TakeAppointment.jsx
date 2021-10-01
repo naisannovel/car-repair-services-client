@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Form, FormGroup, Label, Input, FormText, Alert } from "reactstrap";
+import { Label, Input, Alert } from "reactstrap";
 import HorizontalLine from "../../utilities/HorizontalLine";
-import { getAllService } from "../../../redux/serviceActionCreators";
+import { getAllServiceWithoutImage } from "../../../redux/serviceActionCreators";
 import { serviceIsCart } from '../../../redux/cartActionCreators';
 import { connect } from "react-redux";
 import Spinner from '../../utilities/Spinner';
@@ -9,7 +9,7 @@ import ServiceDetailsModal from "../../modal/ServiceDetailsModal";
 
 const mapDispatchToProps = dispatch =>{
   return {
-    fetchService: ()=> dispatch(getAllService()),
+    fetchService: ()=> dispatch(getAllServiceWithoutImage()),
     isCart: (data,cb) => dispatch(serviceIsCart(data,cb))
   }
 }

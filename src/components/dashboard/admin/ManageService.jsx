@@ -5,12 +5,12 @@ import HorizontalLine from "../../utilities/HorizontalLine";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { getAllService, deleteService,servicePriceUpdate } from "../../../redux/serviceActionCreators";
+import { getAllServiceWithoutImage, deleteService,servicePriceUpdate } from "../../../redux/serviceActionCreators";
 import Spinner from '../../utilities/Spinner';
 
 const mapDispatchToProps = dispatch =>{
   return {
-    fetchService: ()=> dispatch(getAllService()),
+    fetchService: ()=> dispatch(getAllServiceWithoutImage()),
     removeService: (id)=> dispatch(deleteService(id)),
     priceUpdateHandler: (id,value,cb) => dispatch(servicePriceUpdate(id,value,cb))
   }

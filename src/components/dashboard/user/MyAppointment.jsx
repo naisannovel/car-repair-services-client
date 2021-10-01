@@ -21,6 +21,7 @@ const MyAppointment = () => {
           "Authorization": `Bearer ${token}`
       }})
       .then(response =>{
+        console.log(response.data);
         setLoading(false)
         setServiceData(response.data)
       })

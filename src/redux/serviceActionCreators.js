@@ -111,6 +111,16 @@ export const getAllService = ()=> dispatch =>{
     })
 }
 
+// get
+export const getAllServiceWithoutImage = ()=> dispatch =>{
+    dispatch(loadingService(true));
+    axios.get(`${API}/service/all`)
+    .then(response =>{
+        dispatch(loadingService(false));
+        dispatch(loadService(response.data));
+    })
+}
+
 //update
 export const servicePriceUpdate = (item,value,cb) => dispatch => {
     if(item?.price !== value?.price){
