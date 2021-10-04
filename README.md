@@ -8,7 +8,6 @@
 <br>
 <h2>Features</h2>
  <ul>
-   <li>user can choose any service</li>
    <li>Users need to sign up before taking any services.</li>
    <li>Need to use credit card to pay for getting the service.</li>
    <li>user can review about our services</li>
