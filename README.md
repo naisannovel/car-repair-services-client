@@ -2,6 +2,10 @@
 <br>
 <a href="https://car-repair-service-bd.web.app/" target='_blank'>Preview</a> | <a href="https://evening-reef-50770.herokuapp.com/" target='_blank'>Api Server</a>
 <br>
+<h3>Admin Account</h3>
+<p>Email: admin@mail.com</p>
+<p>Password: 11111</p>
+<br>
 <h2>Features</h2>
  <ul>
    <li>user can choose any service</li>
