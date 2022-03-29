@@ -41,10 +41,7 @@ const OrderList = () => {
     })
   }
 
-  let orderListItem = null;
-
-  if(!loading){
-    orderListItem = cartItem.length ? cartItem.map((item)=>(
+  const orderListItem = cartItem.length ? cartItem.map((item)=>(
         <tr style={{ height: "50px", lineHeight: "50px" }}>
           <td> { item?.service?.name } </td>
           <td> { item?.user?.email } </td>
@@ -60,16 +57,11 @@ const OrderList = () => {
           </td>
         </tr>
     )): <h1 style={{marginTop:'20px'}}>No Data Available</h1>
-  }else{
-    orderListItem = <SpinnerSecondary/>
-  }
 
+    let orderListItemPage = null;
 
-  return (
-    <div className="order__list__container">
-      <h1>Order List</h1>
-      <HorizontalLine position="left" mTop="2rem" mBottom="3rem" />
-      { updatedMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{updatedMsg}</Alert>}
+    if(!loading){
+      orderListItemPage = 
       <Table striped>
         <thead>
           <tr>
@@ -83,6 +75,16 @@ const OrderList = () => {
           { orderListItem }
         </tbody>
       </Table>
+    }else{
+      orderListItemPage = <SpinnerSecondary/>
+    }
+
+  return (
+    <div className="order__list__container">
+      <h1>Order List</h1>
+      <HorizontalLine position="left" mTop="2rem" mBottom="3rem" />
+      { updatedMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{updatedMsg}</Alert>}
+      { orderListItemPage }
     </div>
   );
 };
