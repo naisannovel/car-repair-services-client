@@ -30,9 +30,8 @@ const ServiceDetailsModal = ({ isOpenModal, setIsOpenModal, data, orderSuccessMs
           <div style={{textAlign:'center'}}>
           <img src={ `data:image/png;base64,${data?.image?.img}` } alt="service-img" />
           </div>
-          <h2>name: { data?.name }</h2>
-          <h2>price: { data?.price }</h2>
-          <h2>about: { data?.about }</h2>
+          <h2 style={{textAlign:'center',fontWeight:'800',marginTop:'25px'}}>{ data?.name } - ${ data?.price }</h2>
+          <h2 style={{textAlign:'center', fontWeight:'200',fontSize:'16px',marginTop:'10px'}}>{ data?.about }</h2>
         </ModalBody>
         <StripePaymentGateway name={data?.name} price={data?.price} id={data?._id} />
         <ModalFooter>

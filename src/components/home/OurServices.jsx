@@ -63,7 +63,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
                 <h2> ${ item.price } </h2>
                 <img src={ `data:image/png;base64,${item?.image?.img}` } alt="service-icon"/>
                 <h6> { item.about } </h6>
-                <button className='primary-btn-small' onClick={()=>{
+                <button className='service-btn' onClick={()=>{
                   setOnClickServiceItem(item._id)
                   if(isAuthenticated()){
                     isCart(item._id,()=>{
@@ -73,7 +73,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
                   }else{
                     history.push('/login')
                   }
-                }}> {addCartLoading && onClickServiceItem === item._id ? <span className="fa fa-spinner fa-pulse"></span> : 'Appointment'}</button>
+                }}> {addCartLoading && onClickServiceItem === item._id ? <span className="fa fa-spinner fa-pulse fa-lg"></span> : 'Appointment'}</button>
                 </div>
             </SwiperSlide>
       )

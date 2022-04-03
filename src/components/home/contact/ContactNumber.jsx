@@ -21,7 +21,7 @@ const Contact = () => {
         <div className="col-md-4 offset-md-1 contact__second__col__container">
           <div>
             <FontAwesomeIcon icon={faPhone} />
-            <span>1-800-123-4567</span>
+            <span>0-000-000-0000</span>
           </div>
           <p>
             Whether you're the driver of your own car or a rental, you're

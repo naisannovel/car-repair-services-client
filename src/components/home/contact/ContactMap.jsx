@@ -21,11 +21,11 @@ const ContactMap = () => {
           </p>
           <p>
             <FontAwesomeIcon icon={faPhone} />
-            1-800-1234567
+            0-000-000-0000
           </p>
           <p>
             <FontAwesomeIcon icon={faEnvelope} />
-            officeone@youremail.com
+            mail@mail.com
           </p>
           <h4 style={{marginTop:'50px'}}>Opening Hours</h4>
           <p style={{display:'flex'}}>

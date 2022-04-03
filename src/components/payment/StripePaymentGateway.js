@@ -41,7 +41,7 @@ const StripePaymentGateway = ({name,price,id,getService,loading}) => {
   };
 
   return (
-    <div className='text-center mt-4 mb-3'>
+    <div className='text-center mt-2 mb-3'>
                <StripeCheckout
           stripeKey='pk_test_51IeH6gL6cSctvL5CRe1beBmNAcztwKzQhl1oMTXv8wYOPYkbG4MtD9pEDbBbueHPeMjKlSKqceONsJxIXNsKX5IW00ycWi9yhb'
           image={icon}
