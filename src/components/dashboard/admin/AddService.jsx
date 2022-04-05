@@ -52,7 +52,7 @@ const AddService = ({addNewService,loading,successMsg,errMsg}) => {
           <Label for="file" style={{ display: "block" }}>
             Image
           </Label>
-          <input type="file" name='image' {...register("image", { required: true })} />
+          <input type="file" name='image' style={{ padding: '0' }} {...register("image", { required: true })} />
           {errors.image && <span className='form-error-style' style={{display:'block'}}>image is required</span>}
         </FormGroup>
         <button className="primary-btn-small">Submit</button>
@@ -65,8 +65,10 @@ const AddService = ({addNewService,loading,successMsg,errMsg}) => {
     <div className="add__service__container">
       { errMsg !== null && <Alert color='danger' style={{fontSize:'16px'}}>{errMsg}</Alert>}
       { successMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{successMsg}</Alert>}
-      <h1>Add Services</h1>
-      <HorizontalLine position="left" mTop="2rem" mBottom="3rem" />
+      <div style={{ textAlign: 'center' }}>
+        <h1>Add Services</h1>
+        <HorizontalLine position="center" mTop="2rem" mBottom="3rem" />
+      </div>
       { addServicePage }
     </div>
   );

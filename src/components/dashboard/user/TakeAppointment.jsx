@@ -60,8 +60,10 @@ const TakeAppointment = ({fetchService,loading,service,isCart,orderErrMsg}) => {
   
   return (
     <div className='take__new__appointment__container'>
-      <h1>Take New Appointment</h1>
-      <HorizontalLine position='left' mTop='2rem' mBottom='4rem' />
+      <div style={{textAlign: 'center'}}>
+        <h1>Take New Appointment</h1>
+        <HorizontalLine position='center' mTop='2rem' mBottom='4rem' />
+      </div>
       { orderErrMsg !== null && <Alert color='danger' style={{fontSize:'16px'}}>{orderErrMsg}</Alert>}
       <ServiceDetailsModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} data={data} />
       { takeAppointmentPage }

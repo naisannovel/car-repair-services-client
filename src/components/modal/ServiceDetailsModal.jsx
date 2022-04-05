@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Modal, ModalBody, ModalFooter, Alert } from "reactstrap";
 import HorizontalLine from "../utilities/HorizontalLine";
-import { MAIN_API } from "../../redux/baseURL";
 import StripePaymentGateway from '../payment/StripePaymentGateway';
 import { connect } from "react-redux";
 
@@ -16,7 +15,7 @@ const mapStateToProps = state => {
 const ServiceDetailsModal = ({ isOpenModal, setIsOpenModal, data, orderSuccessMsg,addCartLoading }) => {
 
   const toggle = () => setIsOpenModal(!isOpenModal);
-  
+
   return (
     <div className="stripe__modal__container">
       <Modal isOpen={isOpenModal} toggle={toggle} backdrop={"static"} style={{marginTop:'70px'}}>

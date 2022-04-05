@@ -64,9 +64,9 @@ const GiveFeedback = ({addNewReview,loading,successMsg,errMsg}) => {
         <Label for="file" style={{ display: "block" }}>
           Image
         </Label>
-        <input type="file" name='image' {...register("image", { required: true })} />
+        <input type="file" name='image' style={{ padding:'0'}} {...register("image", { required: true })} />
         {errors.image && <span className='form-error-style'>required</span>}
-      <button className="primary-btn-small">Submit</button>
+      <button className="primary-btn-small mt-4">Submit</button>
     </form>
   }else{
     giveFeedbackPage = <SpinnerSecondary/>
@@ -76,8 +76,10 @@ const GiveFeedback = ({addNewReview,loading,successMsg,errMsg}) => {
     <div className="feedback__container">
         { errMsg !== null && <Alert color='danger' style={{fontSize:'16px'}}>{errMsg}</Alert>}
       { successMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{successMsg}</Alert>}
-      <h1>Give Us Feedback</h1>
-      <HorizontalLine position="left" mTop="2rem" mBottom="3rem" />
+      <div style={{ textAlign: 'center' }}>
+        <h1>Give Us Feedback</h1>
+        <HorizontalLine position="center" mTop="2rem" mBottom="3rem" />
+      </div>
       { giveFeedbackPage }
     </div>
   );

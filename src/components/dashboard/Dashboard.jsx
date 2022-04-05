@@ -38,9 +38,9 @@ const Dashboard = () => {
         <Link to={`${path}/my-appointment`}>
           <FontAwesomeIcon icon={faList} /> My Appointment
         </Link>
-        <Link to={`${path}/take-appointment`}>
+        {/* <Link to={`${path}/take-appointment`}>
           <FontAwesomeIcon icon={faPlusSquare} /> Take Appointment
-        </Link>
+        </Link> */}
         <Link to={`${path}/give-feedback`}>
           <FontAwesomeIcon icon={faCommentDots} /> Give Feedback
         </Link>
@@ -53,9 +53,9 @@ const Dashboard = () => {
         <PrivateRoute path={`${path}/my-appointment`} exact>
             <MyAppointment/>
           </PrivateRoute>
-        <PrivateRoute path={`${path}/take-appointment`} exact>
+        {/* <PrivateRoute path={`${path}/take-appointment`} exact>
           <TakeAppointment />
-        </PrivateRoute>
+        </PrivateRoute> */}
         <PrivateRoute path={`${path}/give-feedback`} exact>
           <GiveFeedback />
         </PrivateRoute>

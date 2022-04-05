@@ -41,8 +41,8 @@ const OrderList = () => {
     })
   }
 
-  const orderListItem = cartItem.length ? cartItem.map((item)=>(
-        <tr style={{ height: "50px", lineHeight: "50px" }}>
+  const orderListItem = cartItem.length ? cartItem.map(item=>(
+        <tr style={{ height: "50px", lineHeight: "50px", textAlign: 'center' }}>
           <td> { item?.service?.name } </td>
           <td> { item?.user?.email } </td>
           <td> { item?.user?.name } </td>
@@ -63,7 +63,7 @@ const OrderList = () => {
     if(!loading){
       orderListItemPage = 
       <Table striped>
-        <thead>
+        <thead style={{textAlign: 'center'}}>
           <tr>
             <th>Service</th>
             <th>Email</th>
@@ -81,8 +81,10 @@ const OrderList = () => {
 
   return (
     <div className="order__list__container">
-      <h1>Order List</h1>
-      <HorizontalLine position="left" mTop="2rem" mBottom="3rem" />
+      <div style={{ textAlign: 'center' }}>
+        <h1>Order List</h1>
+        <HorizontalLine position="center" mTop="2rem" mBottom="3rem" />
+      </div>
       { updatedMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{updatedMsg}</Alert>}
       { orderListItemPage }
     </div>

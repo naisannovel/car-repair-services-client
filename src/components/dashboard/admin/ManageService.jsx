@@ -70,7 +70,7 @@ const ManageService = ({fetchService,loading,service,removeService,priceUpdateHa
   if(!loading){
     manageServicePage = 
       <Table striped>
-      <thead>
+      <thead style={{textAlign: 'center'}}>
         <tr>
           <th>#</th>
           <th>Service</th>
@@ -78,7 +78,7 @@ const ManageService = ({fetchService,loading,service,removeService,priceUpdateHa
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style={{textAlign: 'center'}}>
         { mapService }
       </tbody>
     </Table>
@@ -88,8 +88,10 @@ const ManageService = ({fetchService,loading,service,removeService,priceUpdateHa
 
   return (
     <div className="manage__service__container">
-      <h1>Manage Services</h1>
-      <HorizontalLine position="left" mTop="2rem" mBottom="3rem" />
+      <div style={{ textAlign: 'center' }}>
+        <h1>Manage Services</h1>
+        <HorizontalLine position="center" mTop="2rem" mBottom="3rem" />
+      </div>
       { serviceUpdateMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{serviceUpdateMsg}</Alert>}
       { manageServicePage }
     </div>

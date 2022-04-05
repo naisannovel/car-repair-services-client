@@ -64,8 +64,10 @@ const MakeAdmin = () => {
     <div className="make__admin__container">
        { resSuccessMsg !== null && <Alert color='success' style={{fontSize:'16px'}}>{resSuccessMsg}</Alert>}
        { resErrMsg !== null && <Alert color='danger' style={{fontSize:'16px'}}>{resErrMsg}</Alert>}
-      <h1>Make New Admin</h1>
-      <HorizontalLine position="left" mTop="2rem" mBottom="3rem" />
+      <div style={{ textAlign: 'center' }}>
+        <h1>Make New Admin</h1>
+        <HorizontalLine position="center" mTop="2rem" mBottom="3rem" />
+      </div>
       { makeAdminPage }
     </div>
   );
