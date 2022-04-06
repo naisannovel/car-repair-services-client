@@ -7,6 +7,7 @@ import { isAuthenticated } from '../authentication/authUtilities';
 import { useHistory } from "react-router";
 import { Alert } from "reactstrap";
 import ServiceDetailsModal from "../modal/ServiceDetailsModal";
+import swal from 'sweetalert';
 
 
 // Import Swiper styles
@@ -51,7 +52,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
    };
   window.addEventListener("resize", handleResize);
 
-
+console.log(orderErrMsg);
   useEffect(()=>fetchService(),[])
   const history = useHistory()
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { API } from './baseURL';
 import { isAuthenticated,userInfo } from '../components/authentication/authUtilities';
+import swal from 'sweetalert';
 
 
 //cart action types
@@ -54,10 +55,11 @@ export const serviceAddInCart = data => dispatch =>{
         }})
     .then(response => {
         dispatch(cartLoading(false));
-            dispatch(addToCartSuccessMsg('successfully added in your cart'))
+        dispatch(addToCartSuccessMsg('successfully added in your cart'))
         setTimeout(()=>dispatch(addToCartSuccessMsg(null)),3000)
     })
     .catch(err => {
+        console.log(err);
         dispatch(cartLoading(false));
         dispatch(addToCartErrMsg(err.response.data))
         setTimeout(()=>dispatch(addToCartErrMsg(null)),2000)

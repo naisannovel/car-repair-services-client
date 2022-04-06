@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch =>{
   }
 }
 
-const StripePaymentGateway = ({name,price,id,getService,loading}) => {
+const StripePaymentGateway = ({name,price,id,getService,loading, setIsOpenModal}) => {
 
   const makePayment = token => {
     const service = {
@@ -35,6 +35,7 @@ const StripePaymentGateway = ({name,price,id,getService,loading}) => {
         const { status,statusText } = response;
         if(status === 200 && statusText === "OK"){
           getService(id)
+          setIsOpenModal(prevState => !prevState)
         }
       })
       .catch(error => console.log(error));

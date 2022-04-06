@@ -32,15 +32,13 @@ const ServiceDetailsModal = ({ isOpenModal, setIsOpenModal, data, orderSuccessMs
           <h2 style={{textAlign:'center',fontWeight:'800',marginTop:'25px'}}>{ data?.name } - ${ data?.price }</h2>
           <h2 style={{textAlign:'center', fontWeight:'200',fontSize:'16px',marginTop:'10px'}}>{ data?.about }</h2>
         </ModalBody>
-        <StripePaymentGateway name={data?.name} price={data?.price} id={data?._id} />
+        <StripePaymentGateway name={data?.name} price={data?.price} id={data?._id} setIsOpenModal={setIsOpenModal} />
         <ModalFooter>
           <Button
             color="secondary"
             style={{ fontSize: "13px" }}
             onClick={addCartLoading ? '': toggle}
-          >
-            {addCartLoading ? <span className="fa fa-spinner fa-pulse"></span> : 'cancel'}
-          </Button>
+          >cancel</Button>
         </ModalFooter>
       </Modal>
     </div>
