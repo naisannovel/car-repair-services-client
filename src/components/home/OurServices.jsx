@@ -52,7 +52,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
    };
   window.addEventListener("resize", handleResize);
 
-console.log(orderErrMsg);
+
   useEffect(()=>fetchService(),[])
   const history = useHistory()
 
