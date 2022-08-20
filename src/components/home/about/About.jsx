@@ -75,7 +75,9 @@ const About = () => {
           <h5>About Company</h5>
         </div>
       </div>
-      <Suspense fallback={<SpinnerSecondary/>}> { content } </Suspense>
+      <div className="about__content_container">
+        <Suspense fallback={<SpinnerSecondary/>}> { content } </Suspense>
+      </div>
     </div>
   );
 };

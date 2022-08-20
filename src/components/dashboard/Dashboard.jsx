@@ -21,7 +21,7 @@ import logo from "../../assets/logo.png";
 import { useHistory } from "react-router";
 import PrivateRoute from "../protectedRoutes/PrivateRoute";
 import AdminRoute from "../protectedRoutes/AdminRoute";
-import { isAuthenticated, logOut, userInfo } from "../authentication/authUtilities";
+import { isAuthenticated, logOut, userInfo } from "../auth/authUtilities";
 
 const Dashboard = () => {
   const { role, name } = isAuthenticated() ? userInfo() : "";

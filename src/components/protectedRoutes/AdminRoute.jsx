@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router';
-import { isAuthenticated, userInfo } from '../authentication/authUtilities';
+import { isAuthenticated, userInfo } from '../auth/authUtilities';
 
 const AdminRoute = ({ children, ...rest }) => {
   const { role } = userInfo();

@@ -3,7 +3,7 @@ import HorizontalLine from '../../utilities/HorizontalLine';
 import { Table } from 'reactstrap';
 import axios from 'axios';
 import { API } from '../../../redux/baseURL';
-import { isAuthenticated, userInfo } from '../../authentication/authUtilities';
+import { isAuthenticated, userInfo } from '../../auth/authUtilities';
 import SpinnerSecondary from '../../utilities/SpinnerSecondary';
 
 const MyAppointment = () => {

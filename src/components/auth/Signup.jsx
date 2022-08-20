@@ -2,13 +2,12 @@ import React from "react";
 import HorizontalLine from "../utilities/HorizontalLine";
 import { Form, FormGroup } from "reactstrap";
 import { Link } from "react-router-dom";
-import SignupAndLoginNavbar from "./SignupAndLoginNavbar";
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { auth } from '../../redux/authActionCreators';
 import { Alert } from 'reactstrap';
 import { useHistory, useLocation } from 'react-router-dom';
-import { isAuthenticated } from '../authentication/authUtilities';
+import { isAuthenticated } from '../auth/authUtilities';
 import { Redirect } from "react-router";
 import Spinner from '../utilities/Spinner';
 
@@ -96,7 +95,6 @@ const Signup = ({authSignup,loadingSpinner,authFailedMsg}) => {
   return (
     <div>
       {redirectUser()}
-      <SignupAndLoginNavbar/>
       { signupPage }
       
     </div>

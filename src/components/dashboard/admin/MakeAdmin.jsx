@@ -4,7 +4,7 @@ import HorizontalLine from "../../utilities/HorizontalLine";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { API } from '../../../redux/baseURL';
-import { isAuthenticated,userInfo } from '../../authentication/authUtilities';
+import { isAuthenticated,userInfo } from '../../auth/authUtilities';
 import SpinnerSecondary from "../../utilities/SpinnerSecondary";
 
 const { token } = isAuthenticated() ? userInfo() : "";

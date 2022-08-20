@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HorizontalLine from "../../utilities/HorizontalLine";
 import { Alert, Table } from "reactstrap";
-import { isAuthenticated, userInfo } from '../../authentication/authUtilities';
+import { isAuthenticated, userInfo } from '../../auth/authUtilities';
 import axios from "axios";
 import { API } from "../../../redux/baseURL";
 import SpinnerSecondary from "../../utilities/SpinnerSecondary";

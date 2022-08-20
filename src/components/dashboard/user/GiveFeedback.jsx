@@ -4,7 +4,7 @@ import { FormGroup, Label, Alert } from "reactstrap";
 import { useForm } from "react-hook-form";
 import { createNewReview } from '../../../redux/reviewActionCreators';
 import { connect } from "react-redux";
-import { isAuthenticated,userInfo } from '../../authentication/authUtilities';
+import { isAuthenticated,userInfo } from '../../auth/authUtilities';
 import SpinnerSecondary from '../../utilities/SpinnerSecondary';
 
 

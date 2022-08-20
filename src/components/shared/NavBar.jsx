@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { Link, animateScroll } from "react-scroll";
 import {
   Collapse,
@@ -10,7 +10,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { isAuthenticated, userInfo } from '../authentication/authUtilities';
+import { isAuthenticated, userInfo } from '../auth/authUtilities';
 
 const NavBar = (props) => {
   const { name, role } = isAuthenticated() ? userInfo() : '';
@@ -20,6 +20,12 @@ const NavBar = (props) => {
 
 
   const history = useHistory()
+  const location = useLocation();
+
+  const logoOnClick = () => {
+    location.pathname === '/' ?
+    animateScroll.scrollToTop() : history.push('/');
+  }
 
   return (
     <Navbar
@@ -29,7 +35,7 @@ const NavBar = (props) => {
       expand="md"
     >
       <div className="container">
-        <NavbarBrand className="navbar__logo" onClick={()=>animateScroll.scrollToTop()}>
+        <NavbarBrand className="navbar__logo" onClick={logoOnClick}>
           <img src="assets/images/logo.png" className="w-md-50" alt="Logo" />
         </NavbarBrand>
         <NavbarToggler className="navbar__collapse__button" onClick={toggle} />
@@ -39,26 +45,31 @@ const NavBar = (props) => {
             style={{ flex: 1 }}
             navbar
           >
-            <NavItem>
-              <NavLink style={{cursor:'pointer'}}>
-              <Link to='home' smooth={true} duration={500} exact='true' offset={-70} spy={true}>home</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink style={{cursor:'pointer'}}>
-              <Link to='about' smooth={true} duration={500} exact='true' offset={-70} spy={true}>about</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink style={{cursor:'pointer'}}>
-              <Link to='service' smooth={true} duration={500} exact='true' offset={-70} spy={true}>service</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink style={{cursor:'pointer'}}>
-                <Link to='contact' smooth={true} duration={500} exact='true' offset={-70} spy={true}>contact</Link>
-              </NavLink>
-            </NavItem>
+            {
+              location.pathname === '/' &&
+              <>
+                <NavItem>
+                  <NavLink style={{cursor:'pointer'}}>
+                  <Link to='home' smooth={true} duration={500} exact='true' offset={-70} spy={true}>home</Link>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink style={{cursor:'pointer'}}>
+                  <Link to='about' smooth={true} duration={500} exact='true' offset={-70} spy={true}>about</Link>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink style={{cursor:'pointer'}}>
+                  <Link to='service' smooth={true} duration={500} exact='true' offset={-70} spy={true}>service</Link>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink style={{cursor:'pointer'}}>
+                    <Link to='contact' smooth={true} duration={500} exact='true' offset={-70} spy={true}>contact</Link>
+                  </NavLink>
+                </NavItem>
+              </>
+            }
             {
               isAuthenticated() ?
               <NavItem>

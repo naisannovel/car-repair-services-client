@@ -1,5 +1,7 @@
 .hero__slider__container {
-    height: 90vh;
+    min-height: calc(100vh - 70.16px);
+    display: grid;
+    place-items: center;
 
     @include respond(phone) {
         height: 70vh;

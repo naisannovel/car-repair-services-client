@@ -3,12 +3,18 @@ import SpinnerSecondary from '../../utilities/SpinnerSecondary';
 
 const ContactNumber = lazy(()=> import('./ContactNumber'));
 const ContactMap = lazy(()=> import('./ContactMap'));
+const Footer = lazy(()=> import('./../Footer'));
 
 const Contact = () => {
   return (
     <Suspense fallback={<SpinnerSecondary/>}>
-      <ContactNumber/>
-      <ContactMap/>
+      <div  id="contact" >
+        <ContactNumber/>
+        <div>
+          <ContactMap/>
+          <Footer/>
+        </div>
+      </div>
     </Suspense>
   );
 };

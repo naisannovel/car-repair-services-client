@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { getAllService } from '../../redux/serviceActionCreators';
 import { connect } from "react-redux";
 import { serviceAddInCart, serviceIsCart } from '../../redux/cartActionCreators';
-import { isAuthenticated } from '../authentication/authUtilities';
+import { isAuthenticated } from '../auth/authUtilities';
 import { useHistory } from "react-router";
 import { Alert } from "reactstrap";
 import ServiceDetailsModal from "../modal/ServiceDetailsModal";

@@ -4,7 +4,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Contact = () => {
   return (
-    <div id="contact" className="contact__fluid__container">
+    <div className="contact__fluid__container">
       <div className="container row contact__container">
         <div className="col-md-7 contact__first__col__container">
           <div className="contact__icon__container">

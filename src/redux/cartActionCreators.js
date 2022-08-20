@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { API } from './baseURL';
-import { isAuthenticated,userInfo } from '../components/authentication/authUtilities';
+import { isAuthenticated,userInfo } from '../components/auth/authUtilities';
 import swal from 'sweetalert';
 
 

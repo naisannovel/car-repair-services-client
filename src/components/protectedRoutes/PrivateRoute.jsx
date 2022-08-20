@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router';
-import { isAuthenticated } from '../authentication/authUtilities';
+import { isAuthenticated } from '../auth/authUtilities';
 
 const PrivateRoute = ({ children, ...rest }) => {
     
