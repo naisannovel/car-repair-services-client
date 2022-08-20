@@ -18,6 +18,7 @@ import "swiper/components/navigation/navigation.min.css";
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
 import SpinnerSecondary from "../utilities/SpinnerSecondary";
+import ServiceSkeleton from "../shared/skeleton/ServiceSkeleton";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
@@ -99,7 +100,13 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
             { serviceCard }
       </Swiper>
   }else{
-      ourServicesPage = <SpinnerSecondary/>
+      ourServicesPage = (
+        <div className="service__loading_container">
+          {
+            [1,2,3].slice(0,windowWidth > 640 ? 3:1).map(num => <ServiceSkeleton key={num} /> )
+          }
+        </div>
+      )
   }
 
   return (
