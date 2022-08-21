@@ -100,13 +100,7 @@ const Services = ({fetchService,serviceLoading,service,orderErrMsg,isCart,addCar
             { serviceCard }
       </Swiper>
   }else{
-      ourServicesPage = (
-        <div className="service__loading_container">
-          {
-            [1,2,3].slice(0,windowWidth > 640 ? 3:1).map(num => <ServiceSkeleton key={num} /> )
-          }
-        </div>
-      )
+      ourServicesPage = <ServiceSkeleton/>
   }
 
   return (

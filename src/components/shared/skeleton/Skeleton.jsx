@@ -1,9 +1,9 @@
 import React from 'react';
 import './skeleton.css';
 
-const Skeleton = ({ type }) => {
+const Skeleton = ({ type, className }) => {
 
-    const classes = `skeleton ${type}`
+    const classes = `skeleton ${type} ${className}`
 
     return (
         <div className={classes}></div>

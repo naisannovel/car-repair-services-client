@@ -26,7 +26,7 @@ const NavBar = (props) => {
     location.pathname === '/' ?
     animateScroll.scrollToTop() : history.push('/');
   }
-
+console.log(location.pathname);
   return (
     <Navbar
       className="navbar__container"
@@ -36,7 +36,7 @@ const NavBar = (props) => {
     >
       <div className="container">
         <NavbarBrand className="navbar__logo" onClick={logoOnClick}>
-          <img src="assets/images/logo.png" className="w-md-50" alt="Logo" />
+          <img src="/assets/images/logo.png" className="w-md-50" alt="Logo" />
         </NavbarBrand>
         <NavbarToggler className="navbar__collapse__button" onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -72,15 +72,20 @@ const NavBar = (props) => {
             }
             {
               isAuthenticated() ?
+              (
+                location.pathname.startsWith(`/${role}/dashboard`) ? '':
               <NavItem>
-              <NavLink style={{cursor:'pointer'}}>
-                <Link onClick={()=>history.push(`/${role}/dashboard`)} style={{cursor:'pointer'}}>Dashboard</Link>
-              </NavLink>
-            </NavItem>:''
+                <NavLink style={{cursor:'pointer'}}>
+                  <Link onClick={()=>history.push(`/${role}/dashboard`)} style={{cursor:'pointer'}}> { role === 'user' ? 'Dashboard':'Admin Panel' } </Link>
+                </NavLink>
+              </NavItem>
+            ) :''
             }
             {
               isAuthenticated() ? 
-              <span className='navbar-user-name-icon'>{name.trim().toUpperCase()[0]}</span>
+              (
+                location.pathname.startsWith(`/${role}/dashboard`) ? <h3>{name}</h3> : <span className='navbar-user-name-icon'>{name.trim().toUpperCase()[0]}</span>
+              )
               :
               <NavItem>
               <NavLink style={{cursor:'pointer'}}>
