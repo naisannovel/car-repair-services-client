@@ -26,7 +26,7 @@ const NavBar = (props) => {
     location.pathname === '/' ?
     animateScroll.scrollToTop() : history.push('/');
   }
-console.log(location.pathname);
+
   return (
     <Navbar
       className="navbar__container"

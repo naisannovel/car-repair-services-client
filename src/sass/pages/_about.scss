@@ -86,10 +86,11 @@
     & .about__first__content__col__container-one {
       & img {
         width: 100%;
-        height: 480px !important;
+        height: 100%;
+        min-height: 480px !important;
         object-fit: cover;
         @include respond(tablet){
-          height: 300px !important;
+          min-height: 300px !important;
         }
       }
     }
@@ -186,6 +187,11 @@
   // about section 3
 
   & .about__third__content__row__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    @include respond(tablet){
+      grid-template-columns: 1fr;
+    }
     & .about__third__content__col__container-one {
       background-color: #393939;
       padding: 3.5rem 5rem;
@@ -223,10 +229,11 @@
       padding: 0 !important;
       & img {
         width: 100%;
-        height: 480px !important;
+        height: 100%;
+        min-height: 480px !important;
         object-fit: cover;
         @include respond(tablet){
-          height: 300px !important;
+          min-height: 300px !important;
         }
       }
     }

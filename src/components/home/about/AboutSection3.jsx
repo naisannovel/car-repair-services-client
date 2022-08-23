@@ -20,9 +20,8 @@ const AboutSection3 = () => {
     </span>
   ));
   return (
-    <div className="container-fluid">
-      <div className="row about__third__content__row__container">
-        <div class="col-md-6 about__third__content__col__container-one">
+      <div className="about__third__content__row__container">
+        <div class="about__third__content__col__container-one">
           <h1>About Car Repair Services</h1>
           <HorizontalLine position="flex-start" mTop="1rem" mBottom="1rem" />
           <p>
@@ -36,11 +35,10 @@ const AboutSection3 = () => {
             {aboutComapanyData}
           </div>
         </div>
-        <div className="col-md-6 about__third__content__col__container-two">
+        <div className="about__third__content__col__container-two">
           <img src="assets/images/about2.jpg" alt="Additional Services" />
         </div>
       </div>
-    </div>
   );
 };
 
